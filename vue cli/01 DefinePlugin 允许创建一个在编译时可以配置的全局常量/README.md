@@ -1,0 +1,1 @@
+https://www.webpackjs.com/plugins/define-plugin/
