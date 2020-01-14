@@ -59,7 +59,8 @@ module.exports = {
     plugins: [
       new webpack.DefinePlugin({
         // 'process.env': require('./env/index.env.js'), // 不起效果
-        'process2.env': require('./env/index.js') // 可以设置
+        'process2.env': require('./env/index.js'), // 可以设置
+				'TWO': '1+1' //全局常量也可以是表达式
       })
     ]
   }
@@ -71,7 +72,9 @@ module.exports = {
 运行 `npm run serve` （开发环境）
 ```
 console.info(process2.env);
+console.info(TWO);
 // {VUE_APP_ROOT: "http://192.168.1.93:8082/oa/"}
+// 2
 ```
 
 
