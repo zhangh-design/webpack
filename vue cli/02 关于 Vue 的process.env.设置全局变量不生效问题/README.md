@@ -1,5 +1,7 @@
 ## 关于 Vue 的process.env.设置全局变量不生效问题
 
+[关于 Vue 的process.env.设置全局变量不生效问题](https://blog.csdn.net/zyt807/article/details/103634494)
+
 场景：
 
 在 Vue Cli 创建的工程中新增加环境变量`process.env`时发现不起作用，如下：
