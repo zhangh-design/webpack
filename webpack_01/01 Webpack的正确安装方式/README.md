@@ -114,7 +114,7 @@ package.json
 我们呢要安装`webpack`同时安装`webpack-cli`这样的一个工具，然后呢全局安装我们后面跟一个`-g`这样的参数，`webpack`大家都知道我要安装它没问题，那么`webpack-cli`是干什么的后面我们会给大家说大家先跟着我一起安装就可以，我们点击回车让它自动进行安装。
 
 ```
-C:\Users\nickname>npm init webpack webpack-cli -g
+C:\Users\nickname>npm install webpack webpack-cli -g
 
 ```
 
