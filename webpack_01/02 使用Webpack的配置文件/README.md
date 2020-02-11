@@ -393,6 +393,7 @@ lesson
 
 最后我们给大家讲解了这个`webpack-cli`它的一个安装的原理它的作用。
 
+
 #### 作业：
 
-大家打开[`webpack的官网`](http://webpack.github.io/)，进入到`webpack`的官网，然后呢大家点这个`DOCUMENTATION`进入到它的文档左侧有一个`Getting Started`在讲解了第一章的几节课后呢大家就可以来看`Getting Starte`目录下的所有内容了，这个目录下的所有内容其实我都已经讲到过了，大家在来过一遍可以很好的巩固之前的知识点。
+大家打开[`webpack的官网`](http://webpack.github.io/)进入到`webpack`的官网（如果打不开也可以进入[webpack中文网](https://www.webpackjs.com/)），然后呢大家点这个`DOCUMENTATION`（指南）进入到它的文档左侧有一个`Getting Started`（起步）[（中文网Getting Started地址）](https://www.webpackjs.com/guides/getting-started/)在讲解了第一章的几节课后呢大家就可以来看`Getting Starte`目录下的所有内容了，这个目录下的所有内容其实我都已经讲到过了，大家在来过一遍可以很好的巩固之前的知识点。
