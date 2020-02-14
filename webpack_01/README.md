@@ -6,3 +6,4 @@
 02 | 使用Webpack的配置文件
 03 | 浅析 Webpack 打包输出内容
 04 | 什么是 loader
+05 | 使用 Loader 打包静态资源（图片篇）
