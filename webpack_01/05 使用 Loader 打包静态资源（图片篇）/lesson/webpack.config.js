@@ -4,48 +4,46 @@ const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-	mode: 'development',
-	// entry: './src/index.js',
-	entry: {
-		main: './src/index.js'
-	},
-	output: {
-		filename: 'bundle.js',
-		// path 不写其实也可以，默认就会打包到 dist 目录
-		path: path.resolve(__dirname, 'dist')
-	},
-	plugins:[
-		new VueLoaderPlugin()
-	],
-	module: {
-		rules: [
-			{
-				test: /\.jpg$/,
-				/* use: {
-					loader: 'file-loader',
-					options: {
-						// placeholder 占位符
-						// name: '[name]_[hash].[ext]'
-						name: '[name].[ext]',
-						outputPath: 'images/'
-					}
-				} */
-				use: {
-					loader: 'url-loader',
-					options: {
-						name: '[name].[ext]',
-						outputPath: 'images/',
-						// 字节
-						limit: 10240
-					}
+  mode: 'development',
+  // entry: './src/index.js',
+  entry: {
+    main: './src/index.js'
+  },
+  output: {
+    filename: 'bundle.js',
+    // path 不写其实也可以，默认就会打包到 dist 目录
+    path: path.resolve(__dirname, 'dist')
+  },
+  plugins: [new VueLoaderPlugin()],
+  module: {
+    rules: [
+      {
+        test: /\.(jpg|png|gif)$/,
+        /* use: {
+				loader: 'file-loader',
+				options: {
+					// placeholder 占位符
+					// name: '[name]_[hash].[ext]'
+					name: '[name].[ext]',
+					outputPath: 'images/'
 				}
-			},
-			{
-				test: /\.vue$/,
-				use: {
-					loader: 'vue-loader'
-				}
-			}
-		]
-	}
-}
+			} */
+        use: {
+          loader: 'url-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images/',
+            // 字节
+            limit: 10240
+          }
+        }
+      },
+      {
+        test: /\.vue$/,
+        use: {
+          loader: 'vue-loader'
+        }
+      }
+    ]
+  }
+};
