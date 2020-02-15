@@ -10,6 +10,8 @@
 
 [->scss-loader](https://www.webpackjs.com/loaders/sass-loader/)
 
+[->postcss-loader](https://www.webpackjs.com/loaders/postcss-loader/)
+
 好，在浏览器上打开我们之前的`index.html`页面，我现在呢有这么一个需求：
 
 我需要让图片的大小变成`150*150`的图片，所以呢我就需要写一个`css`的样式来修饰这张图片，那到我们的源代码之中：
