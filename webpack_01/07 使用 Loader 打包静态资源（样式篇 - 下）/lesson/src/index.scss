@@ -1,0 +1,12 @@
+@import './avatar.scss';
+
+body {
+	.avatar {
+		width: 150px;
+		height: 150px;
+		/*用于测试自动添加厂商前缀 postcss-loader和autoprefixer*/
+		/*它的意思是我要把我的 avatar 标签偏移100px*/
+		transform: translate(100px, 100px);
+		display: flex;
+	}
+}
