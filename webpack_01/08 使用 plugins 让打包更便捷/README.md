@@ -198,6 +198,8 @@ root.innerHTML='<div class="iconfont icon-changjingguanli">abc</div>';
 webpack.config.js
 
 ```
+//引入 html-webpack-plugin 插件
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 plugins: [new HtmlWebpackPlugin({
     template: './index.html'
   })]
