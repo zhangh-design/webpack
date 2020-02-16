@@ -8,6 +8,8 @@
 
 [->++clean-webpack-plugin 慕课网++](https://www.npmjs.com/package/clean-webpack-plugin) 
 
+[->++output-management 管理输出++](https://www.webpackjs.com/guides/output-management/)
+
 ### html-webpack-plugin 简化HTML文件的创建
 
 我们打开之前的`webpack`的项目`lesson`，之前大家记得吗？我在`dist`目录下有一个`index.html`文件，这个文件呢是我手动的拷贝到`dist`目录下的，那假设我呢一开始把`dist`目录删除掉然后我进行`webpack`对项目大打包：
