@@ -32,6 +32,7 @@ module.exports = {
         options: {
           presets: [['@babel/preset-env', {
             useBuiltIns: 'usage',
+            // 这个 corejs 一定要配置，Babel在7.4.0以后想要安装corejs这个核心库
             corejs: {
               version: 3
             }
