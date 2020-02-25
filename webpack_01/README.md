@@ -15,3 +15,4 @@
 12 | 使用 WebpackDevServer 提升开发效率
 13 | Hot Module Replacement 热模块更新（1）
 14 | Hot Module Replacement 热模块更新（2）
+15 | 使用 Babel 处理 ES6 语法（1）
