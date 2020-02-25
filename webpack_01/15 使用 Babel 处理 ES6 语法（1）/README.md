@@ -258,10 +258,10 @@ eval("// eslint-disable-next-line no-unused-vars\nvar arr = [new Promise(functio
 F:\github-vue\workspaces\lesson>cnpm install --save @babel/polyfill
 ```
 
-（这是至 Babel 7.4.0之后的配置，@babel/polyfill仍然还需要安装）
+（这是至 Babel 7.4.0之后的配置，@babel/polyfill仍然还需要安装还需要额外在安装 core-js，不然打包错报错）
 
 ```
-F:\github-vue\workspaces\lesson>cnpm install --save @babel/runtime @babel/runtime-corejs3 regenerator-runtime core-js@3
+F:\github-vue\workspaces\lesson>cnpm install core-js@3 --save
 ```
 
 安装好了之后我们怎么办？
@@ -312,7 +312,7 @@ index.html  260 bytes          [emitted]
    main.js    962 KiB    main  [emitted]  main
 ```
 
-##### useBuiltIns: 'usage'
+##### useBuiltIns: 'usage' （配置了之后，就不需要在引入 import "@babel/polyfill"; ）
 
 你可以看到`main.js`一下子变成多大了变成了962KB，这多的内容是什么呀，就是`@babel/polyfill`呢要去弥补一些低版本浏览器不存在的一些内容，所以呢它要自己去帮你做`Promise`的实现帮你去做`map`方法的实现，然后把这些实现呢在加入到`main.js`里面，所以`main.js`就会变的特别的大。
 
@@ -340,6 +340,7 @@ index.html  260 bytes          [emitted]
     options: {
       presets: [['@babel/preset-env'], {
         useBuiltIns: 'usage',
+        // 需要安装 core-js@3 版本是3
         corejs: {
             version: 3
         }
@@ -365,3 +366,9 @@ index.html  204 bytes          [emitted]
 ========= 大家可以看到 现在只有 244KB了 ==========
    main.js    244 KiB    main  [emitted]  main
 ```
+
+
+
+
+
+
