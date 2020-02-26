@@ -8,9 +8,20 @@
 
 [->useBuiltIns](https://babeljs.io/docs/en/babel-polyfill#usage-in-node-browserify-webpack)
 
-[Babel 7.4.0版本的更新内容，及官方的升级建议](https://babeljs.io/blog/2019/03/19/7.4.0)
+[->Babel 7.4.0版本的更新内容，及官方的升级建议](https://babeljs.io/blog/2019/03/19/7.4.0)
 
-[Babel7 转码- corejs3 的更新](https://segmentfault.com/a/1190000020237817?utm_source=tag-newest)
+[->Babel7 转码- corejs3 的更新](https://segmentfault.com/a/1190000020237817?utm_source=tag-newest)
+
+[->useBuiltIns 使用的时候](https://coding.imooc.com/learn/questiondetail/116693.html)
+
+让浏览器能够识别es6的语法
+1、需要安装的插件：babel-loader、@babel/preset-env、@babel/polyfill。
+- babel-loader不会执行转换，只是把webpack和babel打通；
+- @babel/preset-env执行es6语法转换es5,只是部分转换（比如：let、const、箭头函数），主要负责语法转换；
+- @babel/polyfill弥补ES5缺失的变量或者函数（Promise、数据的map、new Set()），主要负责内置方法和函数；
+- useBuiltIns:"usage",只打包已经用到的API语法，可以减少文件体积（Babel在7.4.0以上版本后想要下载依赖corejs）
+- 还要在安装 corejs@3的版本并设置版本 corejs:3
+- 设置了useBuiltIns:"usage"之后就不需要在文件中单独导入 `import "@babel/polyfill";`了。
 
 首先打开我们之前的项目，清除掉`index.js`里面的内容：
 
@@ -366,9 +377,3 @@ index.html  204 bytes          [emitted]
 ========= 大家可以看到 现在只有 244KB了 ==========
    main.js    244 KiB    main  [emitted]  main
 ```
-
-
-
-
-
-
