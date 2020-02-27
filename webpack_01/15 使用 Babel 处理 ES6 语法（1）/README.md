@@ -20,7 +20,7 @@
 - @babel/preset-env执行es6语法转换es5,只是部分转换（比如：let、const、箭头函数），主要负责语法转换；
 - @babel/polyfill弥补ES5缺失的变量或者函数（Promise、数据的map、new Set()），主要负责内置方法和函数；
 - useBuiltIns:"usage",只打包已经用到的API语法，可以减少文件体积（Babel在7.4.0以上版本后想要下载依赖corejs）
-- 还要在安装 corejs@3的版本并设置版本 corejs:3
+- 还要在安装 corejs@3的版本并设置版本 corejs:3（官网是这样说的：corejs: 2仅支持全局变量（例如Promise）和静态属性（例如Array.from），corejs: 3还支持实例属性（例如[].includes））
 - 设置了useBuiltIns:"usage"之后就不需要在文件中单独导入 `import "@babel/polyfill";`了。
 
 首先打开我们之前的项目，清除掉`index.js`里面的内容：
