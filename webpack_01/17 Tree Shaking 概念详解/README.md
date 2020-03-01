@@ -370,5 +370,9 @@ optimization: {
 
 ### 注意：
 
-- development模式下，不管设置"sideEffects": false 还是 “sideEffects”: [".css"],style.css都不会被tree shaking，页面样式还是会生效，结论就是，开发模式下，对于样式文件tree shaking是不生效的
+- development模式下，不管设置"sideEffects": false 还是 “sideEffects”: [".css"],style.css都不会被tree shaking，页面样式还是会生效，结论就是，开发模式下，对于样式文件tree shaking是不生效的。
+
 - production模式下，“sideEffects”: false页面样式不生效，说明样式文件被tree shaking了；然后设置"sideEffects": [".css"]样式生效，说明样式文件没有被tree shaking，结论就是，生产模式下，对于样式文件tree shaking是生效的
+
+- 异步代码目前不能够tree shaking，比如：import.then异步引入的时候，代码是不会Tree Shaking。
+
