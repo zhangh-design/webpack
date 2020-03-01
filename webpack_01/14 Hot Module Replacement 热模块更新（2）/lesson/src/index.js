@@ -18,11 +18,11 @@ counter();
 // 执行一次 number()
 number()
 
-if(module.hot){
-    // 如果 number.js这个文件发生了变化，那么我就会执行后面的函数
-    module.hot.accept('./number',() => {
-        document.body.removeChild(document.getElementById('number'));
-        // 让 number() 重新执行一次
-        number()
-    })
+if (module.hot) {
+  // 如果 number.js这个文件发生了变化，那么我就会执行后面的函数
+  module.hot.accept('./number', () => {
+    document.body.removeChild(document.getElementById('number'));
+    // 让 number() 重新执行一次
+    number()
+  })
 }
