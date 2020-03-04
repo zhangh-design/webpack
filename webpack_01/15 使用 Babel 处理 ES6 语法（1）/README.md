@@ -23,6 +23,9 @@
 - 还要在安装 corejs@3的版本并设置版本 corejs:3（官网是这样说的：corejs: 2仅支持全局变量（例如Promise）和静态属性（例如Array.from），corejs: 3还支持实例属性（例如[].includes））
 - 设置了useBuiltIns:"usage"之后就不需要在文件中单独导入 `import "@babel/polyfill";`了。
 
+因为默认 @babel/preset-env 只会转换语法，也就是我们看到的箭头函数、const一类。
+如果进一步需要转换内置对象、实例方法，那就得用polyfill, 这就需要你做一点配置了。
+
 首先打开我们之前的项目，清除掉`index.js`里面的内容：
 
 index.js
