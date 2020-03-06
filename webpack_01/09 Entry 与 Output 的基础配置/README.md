@@ -6,6 +6,27 @@
 
 [->output](https://www.webpackjs.com/configuration/output/)
 
+Entry的用法
+
+单入口: entry 可以是一个字符串
+
+```
+module.exports = {
+    entry: './path/to/my/entry/file.js'
+}
+```
+
+多入口：entry 是一个对象
+
+```
+module.exports = {
+    entry: {
+        app: './src/app.js',
+        adminApp: './src/adminApp.js'
+    }
+}
+```
+
 #### Entry 与 Output 的基础配置
 
 ##### output.filename 打包输出文件名称
