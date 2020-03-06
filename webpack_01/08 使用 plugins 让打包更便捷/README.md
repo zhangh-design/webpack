@@ -10,6 +10,18 @@
 
 [->++output-management 管理输出++](https://www.webpackjs.com/guides/output-management/)
 
+常见的 Plugins 有哪些？
+
+名称 | 描述
+---|---
+CommonsChunkPlugin | 将chunks相同的模块代码提取成公共js
+CleanWebpackPlugin | 清理构建目录
+ExtractTextWebpackPlugin | 将 CSS 从bundle文件里提取成一个独立的CSS文件
+CopyWebpackPlugin | 将文件或者文件夹拷贝到构建的输出目录
+HtmlWebpackPlugin | 创建 html 文件去承载输出的 bundle
+UglifyjsWebpackPlugin | 压缩JS
+ZipWebpackPlugin | 将打包出的资源生成一个zip包
+
 ### html-webpack-plugin 简化HTML文件的创建
 
 我们打开之前的`webpack`的项目`lesson`，之前大家记得吗？我在`dist`目录下有一个`index.html`文件，这个文件呢是我手动的拷贝到`dist`目录下的，那假设我呢一开始把`dist`目录删除掉然后我进行`webpack`对项目大打包：
