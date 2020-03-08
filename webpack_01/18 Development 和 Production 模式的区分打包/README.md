@@ -2,6 +2,14 @@
 
 > 前言：这节课呢我来给d大家讲解`Webpack`中 Develoment 和 Production 模式的区分打包。
 
+Mode 的内置函数功能
+
+选项 | 描述
+---|---
+development | 设置`process.env.MODE_ENV`的值为`development`. 开启`NamedChunksPlugin`和`NamedModulesPlugin`.
+production | 设置`process.env.MODE_ENV`的值为`production`. 开启`FlagDependencyUsagePlugin`、`FlagIncludedChunksPlugin`、`ModuleConcatenationPlugin`、`NoEmitOnErrorsPlugin`、`OccurrenceOrderPlugin`、`SideEffectsFlagPlugin`和`TerserPlugin`.
+none | 不开启任何优化选项
+
 那在项目的开发过程中呢其实我也给大家讲了我们呢其实有两个模式`develoment`模式和`production`模式它们分别用来做什么呢？
 
 当我们在开发一个项目的时候我们一般用`development`这个环境进行项目的开发在这个打包环境下`Webpack`中我们使用了`webpack-dev-server`可以帮我们起一个服务器然后呢这个服务器里面还集成了一些比如说: `Hot Module Replacement`这样的特性只要我更改了代码它会帮我重新打包然后我们代码的内容会实时的展示在服务器对应的这个网页上，所以呢在开发环境下我们使用`development`这种模式非常的方便。
