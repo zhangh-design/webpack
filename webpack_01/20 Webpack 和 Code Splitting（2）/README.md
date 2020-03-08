@@ -293,6 +293,12 @@ cnpm i babel-plugin-dynamic-import-webpack -D
 
 这样的话呢`babel`帮我们去转义这种异步的实验性质的语法。
 
+但是这个插件不支持`魔法注释`的功能因为这个插件并不是`babel`官方提供的，如果要使用`魔法注释`（下一节中有说明`魔法注释`的作用）请按照`babel`官方的插件`@babel/plugin-syntax-dynamic-import`
+
+`npm install --save-dev @babel/plugin-syntax-dynamic-import`
+
+[->@babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/)
+
 ===========
 
 我们`npm run dev-build`打包：
