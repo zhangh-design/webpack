@@ -22,3 +22,6 @@
 19 | Webpack 和 Code Splitting（1）
 20 | Webpack 和 Code Splitting（2）
 21 | SplitChunksPlugin 配置参数详解（1）
+22 | SplitChunksPlugin 配置参数详解（2）
+
+
