@@ -23,5 +23,5 @@
 20 | Webpack 和 Code Splitting（2）
 21 | SplitChunksPlugin 配置参数详解（1）
 22 | SplitChunksPlugin 配置参数详解（2）
-22-1 | 动态 import - 附录说明
+22-1 | 动态 import 导入 - 附录说明 （ie中兼容性配置）
 
