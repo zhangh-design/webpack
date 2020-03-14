@@ -102,6 +102,13 @@ console.log('hello world!apple');
 
 #### 2：webpack-dev-server
 
+安装：
+```
+cnpm i webpack-dev-server --save-dev
+```
+
+这里需要注意下：安装`webpack-dev-server`这个插件的时候会同时把`lodash`这个库安装进去，所以如果碰到没有使用npm安装`lodash`这个库但是在项目内导入`lodash`的函数又能使用，那可能就是因为你安装了`webpack-dev-server`。
+
 第一种做法呢还不够好，我希望什么呢我希望有的时候假设：我第一次运行`npm run watch`的时候自动的实现帮我打包同时呢自动把浏览器还能帮我打开，同时呢还可以去模拟一些服务器上的特性，这个时候啊光光通过这个`webpack --watch`这个配置就不行了。
 
 我们呢可以借助`WebpackDevServer`来帮助我们实现更加酷炫的效果，所以接下来呢我来给大家讲`WebpackDevServer`。
