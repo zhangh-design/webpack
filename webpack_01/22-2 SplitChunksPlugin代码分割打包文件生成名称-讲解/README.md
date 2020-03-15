@@ -794,8 +794,9 @@ dist
 
 `main.js`
 
-`main.js`　这里我们注意下它的大小是`313 KiB`，那么很明显是`babel`中的`es6`高级函数实现的代码也在里面，因为这里我们把`cacheGroups`缓存组中的`default`组和`vendors`组都设置成了false，也就是同步引入的代码都不进行代码分割。
+`main.js`　这里我们注意下它的大小是`313 KiB`，那么很明显是`babel`中为了兼容`ie`低版本浏览器的`es6`高级函数实现的代码也在里面，因为这里我们把`cacheGroups`缓存组中的`default`组和`vendors`组都设置成了false，也就是同步引入的代码都不进行代码分割。
 
+`babel`为了兼容低版本`ie`浏览器的实现代码也是自动同步引入的。
 
 ##### 异步带入代码，增加`/* webpackChunkName:"lodash" */` 魔法注释并且cacheGroups的vendors组不设置成false和default组不设置成false（filename的配置需要注释掉）。
 
@@ -912,7 +913,7 @@ dist
 
 `vendors~main.js`
 
-`babel`中`es6`高级函数在`ie`浏览器下的兼容性实现已经被分割到了`vendors~main.js`文件里面去了（因为我们的动态`import`返回的就是一个`promise`对象，而低版本的`ie`浏览器里是不支持`es6`的`promise`函数的，所以`babel`需要自己去实现一个`promise`函数用以在低版本`ie`浏览器里运行）。
+`babel`中`es6`高级函数在`ie`浏览器下的兼容性实现已经被分割到了`vendors~main.js`文件里面去了（因为我们的动态`import`返回的就是一个`promise`对象，而低版本的`ie`浏览器里是不支持`es6`的`promise`函数的，所以`babel`需要自己去实现一个`promise`函数用以在低版本`ie`浏览器里运行，从分割出的文件名称可以看出`babel`实现的函数也是通过同步的形式引入的，所以`cacheGroups`的设置会影响到`main.js`的代码分割）。
 
 如果我们把`cacheGroups`的`vendors`组设置成`false`那么打包后的目录是这样的：
 
@@ -927,4 +928,6 @@ dist
 ```
 
 ![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*cb*NYFEVkzFYMYvLphKsLSaVzcBRFdTWU205pOkzrXDGjqZR6QwwqcCn56fPUhyWw!!/b&bo=uwByAAAAAAARB*k!&rf=viewer_4&t=5)
+
+vendors~lodash.js的代码分割名字是叫lodash.js了。
 
