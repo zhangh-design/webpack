@@ -24,4 +24,4 @@
 21 | SplitChunksPlugin 配置参数详解（1）
 22 | SplitChunksPlugin 配置参数详解（2）
 22-1 | ie环境下的动态 import 导入需要的兼容性配置
-
+22-2 | SplitChunksPlugin代码分割打包文件生成名称-讲解
