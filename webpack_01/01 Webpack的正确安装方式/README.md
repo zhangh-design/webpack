@@ -2,6 +2,8 @@
 
 > 前言：同学们大家好这节课我来给大家介绍一下`webpack`的环境搭配。
 
+[->Webpack中文官网](https://webpack.docschina.org/concepts/)
+
 #### Node.js 下载安装
 
 `webpack`呢是基于`Node.js`开发的模块打包工具，所以呢，它本质上是由`Node`实现的，那我们首先呢就要安装`Node.js`这样的一个环境，大家跟我一起打开网页搜索[`Node.js`](https://nodejs.org/en/)，大家可以看到这里它有一个`12.15.0 LTS`版本和`13.8.0 Current`最新版本，我建议大家呢来安装`12.15.0 LTS`的这个版本就可以了，它呢是一个比较稳定的版本，当我们去安装这个`Node.js`的时候大家呢要尽量的安装最新版本的`Node.js`因为新版本的`Node.js`会很大程度上提高`webpack`的打包速度，如果呢大家仔细阅读过`webpack`的文档你会发现啊提升`webpack`打包速度里面有两个非常重要的点：
