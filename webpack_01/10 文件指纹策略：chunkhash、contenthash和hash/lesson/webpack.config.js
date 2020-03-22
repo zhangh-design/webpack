@@ -66,6 +66,7 @@ module.exports = {
       verbose: true, // 在命令窗口中打印`clean-webpack-plugin`日志
       cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, 'dist')] // 清除的文件/文件夹
     }),
+	// 对我们引入的CSS文件进行代码分割，暂时对`HMR support`模块热更新不支持，所以建议是用在生成环境下
     new MiniCssExtractPlugin({
       filename: 'css/[name]-[contenthash:8].css'
     })
