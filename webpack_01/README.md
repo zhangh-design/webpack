@@ -29,3 +29,4 @@
 24 | 打包分析，Preloading, prefetch
 25 | CSS 文件的代码分割
 26 | Webpack 与浏览器缓存( Caching )
+27 | Shimming 的作用
