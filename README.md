@@ -9,6 +9,7 @@ vue cli：3.0及以上
 
 目录 | 说明
 ---|---
+demo | 自己搭建的 webpack 配置项目
 vue cli | 使用脚手架时的记录说明
 vue-loader | .vue 文件的 loader
 webpack_01 | webpack 学习知识（内容丰富，覆盖面广）
