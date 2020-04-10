@@ -1,4 +1,4 @@
-通过 webpack.ProvidePlugin 全局提供帮助类库和工具函数
+通过 webpack.ProvidePlugin 全局提供帮助类库和工具函数（暴露全局变量）
 
 
 **场景：**
