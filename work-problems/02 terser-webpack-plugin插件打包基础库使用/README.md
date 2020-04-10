@@ -1,5 +1,8 @@
+terser-webpack-plugin插件打包基础库使用
 
+**注意**
 
+webpack 是在 v4.26.0 将默认的压缩插件从 uglifyjs-webpack-plugin 改成 teaser-webpack-plugin 的，如果你的版本已经高于 4.26.0 那么不需要在手动替换。
 
 js压缩优化 用`terser-webpack-plugin`替换掉`uglifyjs-webpack-plugin`解决`uglifyjs`不支持es6语法问题。
 
