@@ -73,5 +73,5 @@ module.exports = {
 }
 ```
 
-还好我src中就一个main.js，要是来10个或者100个，那要多写多少个src，所以我们可以看到context的作用，它就是会将entry的根路口指向src这个文件夹。
+还好我src中就一个index.js，要是来10个或者100个，那要多写多少个src，所以我们可以看到context的作用，它就是会将entry的根路口指向src这个文件夹。
 
