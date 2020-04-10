@@ -6,9 +6,11 @@ function resolve (dir) {
 }
 
 module.exports = {
-  // context: path.resolve(__dirname, './src'),
+  // 默认将 entry 的入口起点指向 src 目录
+  context: path.resolve(__dirname, './src'),
   mode: 'production',
-  entry: './src/index.js',
+  // 配置了 context 所以路径写成 ./ 当前目录下即可
+  entry: './index.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')

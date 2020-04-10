@@ -5,3 +5,6 @@ npx webpack
 
 // 从 webpack.config_1.js 这个配置文件中读取配置进行打包
 npx webpack --config webpack.config_1.js
+
+我在 package.json 中 移除 `main` 入口 配置，并且设置安装包是 private(私有的)，这可以防止意外发布你的代码。
+
