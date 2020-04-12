@@ -218,7 +218,7 @@ F:\github-vue\workspaces\lesson>cnpm install @babel/preset-env --save-dev
     options: {
       presets: ['@babel/preset-env']
     }
-} 
+}
 ```
 
 这样的话我们就配置好了这个`@babel/preset`的这样一个工具，然后我们再去做`Webpack`打包的时候`ES6`的语法应该就可以翻译成`ES5`的语法了。
@@ -262,7 +262,7 @@ eval("// eslint-disable-next-line no-unused-vars\nvar arr = [new Promise(functio
 
 ##### @babel/polyfill
 
-我们需要借助`babel-f`这样的一个工具帮我们做这些变量或者函数在低版本浏览器的补充。
+我们需要借助`babel/polyfill`这样的一个工具帮我们做这些变量或者函数在低版本浏览器的补充。
 
 我们打开[Babel](https://www.babeljs.cn/)的官网点击进入[文档](https://www.babeljs.cn/docs/)，左侧啊大家可以看到有一个叫做[polyfill](https://www.babeljs.cn/docs/babel-polyfill)的菜单，我们点击进入。
 
