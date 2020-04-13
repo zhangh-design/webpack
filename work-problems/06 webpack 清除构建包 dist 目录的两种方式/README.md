@@ -1,5 +1,7 @@
 webpack 清除构建包 dist 目录的两种方式
 
+[->clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin)
+
 我们每次在进行生产环境打包时都会生成一个`dist`目录用于存放执行`npm run build`打包产生的打包文件。
 
 但是如果已经存在`dist`目录我们要在执行打包命令前手动的删除`dist`目录，可能我们每次不见得都会记得去删除，所以需要一个自动操作就是每次在构建之前自动的帮我们删除上一个版本的打包`dist`目录。
@@ -19,6 +21,7 @@ webpack.common.js
 
 ```
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const path = require('path');
 
 module.exports = {
     // 省略一些配置
