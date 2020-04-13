@@ -314,7 +314,7 @@ Entrypoint main = library.js
 
 ---
 
-#### externals: ["lodash"] 库代码中不将 lodash 打包到最终的输出文件中，减小包的体积和防止用户的代码中也会引入 lodash 导致重复引入
+#### externals: {lodash: '_'} 库代码中不将 lodash 打包到最终的输出文件中，减小包的体积和防止用户的代码中也会引入 lodash 导致重复引入
 
 好接下来呢，我们在去讲除了打包库的时候我们要配这样的一个`libraryTarget`和`library`额外的参数之外呢，我们还要做一件事情，我给大家举另外一个例子。
 
@@ -389,7 +389,7 @@ const path = require("path");
 module.exports = {
   mode: "production",
   entry: "./src/index.js",
-  externals: ["lodash"],
+  externals: {lodash: '_'},
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "library.js",
@@ -397,7 +397,8 @@ module.exports = {
     libraryTarget: "umd" // 支持库引入的方式 AMD、CJS、EM module、CDN
     // libraryTarget: "this", // 只支持 script 标签，通过 this.library 或者 library 来获取导出对象
     // libraryTarget: "window",  // 和 this 一样
-    // libraryTarget: "global" // node.js 环境下
+    // libraryTarget: "global" // node.js 环境下，通过 global.library 获取导出对象
+    // libraryTarget: "commonjs2" // 导出对象只能使用 commonjs 的语法导入，开发 vue 服务器渲染项目时需要指定成这个，因为 node 环境只支持 commonjs 导入和导出语法。
   }
 };
 
