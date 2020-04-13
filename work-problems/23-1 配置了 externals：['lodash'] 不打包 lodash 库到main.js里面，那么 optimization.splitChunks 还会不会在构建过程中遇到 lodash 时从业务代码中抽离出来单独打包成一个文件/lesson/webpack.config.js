@@ -20,8 +20,13 @@ module.exports = {
     filename: '[name]-[chunkhash:8].js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve: {
+    alias: {
+      vue: path.join(__dirname, './node_modules/vue/dist/vue.js')
+    }
+  },
   // 抽离 lodash 库，不打包到构建文件中减小构建包体积
-  externals: ['lodash'],
+  externals: ['echarts', 'jquery'],
   optimization: {
     splitChunks: {
       chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
@@ -34,17 +39,17 @@ module.exports = {
       cacheGroups: {
         'split-lodash': {
           test: (module) => {
-            return /lodash/.test(module.context);
+            return /lodash/.test(module.context)
           },
-          priority: -10,
+          priority: 0,
           filename: 'split-lodash.js'
         },
         'split-vue': {
           test: (module) => {
-            return /vue|vuex|vue-router/.test(module.context);
+            return /vue|vuex|vue-router/.test(module.context)
           },
-          priority: 0,
-          filename: '[name].js'
+          priority: -10,
+          filename: 'split-vue.js'
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,

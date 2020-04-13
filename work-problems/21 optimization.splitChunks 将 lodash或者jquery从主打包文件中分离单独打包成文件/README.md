@@ -26,14 +26,22 @@ module.exports = {
               test: (module) => {
                 return /lodash/.test(module.context);
               },
-              priority: -10,
+              priority: 0,
               filename: 'split-lodash.js'
+            },
+            'split-vue': {
+              test: (module) => {
+                return /vue|vuex|vue-router/.test(module.context)
+              },
+              priority: -10,
+              filename: 'split-vue.js'
             },
             vendors: {
               test: /[\\/]node_modules[\\/]/,
               priority: -20,
               filename: 'vendors.js'
-            }
+            },
+            default: false
           }
         }
   }
