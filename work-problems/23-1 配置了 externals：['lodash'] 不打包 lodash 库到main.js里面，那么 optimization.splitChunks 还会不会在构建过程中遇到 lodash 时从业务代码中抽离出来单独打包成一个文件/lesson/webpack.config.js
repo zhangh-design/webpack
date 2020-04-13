@@ -32,18 +32,18 @@ module.exports = {
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
-        'util-vendors': {
+        'split-lodash': {
           test: (module) => {
-            return /lodash|moment|axios/.test(module.context);
+            return /lodash/.test(module.context);
           },
           priority: -10,
-          filename: '[name].js'
+          filename: 'split-lodash.js'
         },
-        'vue-vendors': {
+        'split-vue': {
           test: (module) => {
             return /vue|vuex|vue-router/.test(module.context);
           },
-          priority: -10,
+          priority: 0,
           filename: '[name].js'
         },
         vendors: {
@@ -51,11 +51,7 @@ module.exports = {
           priority: -20,
           filename: 'vendors.js'
         },
-        default: {
-          priority: 10,
-          reuseExistingChunk: true,
-          filename: 'common.js'
-        }
+        default: false
       }
     }
   },

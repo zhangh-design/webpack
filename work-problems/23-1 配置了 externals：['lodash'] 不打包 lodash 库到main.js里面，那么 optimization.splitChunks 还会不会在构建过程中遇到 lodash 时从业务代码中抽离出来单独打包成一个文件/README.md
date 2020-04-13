@@ -39,12 +39,18 @@ module.exports = {
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
-        'util-vendors': {
-          // 不配置 externals: ['lodash'] 那么 lodash 会满足 util-vendors 缓存组的要求
+        'split-lodash': {
           test: (module) => {
-            return /lodash|moment|axios/.test(module.context);
+            return /lodash/.test(module.context);
           },
           priority: -10,
+          filename: 'split-lodash.js'
+        },
+        'split-vue': {
+          test: (module) => {
+            return /vue|vuex|vue-router/.test(module.context);
+          },
+          priority: 0,
           filename: '[name].js'
         },
         vendors: {
@@ -52,11 +58,7 @@ module.exports = {
           priority: -20,
           filename: 'vendors.js'
         },
-        default: {
-          priority: 10,
-          reuseExistingChunk: true,
-          filename: 'common.js'
-        }
+        default: false
       }
     }
   },
