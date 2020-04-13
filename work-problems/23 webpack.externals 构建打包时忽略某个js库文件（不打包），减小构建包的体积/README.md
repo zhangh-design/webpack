@@ -43,12 +43,12 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    externals: ["lodash"]
+    externals: {lodash: '_'}
 }
 ```
 
 
-没有设置 externals: ["lodash"] 这个配置时将`lodash`打包到了项目中，打包的体积有`534 KiB`这么大。
+没有设置 externals: {lodash: '_'} 这个配置时将`lodash`打包到了项目中，打包的体积有`534 KiB`这么大。
 
 ```
 E:\vue-local\project\lesson>npm run build

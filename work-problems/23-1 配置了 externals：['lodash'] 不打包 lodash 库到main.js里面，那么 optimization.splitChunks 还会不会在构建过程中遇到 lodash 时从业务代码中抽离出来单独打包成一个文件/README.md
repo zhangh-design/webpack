@@ -28,7 +28,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
   // 抽离 lodash 库，不打包到构建文件中减小构建包体积
-  externals: ['lodash'],
+  externals: {lodash: '_'},
   optimization: {
     splitChunks: {
       chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
