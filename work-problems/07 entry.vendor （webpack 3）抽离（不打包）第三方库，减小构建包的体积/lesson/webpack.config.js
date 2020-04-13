@@ -1,5 +1,5 @@
-/* eslint-disable no-unused-vars */
 const path = require('path');
+const webpack = require('webpack');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -8,13 +8,20 @@ function resolve (dir) {
 module.exports = {
   // 默认将 entry 的入口起点指向 src 目录
   context: path.resolve(__dirname, './src'),
-  mode: 'production',
   // 配置了 context 所以路径写成 ./ 当前目录下即可
-  entry: './index.js',
+  entry: {
+	main: './index.js',
+	vendor: ['lodash','jquery'],
+	vendor1: ['vue']
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist')
   },
-  // 抽离 lodash 库，不打包到构建文件中减小构建包体积
-  externals: ['lodash']
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+	  names: ["vendor", "vendor1"],
+      minChunks: Infinity
+    })
+  ]
 }
