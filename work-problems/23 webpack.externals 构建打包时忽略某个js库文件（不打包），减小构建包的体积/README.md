@@ -1,4 +1,4 @@
-07 entry.vendor 抽离（不打包）第三方库，减小构建包的体积
+23 webpack.externals 构建打包时忽略某个js库文件（不打包
 
 #### 场景：
 
