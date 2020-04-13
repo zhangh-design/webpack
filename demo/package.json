@@ -4,12 +4,15 @@
   "description": "",
   "private": true,
   "scripts": {
-    "bundle": "webpack"
+    "bundle": "webpack",
+    "bundle:clean": "npm run clean && npm run build",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "rimraf": "^3.0.2",
     "webpack": "^4.25.0",
     "webpack-cli": "^3.3.11"
   },
