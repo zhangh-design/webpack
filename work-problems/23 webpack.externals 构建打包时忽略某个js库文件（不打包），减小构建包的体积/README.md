@@ -1,15 +1,36 @@
 23 webpack.externals 构建打包时忽略某个js库文件（不打包），减小构建包的体积
 
-webpack < 4 的版本可以配置 entry.vendor 和 webpack.optimize.CommonsChunkPlugin 来进行第三方库和业务库的打包分离。
+webpack官网上对`externals`的解释：
+
+防止将某些 import 的包(package)打包到 bundle 中，而是在运行时(runtime)再去从外部获取这些扩展依赖(external dependencies)。
+
+- webpack.externals 是直接过滤掉不打包某个第三方库，需要额外引入。
+- splitChunks 是分割出`node_modules`中使用到的第三方库，不需要额外引入。
+
+#### 建议：
+如果只是用到了某个第三方类库的一些功能点，那么如果这个第三方库可以通过按需的形式引入则不建议使用 externals 将类库在打包时滤掉，而是使用`splitChunks`来进行代码分割。
+
+按需的形式引入：
+
+```
+import _isPlainObject from 'lodash/isPlainObject'
+import _isNil from 'lodash/isNil'
+import _has from 'lodash/has'
+import _replace from 'lodash/replace'
+import _isString from 'lodash/isString'
+
+// 省略业务代码
+```
+
 
 #### 场景：
 
-一些第三方库比如`lodash`我们在进行生产环境打包构建时是不需要将这个第三方包一起打包到最终的输出文件中的，这样的第三方依赖库完全可以把它抽离出来。
+一些第三方库比如`lodash`、`jquery`我们在进行生产环境打包构建时是不需要将这个第三方包一起打包到最终的输出文件中的，这样的第三方依赖库完全可以把它抽离出来。
 
-那抽离出来后有两种方式注入到项目中去使用：
+
+那抽离出来后怎么注入到项目中去使用：
 
 - 通过CDN的方式引入 [13 html-webpack-externals-plugin 加载远程CDN资源上的js文件动态注入 index.html]
-- 通过splitChunks代码分割出单独的一个文件 [21 optimization.splitChunks 将 lodash或者jquery从主打包文件中分离单独打包成文件]
 
 externals: ["lodash"] 库代码中不将 lodash 打包到最终的输出文件中，减小包的体积和防止用户的代码中也会引入 lodash 导致重复引入。
 
