@@ -1,4 +1,6 @@
-23 webpack.externals 构建打包时忽略某个js库文件（不打包
+23 webpack.externals 构建打包时忽略某个js库文件（不打包），减小构建包的体积
+
+webpack < 4 的版本可以配置 entry.vendor 和 webpack.optimize.CommonsChunkPlugin 来进行第三方库和业务库的打包分离。
 
 #### 场景：
 
