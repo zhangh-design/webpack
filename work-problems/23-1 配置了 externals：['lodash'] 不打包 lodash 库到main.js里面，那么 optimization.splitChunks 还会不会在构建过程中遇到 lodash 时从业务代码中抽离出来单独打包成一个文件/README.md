@@ -39,18 +39,12 @@ module.exports = {
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
-        'split-lodash': {
+        'util-vendors': {
+          // 不配置 externals: ['lodash'] 那么 lodash 会满足 util-vendors 缓存组的要求
           test: (module) => {
-            return /lodash/.test(module.context);
+            return /lodash|moment|axios/.test(module.context);
           },
           priority: -10,
-          filename: 'split-lodash.js'
-        },
-        'split-vue': {
-          test: (module) => {
-            return /vue|vuex|vue-router/.test(module.context);
-          },
-          priority: 0,
           filename: '[name].js'
         },
         vendors: {
@@ -58,7 +52,11 @@ module.exports = {
           priority: -20,
           filename: 'vendors.js'
         },
-        default: false
+        default: {
+          priority: 10,
+          reuseExistingChunk: true,
+          filename: 'common.js'
+        }
       }
     }
   },
@@ -71,6 +69,22 @@ module.exports = {
 }
 
 ```
+
+index.js
+
+```
+import _ from 'lodash'
+
+function component () {
+  const element = document.createElement('div');
+  // lodash（目前通过一个 script 引入）对于执行这一行是必需的
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+
+  return element;
+}
+document.body.appendChild(component());
+```
+
 
 这里如果我设置了`externals: ['lodash']`的配置，那么webpack在进行 splitChunks 时在遇到`import _ from 'lodash'`的代码时也不会在把`lodash`分离出来到`util-vendors`这个缓存组里面。
 
@@ -119,4 +133,5 @@ Entrypoint main = main-18b620e0.js
 ```
 
 注意这里的打包体积确实是过滤掉了`lodash`这个库。
+
 
