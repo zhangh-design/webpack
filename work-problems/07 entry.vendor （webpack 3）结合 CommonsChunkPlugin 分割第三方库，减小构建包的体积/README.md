@@ -1,4 +1,4 @@
-07 entry.vendor （webpack 3）抽离（不打包）第三方库，减小构建包的体积
+07 entry.vendor （webpack 3）结合 CommonsChunkPlugin 分割第三方库，减小构建包的体积
 
 [->先看下 Webpack 官网上对 entry.vendor 的介绍](https://webpack.docschina.org/concepts/entry-points/#%E5%88%86%E7%A6%BB-app-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F-%E5%92%8C-vendor-%E7%AC%AC%E4%B8%89%E6%96%B9%E5%BA%93-%E5%85%A5%E5%8F%A3)：
 
@@ -28,7 +28,7 @@
 dist -- 打包输出目录
  |-main.js
  |-vendor.js
- |-vendor1.jsvendor1.js
+ |-vendor1.js
 node_modules -- 插件包依赖
 src
  |-index.js
