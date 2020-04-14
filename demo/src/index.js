@@ -1,8 +1,12 @@
 // import Vue from 'vue'
 // import Vuex from 'vuex'
 import _ from 'lodash'
-import $ from 'jquery';
+import $ from 'jquery'
+import bg from './view/login/Analysis/bg.png'
+// import one from './view/frame/ChartDay/10.png'
 // import b from '@/b'
+console.log(bg);
+// console.log(one);
 
 function component () {
   const element = document.createElement('div');
