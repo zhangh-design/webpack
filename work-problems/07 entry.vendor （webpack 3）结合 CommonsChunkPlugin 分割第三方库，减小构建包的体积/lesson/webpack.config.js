@@ -1,6 +1,7 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
+// eslint-disable-next-line no-unused-vars
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -10,9 +11,9 @@ module.exports = {
   context: path.resolve(__dirname, './src'),
   // 配置了 context 所以路径写成 ./ 当前目录下即可
   entry: {
-	main: './index.js',
-	vendor: ['lodash','jquery'],
-	vendor1: ['vue']
+    main: './index.js',
+    vendor: ['lodash', 'jquery'],
+    vendor1: ['vue']
   },
   output: {
     filename: '[name].js',
@@ -20,7 +21,7 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-	  names: ["vendor", "vendor1"],
+      names: ['vendor', 'vendor1'],
       minChunks: Infinity
     })
   ]
