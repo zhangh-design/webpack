@@ -32,6 +32,7 @@ useBuiltIns: 'usage'就是这个意思。
         },
         "targets": {
           "chrome": "67"
+          // "ie": 11 // 打包时 ie 兼容性配置
         }
       }
     ]
