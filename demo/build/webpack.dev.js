@@ -1,9 +1,9 @@
-/* eslint-disable no-unused-vars */
 const path = require('path');
 const config = require('../config')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.js')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -37,7 +37,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       'process.env': require('../config/dev.env')
     }),
     // 启用热更新，配合 hot和hotOnly 使用
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    // 以 template 摸板生成指定的html文件
+    new HtmlWebpackPlugin({
+      title: config.common.title,
+      filename: config.common.index,
+      template: config.common.template,
+      favicon: config.common.favicon,
+      meta: config.common.meta,
+      inject: true // 默认 true，将脚本注入到body元素的底部
+    })
   ]
 })
 

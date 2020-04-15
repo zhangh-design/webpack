@@ -12,7 +12,8 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   // 配置了 context 所以路径写成 ./src 当前目录下即可
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
+    shop: './src/shop.js'
     // 如果是 webpack < 4 的版本，可以在 entry 里配置 vendor 来分离第三方类库，需要结合 CommonsChunkPlugin 一起配置使用
     // vendor: ['lodash', 'moment', 'vue']
   },

@@ -16,6 +16,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "file-loader": "^6.0.0",
+    "html-webpack-plugin": "^4.2.0",
     "lodash-webpack-plugin": "^0.11.5",
     "rimraf": "^3.0.2",
     "url-loader": "^4.1.0",
