@@ -43,7 +43,7 @@ module.exports = {
         options: {
           limit: 10000,
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('img/[path]/[name]-[hash:7].[ext]')
+          name: utils.assetsPath('img/[path][name]-[hash:7].[ext]')
         }
       },
       {
@@ -52,7 +52,7 @@ module.exports = {
         options: {
           limit: 10000,
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('media/[path]/[name]-[hash:7].[ext]')
+          name: utils.assetsPath('media/[path][name]-[hash:7].[ext]')
         }
       },
       {
@@ -61,7 +61,7 @@ module.exports = {
         options: {
           limit: 10000,
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('fonts/[path]/[name]-[hash:7].[ext]')
+          name: utils.assetsPath('fonts/[path][name]-[hash:7].[ext]')
         }
       }
     ]
