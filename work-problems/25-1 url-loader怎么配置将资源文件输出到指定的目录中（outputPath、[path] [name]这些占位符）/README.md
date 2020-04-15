@@ -76,7 +76,7 @@ module.exports = {
             use: {
               loader: 'url-loader',
               options: {
-                name: path.posix.join('static', 'img/[path]/[name]-[hash:7].[ext]'),
+                name: path.posix.join('static', 'img/[path][name]-[hash:7].[ext]'),
                 // 可能和 webpack.context 设置有冲突，在 loader 内部设置 context
                 context: path.resolve(__dirname, '../src'),
                 limit: 10240
