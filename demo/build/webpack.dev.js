@@ -23,9 +23,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     quiet: config.dev.quiet,
     proxy: config.dev.proxy,
     publicPath: config.dev.assetsPublicPath,
-    watchOptions: {
-      poll: config.dev.poll
-    },
+    watchOptions: config.dev.watchOptions,
     historyApiFallback: {
       rewrites: [
         // 404 页面 跳转到 index.html

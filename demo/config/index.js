@@ -15,12 +15,21 @@ module.exports = {
     host: '127.0.0.1', // 服务器（默认值），可以通过 dev.env.js 设置 HOST 参数来改写
     port: 8080, // 端口号（默认值），可以通过 dev.env.js 设置 PORT 参数来改写
     hot: true, // 通知 webpack-dev-server 开启 Hot Module Replacement 这样的一个功能 （需要配置 webpack.HotModuleReplacementPlugin 一起使用）
-    hotOnly: true, // 即便是 Hot Module Replacement 的功能没有生效，我也不让浏览器自动的重新刷新（需要配置 webpack.HotModuleReplacementPlugin 一起使用）
+    hotOnly: true, // 即便是 Hot Module Replacement 的功能没有生效或者编译失败，也不让浏览器自动的重新刷新（需要配置 webpack.HotModuleReplacementPlugin 一起使用）
     open: false, // 自动打开浏览器
     compress: true, // 一切服务都启用 gzip 压缩
     overlay: true, // 当出现编译器错误或警告时，在浏览器中显示全屏覆盖层
     quiet: true, // （错误或警告由 friendly-errors-webpack-plugin 插件提供）启用 devServer.quiet 后，除了初始启动信息之外的任何内容都不会被打印到控制台，这也意味着来自 webpack 的错误或警告在控制台不可见。
-    poll: false, // webpack 使用文件系统(file system)获取文件改动的通知，当使用NFS或Vagrant场景下，是不起作用的
+    watchOptions: {
+      // 监听到变化发生后会等500ms再去执行编译，防止文件更新太快导致重新编译频率太高
+      aggregateTimeout: 500,
+      // 不监听的文件或文件夹
+      ignored: /node_modules/,
+      // 判断文件是否发生变化是通过不停的去询问系统指定文件有没有变化实现的
+      // 不轮询（如果在使用NFS[网络文件系统]或Vagrant[虚拟化]环境下，监视文件可能不起作用，可以修改为 true 轮询）
+      poll: false
+    },
+    headers: {}, // 在所有响应中添加首部内容
     /**
      * friendly-errors-webpack-plugin
      */
