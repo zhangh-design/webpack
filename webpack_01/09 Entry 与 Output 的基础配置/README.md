@@ -238,7 +238,7 @@ fonts/iconfont.cc88877.svg   1.62 KiB          [emitted]
                 index.html  248 bytes          [emitted]
                    main.js   24.7 KiB    main  [emitted]  main
                     sub.js   24.7 KiB     sub  [emitted]  sub
-======== 大家看这里 [name] 的占位符生成了两个文件 ===========                    
+======== 大家看这里 [name] 的占位符生成了两个文件 ===========
 Entrypoint main = main.js
 Entrypoint sub = sub.js
 ```
@@ -275,7 +275,7 @@ index.html
 
 这样的话呢我们就给大家讲解了`entry`和`output`在打包多个文件的时候那它应该如何的去配置。
 
-### publicPath.publicPath 加载外部资源文件
+### output.publicPath 加载外部资源文件
 
 
 有的时候呢，还有这样一个场景我们说打包完的文件啊`index.html`我会把这个文件给后端做为一个后端的入口文件，但是我会把这些`js文件`上传到一个`CDN`这样的一个域名下面，那么我们打包生成的这个`index.html`前面呢或者说我就不希望它显示`main.js`或者`sub.js`了，
