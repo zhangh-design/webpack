@@ -2,6 +2,7 @@
 const config = require('../config/index.js')
 const utils = require('../build/utils.js')
 const path = require('path')
+const webpack = require('webpack')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -69,5 +70,13 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    // 忽略解析三方包里插件（非中文语言包排除掉）
+    // new webpack.IgnorePlugin(/\.\/locale/, /moment/)
+    new webpack.ContextReplacementPlugin(
+      /moment[/\\]locale$/,
+      /zh-cn/
+    )
+  ]
 }

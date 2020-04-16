@@ -4,7 +4,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+// const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -56,11 +56,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   }
 })
 // 编译通知，需要把 devServer 中的 quite设置为 true 把编译通知权转交给 friendly-errors-webpack-plugin
-devWebpackConfig.plugins.push(
+/* devWebpackConfig.plugins.push(
   new FriendlyErrorsPlugin({
     compilationSuccessInfo: {
       messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${devWebpackConfig.devServer.port}`]
     }
   })
-)
+) */
 module.exports = devWebpackConfig
