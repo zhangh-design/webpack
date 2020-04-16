@@ -6,6 +6,19 @@
 
 这里的配置是单页模式，多页情况下请参考[16 多页面打包通用解决方案]
 
+package.json
+
+```
+  "scripts": {
+    "dev": "webpack-dev-server --progress --config ./build/webpack.dev.js",
+    "build": "webpack --config ./build/webpack.prod.js"
+  },
+```
+
+--progress 配置可以把开发模式是`webpackDevServer`的构建进度显示出来。
+
+![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*aKEjsZdxGt0ajbaNBMxA2oMv2BdA6woOkNz7c6qQnA0E5sAPOu*tfzmPXh.r*iLTw!!/b&bo=YgLBAAAAAAADB4M!&rf=viewer_4&t=5)
+
 ---
 
 webpack.dev.js
@@ -103,3 +116,9 @@ module.exports = {
 多页应用需要配置多个`new HtmlWebpackPlugin({})`，没个`HtmlWebpackPlugin`对应的`filename`和`template`都是不同的，`chunks`中也要配置每个页面构建后的 chunk 名称和使用`splitChunks`分割出来的 chunk 文件。
 
 chunksSortMode 属性注意下在 4.2.0 版本已经移除 'dependency'。
+
+
+
+
+
+
