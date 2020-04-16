@@ -12,8 +12,7 @@ module.exports = {
   context: path.resolve(__dirname, '../'),
   // 配置了 context 所以路径写成 ./src 当前目录下即可
   entry: {
-    app: './src/index.js',
-    shop: './src/shop.js'
+    app: './src/index.js'
     // 如果是 webpack < 4 的版本，可以在 entry 里配置 vendor 来分离第三方类库，需要结合 CommonsChunkPlugin 一起配置使用
     // vendor: ['lodash', 'moment', 'vue']
   },
@@ -28,18 +27,22 @@ module.exports = {
   },
   resolve: {
     // 自动解析确定的扩展
-    extensions: ['.wasm', '.mjs', '.js', '.json', '.vue', '.jsx', '.css', '.less', 'scss'],
+    extensions: ['.js', '.json', '.vue', '.jsx', '.css', '.less', 'scss'],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     alias: {
       // 设置 vue 的别名为精确匹配，文件中就可以这样使用 import Vue from 'vue'（from 后面的 'vue' 就代表这里的配置）
-      vue$: 'vue/dist/vue.runtime.min.js',
+      vue$: path.resolve(__dirname, '../node_modules/vue/dist/vue.runtime.min.js'),
       '@': resolve('./src')
-    }
+    },
+    // 告诉 webpack 解析模块时应该搜索的目录
+    modules: ['./src', './node_modules'],
+    // 对应第三方包 package.json 中的 main 属性字段，意思是通过 main 属性指定的文件来导入模块
+    mainFields: ['main']
   },
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
           limit: 10000,
