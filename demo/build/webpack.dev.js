@@ -48,7 +48,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       meta: config.common.meta,
       inject: true // 默认 true，将脚本注入到body元素的底部
     })
-  ]
+    // new webpack.NoEmitOnErrorsPlugin() // （optimization.noEmitOnErrors: true）在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段，这样可以确保输出资源不会包含错误。
+    // new webpack.NamedModulesPlugin() // webpack 4 之后在开发模式下默认开启 optimization.namedModules: true
+  ],
+  optimization: {
+    noEmitOnErrors: true // webpack 4
+  }
 })
 // 编译通知，需要把 devServer 中的 quite设置为 true 把编译通知权转交给 friendly-errors-webpack-plugin
 devWebpackConfig.plugins.push(
