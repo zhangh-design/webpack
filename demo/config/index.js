@@ -29,6 +29,14 @@ module.exports = {
     // 热更新需要 hot、hotOnly和 webpack.HotModuleReplacementPlugin 一起使用才有效
     clientLogLevel: 'warning', // 控制台(console)显示消息的级别（none、error、warning、info）
     proxy: {}, // 服务器代理设置
+    /* proxy: {
+      '/react/api': {
+        target: 'http://www.dell-lee.com',
+        pathRewrite: {
+          'header.json': 'demo.json'
+        }
+      }
+    }, */
     host: '127.0.0.1', // 服务器（默认值），可以通过 dev.env.js 设置 HOST 参数来改写
     port: 8080, // 端口号（默认值），可以通过 dev.env.js 设置 PORT 参数来改写
     hot: true, // 通知 webpack-dev-server 开启 Hot Module Replacement 这样的一个功能 （需要配置 webpack.HotModuleReplacementPlugin 一起使用）
