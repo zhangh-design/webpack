@@ -31,7 +31,7 @@ module.exports = {
     proxy: {}, // 服务器代理设置
     /* proxy: {
       '/react/api': {
-        target: 'http://www.dell-lee.com',
+        target: 'http://www.xxx.com',
         pathRewrite: {
           'header.json': 'demo.json'
         }
