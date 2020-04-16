@@ -4,7 +4,8 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -13,6 +14,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devtool: config.dev.devtool,
   devServer: {
+    contentBase: false,
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
     clientLogLevel: config.dev.clientLogLevel,
@@ -47,20 +49,28 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       favicon: config.common.favicon,
       meta: config.common.meta,
       inject: true // 默认 true，将脚本注入到body元素的底部
-    })
+    }),
     // new webpack.NoEmitOnErrorsPlugin() // （optimization.noEmitOnErrors: true）在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段，这样可以确保输出资源不会包含错误。
     // new webpack.NamedModulesPlugin() // webpack 4 之后在开发模式下默认开启 optimization.namedModules: true
+    // 拷贝静态资源到指定目录
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.dev.assetsSubDirectory,
+        ignore: ['.*'] // 忽略拷贝指定的文件
+      }
+    ])
   ],
   optimization: {
     noEmitOnErrors: true // webpack 4
   }
 })
 // 编译通知，需要把 devServer 中的 quite设置为 true 把编译通知权转交给 friendly-errors-webpack-plugin
-/* devWebpackConfig.plugins.push(
+devWebpackConfig.plugins.push(
   new FriendlyErrorsPlugin({
     compilationSuccessInfo: {
       messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${devWebpackConfig.devServer.port}`]
     }
   })
-) */
+)
 module.exports = devWebpackConfig

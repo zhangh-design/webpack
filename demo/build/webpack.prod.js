@@ -9,6 +9,7 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const env = require('../config/prod.env.js')
 const baseWebpackConfig = require('./webpack.base.js')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -98,7 +99,15 @@ const webpackConfig = merge(baseWebpackConfig, {
       // 旧版配置为 'dependency' 可能会出现 `Cyclic dependency   错误：循环依赖` 的问题，可以升级插件到最新
       // `Cyclic dependency`网上的解决办法设置为`none`但这样页面加载顺序就不能保证了，可能会出现样式被覆盖的现象
       chunksSortMode: 'auto'
-    })
+    }),
+    // 拷贝静态资源到指定目录
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(__dirname, '../static'),
+        to: config.build.assetsSubDirectory,
+        ignore: ['.*'] // 忽略拷贝指定的文件 （忽略所有 jpg 文件：*.jpg）
+      }
+    ])
   ]
 });
 
