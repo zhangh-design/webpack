@@ -554,7 +554,7 @@ index.html
 C:\Users\nickname\Desktop\lesson_1>cnpm install postcss-loader -D
 ```
 
-postcss.config.css
+postcss.config.js
 
 我们把`webpack`官网上的`postcss-loader`文档中关于`postcss.config.js`介绍部分拷贝到我们的项目内的`postcss.config.js`文件中，把里面的内容都清除掉，我们只要用一个`autoprefixer`，我们一会给大家说这个插件做什么使用的。
 
@@ -565,6 +565,8 @@ C:\Users\nickname\Desktop\lesson_1>cnpm install autoprefixer -D
 ```
 
 好，接着呢我们在`postcss.config.js`里面去使用这个`autoprefixer`，所以在`plugins`里面添加`autoprefixer`的配置，好这样的话我就配置好了`postcss-loader`要使用的一个插件，然后我们一会看`autoprefixer`这个插件能够帮助我们干什么。
+
+postcss.config.js
 
 ```
 module.exports = {
