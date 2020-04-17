@@ -1,13 +1,13 @@
-'use strict'
-const config = require('../config/index.js')
-const utils = require('../build/utils.js')
-const path = require('path')
-const webpack = require('webpack')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const vueLoaderConfig = require('./vue-loader.conf.js')
+'use strict';
+const config = require('../config/index.js');
+const utils = require('../build/utils.js');
+const path = require('path');
+const webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const vueLoaderConfig = require('./vue-loader.conf.js');
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '..', dir);
 }
 
 module.exports = {
@@ -24,17 +24,21 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    publicPath:
+      process.env.NODE_ENV === 'production'
+        ? config.build.assetsPublicPath
+        : config.dev.assetsPublicPath
   },
   resolve: {
     // 自动解析确定的扩展
-    extensions: ['.js', '.json', '.vue', '.jsx', '.css', '.less', 'scss'],
+    extensions: ['.js', '.json', '.vue', '.jsx', '.css', '.less', '.scss'],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     alias: {
       // 设置 vue 的别名为精确匹配，文件中就可以这样使用 import Vue from 'vue'（from 后面的 'vue' 就代表这里的配置）
-      vue$: path.resolve(__dirname, '../node_modules/vue/dist/vue.runtime.min.js'),
+      vue$: path.resolve(
+        __dirname,
+        '../node_modules/vue/dist/vue.runtime.min.js'
+      ),
       '@': resolve('./src')
     },
     // 告诉 webpack 解析第三方模块时应该搜索的目录
@@ -50,10 +54,25 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader', // 把 css 样式内容内联到 style 标签内
+          'css-loader' // 处理 .css 文件
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader' // sass-loader 不是 scss-loader
+        ]
+      },
+      {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000,
+          limit: 10000, // 字节
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('img/[path][name]-[hash:7].[ext]')
         }
@@ -81,12 +100,9 @@ module.exports = {
   plugins: [
     // 忽略解析三方包里插件（非中文语言包排除掉）
     // new webpack.IgnorePlugin(/\.\/locale/, /moment/)
-    new webpack.ContextReplacementPlugin(
-      /moment[/\\]locale$/,
-      /zh-cn/
-    ),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     // 查阅文档发现 v15 版的 vue-loader 配置需要加个 VueLoaderPlugin
     // 并且不设置 VueLoaderPlugin 的话打包会报错提示需要设置 VueLoaderPlugin 对象
     new VueLoaderPlugin()
   ]
-}
+};
