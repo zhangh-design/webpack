@@ -8,7 +8,7 @@
 
 [->css-loader](https://www.webpackjs.com/loaders/css-loader/)
 
-[->scss-loader](https://www.webpackjs.com/loaders/sass-loader/)
+[->sass-loader](https://www.webpackjs.com/loaders/sass-loader/)
 
 [->postcss-loader](https://www.webpackjs.com/loaders/postcss-loader/)
 
@@ -272,7 +272,7 @@ Entrypoint main = bundle.js
 
 #### Scss 、Less文件的处理
 
-[->scss-loader](https://www.webpackjs.com/loaders/sass-loader/)
+[->sass-loader](https://www.webpackjs.com/loaders/sass-loader/)
 
 好接着我们继续往下来讲。
 
@@ -319,7 +319,7 @@ body{
     .avatar{
         width: 150px;
         height: 150px;
-    } 
+    }
 }
 
 ```
@@ -357,7 +357,7 @@ Entrypoint main = bundle.js
 [./src/index.js] 432 bytes {main} [built]
 ```
 
-大家看好像打包成功了，对不对，我们回到浏览器页面上查看，你会发现有没有用啊？好像页面上样式没有了，我们打开控制台来看一下，点开图片`class=avatar`这个`class`还在，我们在点开`head`标签大家可以看到这根本就不是一个`css`的语法，这是原始的`scss`语句那浏览器当然不能识别啦，所以当我们说当我们去打包`.scss`文件的时候还需要借助其它额外的`loader`帮助我们把`scss`的语法翻译成`css`的语法，那这个时候呢我们要使用`scss-loader`来帮助我们去做`scss`
+大家看好像打包成功了，对不对，我们回到浏览器页面上查看，你会发现有没有用啊？好像页面上样式没有了，我们打开控制台来看一下，点开图片`class=avatar`这个`class`还在，我们在点开`head`标签大家可以看到这根本就不是一个`css`的语法，这是原始的`scss`语句那浏览器当然不能识别啦，所以当我们说当我们去打包`.scss`文件的时候还需要借助其它额外的`loader`帮助我们把`scss`的语法翻译成`css`的语法，那这个时候呢我们要使用`sass-loader`来帮助我们去做`scss`
 文件的一个编译。
 
 index.html （打包后）
@@ -370,7 +370,7 @@ index.html （打包后）
     .avatar{
         width: 150px;
         height: 150px;
-    } 
+    }
 }
 </style></head>
 <body>
@@ -381,28 +381,28 @@ index.html （打包后）
 </body></html>
 ```
 
-好了`scss-loader`的使用我们可以参考`webpack`官方网站上对`scss-loader`的介绍。
+好了`sass-loader`的使用我们可以参考`webpack`官方网站上对`sass-loader`的介绍。
 
 
 
-那么`scss-loader`使用文档上会告诉我们，如果你想使用`scss-loader`你要按照`scss-loader`和`node-sass`这两个包，所以我们来按照下这两个包：
+那么`sass-loader`使用文档上会告诉我们，如果你想使用`sass-loader`你要按照`sass-loader`和`node-sass`这两个包，所以我们来按照下这两个包：
 
 ```
 C:\Users\nickname\Desktop\lesson_1>npm install sass-loader node-sass -D
 ```
 
-完成按照之后我们在`webpack.config.js`里面在配置`scss-loader`：
+完成按照之后我们在`webpack.config.js`里面在配置`sass-loader`：
 
 webpack.config.js
 
 ```
 {
 	test: /\.scss$/,
-	use: ['style-loader','css-loader','scss-loader']
+	use: ['style-loader','css-loader','sass-loader']
 }
 ```
 
-在增加了`scss-loader`之后我们再次进行打包：
+在增加了`sass-loader`之后我们再次进行打包：
 
 ```
 C:\Users\nickname\Desktop\lesson_1>npm run bundle
@@ -448,7 +448,7 @@ index.html
 ```
 
 
-这样的话我们`scss`文件的打包就带大家实现完成了，这里面我们用了一个`scss-loader`大家可以看到现在我们已经有三个`loader`了，在`webpack`配置里面`loader`是有先后顺序的，`loader`的执行顺序是从下到上，从右到左，所以当我们去打包一个`.scss`文件的时候首先会执行`scss-loader`对`scss`代码进行一个翻译
+这样的话我们`scss`文件的打包就带大家实现完成了，这里面我们用了一个`sass-loader`大家可以看到现在我们已经有三个`loader`了，在`webpack`配置里面`loader`是有先后顺序的，`loader`的执行顺序是从下到上，从右到左，所以当我们去打包一个`.scss`文件的时候首先会执行`sass-loader`对`scss`代码进行一个翻译
 ，翻译成css代码之后给到`css-loader`然后都处理好了之后在给到`style-loader`挂载到页面上，是这样的一个顺序，所以大家一定记得，`loader`是从下到上，从右到做的一个执行顺序。
 
 webpack.config.js
@@ -481,7 +481,7 @@ body{
 		/*它的意思是我要把我的 avatar 标签偏移100px*/
 		transform: translate(100px, 100px);
 		display: flex;
-    } 
+    }
 }
 
 ```
@@ -577,8 +577,8 @@ module.exports = {
 .browserslistrc
 
 ```
-# Browsers that we support 
- 
+# Browsers that we support
+
 last 2 version
 > 1%
 not ie < 11
