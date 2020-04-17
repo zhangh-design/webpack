@@ -27,7 +27,8 @@ module.exports = {
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
+        : config.dev.assetsPublicPath,
+    hashDigestLength: 8 // 生成 bundle 文件 hash 取8位（对 url-loader 的hash无效）
   },
   resolve: {
     // 自动解析确定的扩展
@@ -39,14 +40,17 @@ module.exports = {
         __dirname,
         '../node_modules/vue/dist/vue.runtime.min.js'
       ),
-      '@': resolve('./src')
+      '@': resolve('./src'),
+      '@server': resolve('./src/server'),
+      '@lib': resolve('./src/lib')
     },
     // 告诉 webpack 解析第三方模块时应该搜索的目录
     modules: [path.resolve(__dirname, '../node_modules')],
     // 对应第三方包 package.json 中的 main 属性字段，意思是通过 main 属性指定的文件来导入模块
-    mainFields: ['main']
+    mainFields: ['main', 'module']
   },
   module: {
+    noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
       {
         test: /\.vue$/,
@@ -57,15 +61,29 @@ module.exports = {
         test: /\.css$/,
         use: [
           'style-loader', // 把 css 样式内容内联到 style 标签内
-          'css-loader' // 处理 .css 文件
+          // 'css-loader', // 处理 .css 文件
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1 // 通过 @import 引入的 css 文件在构建时在调用 postcss-loader 进行处理
+            }
+          },
+          'postcss-loader'// 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
         ]
       },
       {
         test: /\.scss$/,
         use: [
           'style-loader',
-          'css-loader',
-          'sass-loader' // sass-loader 不是 scss-loader
+          // 'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2 // 通过 @import 引入的 scss 文件在构建时在调用 postcss-loader 和 sass-loader 进行处理
+            }
+          },
+          'postcss-loader', // postcss-loader 要放在 sass-loader 之前不然 @import 引入的 sass 文件厂商前缀将无法自动添加
+          'sass-loader'
         ]
       },
       {
@@ -74,7 +92,7 @@ module.exports = {
         options: {
           limit: 10000, // 字节
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('img/[path][name]-[hash:7].[ext]')
+          name: utils.assetsPath('img/[path][name]-[hash:8].[ext]')
         }
       },
       {
@@ -83,7 +101,7 @@ module.exports = {
         options: {
           limit: 10000,
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('media/[path][name]-[hash:7].[ext]')
+          name: utils.assetsPath('media/[path][name]-[hash:8].[ext]')
         }
       },
       {
@@ -92,7 +110,7 @@ module.exports = {
         options: {
           limit: 10000,
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('fonts/[path][name]-[hash:7].[ext]')
+          name: utils.assetsPath('fonts/[path][name]-[hash:8].[ext]')
         }
       }
     ]

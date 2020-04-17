@@ -16,8 +16,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
-    filename: utils.assetsPath('js/[name].[chunkhash:7].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash:7].js'),
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
     path: config.build.assetsRoot
   },
   // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入

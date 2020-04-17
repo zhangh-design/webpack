@@ -1,9 +1,15 @@
-/* import gg from './g.js'
+/* eslint-disable no-unused-vars */
+// import _ from 'lodash'
+// import $ from 'jquery'
 
-console.log(gg); */
+// url-loader
+import avatar from './2.png'
+// css文件
+import './a.scss'
 
-import moment from 'moment'
-// 设置语言
-moment.locale('zh-cn');
-const r = moment().endOf('day').fromNow();
-console.log(r);
+var img = new Image(); // 插件一个 image标签
+img.src = avatar; // 让它的src属性赋值为avatar
+img.classList.add('avatar');
+
+var root = document.getElementById('app');
+root.append(img);
