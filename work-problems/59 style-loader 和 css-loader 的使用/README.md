@@ -3,6 +3,8 @@
 - css-loader 是 webpack 打包时处理 .css 后缀文件的 loader 转换器
 - style-loader 是 webpack 通过 css-loader 把 .css 文件处理完成后在将 .css 文件内的内容以`style`标签的形式内联到`head`头部标签内。
 
+css-loader 还会把 css 文件中的 `@import` 引入语法在打包构建时也处理掉，也就是把引入的css全部打包到这个css文件中，那最后输出是不会有`@import`这个内容的。
+
 ```
 npm install style-loader css-loader -D
 ```
