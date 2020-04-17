@@ -77,11 +77,11 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // 以 template 摸板生成指定的html文件
     new HtmlWebpackPlugin({
-      title: config.common.title,
-      filename: config.common.index,
-      template: config.common.template,
-      favicon: config.common.favicon,
-      meta: config.common.meta,
+      title: config.build.title,
+      filename: config.build.index,
+      template: config.build.template,
+      favicon: config.build.favicon,
+      meta: config.build.meta,
       // 添加指定的chunk，多页应用时需要动态指定，单页不用配置（不配置就会引入所有页面的资源）
       // 在配置多个页面时，每个页面注入的thunk应该是不相同的，需要通过该配置为不同页面注入不同的thunk
       // 比如：登录页面`chunks: ['login']`，主页面`chunks: ['main']`

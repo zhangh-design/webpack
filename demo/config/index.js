@@ -4,23 +4,6 @@
 const path = require('path');
 
 module.exports = {
-  common: {
-    /**
-     * html-webpack-plugin
-     */
-    title: 'Hello Webpack App',
-    index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
-    template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
-    favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML
-    // 允许注入meta-tags （head中meta参数）
-    meta: {
-      viewport: 'width=device-width, initial-scale=1.0',
-      renderer: 'webkit',
-      'X-UA-Compatible': 'IE=edge, chrome=1',
-      Keywords: '',
-      Description: ''
-    }
-  },
   dev: {
     // Paths
     assetsSubDirectory: 'static',
@@ -32,8 +15,9 @@ module.exports = {
     /* proxy: {
       '/react/api': {
         target: 'http://www.xxx.com',
+        secure: false, // 如果我们需要转发的网站是支持 https 的，那么需要增加secure=false，来防止转发失败
         pathRewrite: {
-          'header.json': 'demo.json'
+          'header.json': 'demo.json' // 访问 header.json 实际会去请求 demo.json
         }
       }
     }, */
@@ -62,7 +46,22 @@ module.exports = {
     /**
      * Source Maps
      */
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    /**
+     * html-webpack-plugin
+     */
+    title: 'Hello Webpack App',
+    index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
+    template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
+    favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML
+    // 允许注入meta-tags （head中meta参数）
+    meta: {
+      viewport: 'width=device-width, initial-scale=1.0',
+      renderer: 'webkit',
+      'X-UA-Compatible': 'IE=edge, chrome=1',
+      Keywords: '',
+      Description: ''
+    }
   },
   build: {
     // Paths
@@ -77,6 +76,21 @@ module.exports = {
      * Source Maps
      */
     productionSourceMap: true,
-    devtool: 'cheap-module-source-map'
+    devtool: 'cheap-module-source-map',
+    /**
+     * html-webpack-plugin
+     */
+    title: 'Hello Webpack App',
+    index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
+    template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
+    favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML
+    // 允许注入meta-tags （head中meta参数）
+    meta: {
+      viewport: 'width=device-width, initial-scale=1.0',
+      renderer: 'webkit',
+      'X-UA-Compatible': 'IE=edge, chrome=1',
+      Keywords: '',
+      Description: ''
+    }
   }
 };

@@ -14,7 +14,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   devtool: config.dev.devtool,
   devServer: {
-    contentBase: false,
+    // contentBase: path.resolve(__dirname, '../dist'),
+    contentBase: false, // 因为配置了 HtmlWebpackPlugin 和 CopyWebpackPlugin 会把 html文件和静态资源提供到内存中
     host: HOST || config.dev.host,
     port: PORT || config.dev.port,
     clientLogLevel: config.dev.clientLogLevel,
@@ -43,11 +44,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     // 以 template 摸板生成指定的html文件
     new HtmlWebpackPlugin({
-      title: config.common.title,
-      filename: config.common.index,
-      template: config.common.template,
-      favicon: config.common.favicon,
-      meta: config.common.meta,
+      title: config.dev.title,
+      filename: config.dev.index,
+      template: config.dev.template,
+      favicon: config.dev.favicon,
+      meta: config.dev.meta,
       inject: true // 默认 true，将脚本注入到body元素的底部
     }),
     // new webpack.NoEmitOnErrorsPlugin() // （optimization.noEmitOnErrors: true）在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段，这样可以确保输出资源不会包含错误。
