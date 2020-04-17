@@ -3,6 +3,8 @@ const config = require('../config/index.js')
 const utils = require('../build/utils.js')
 const path = require('path')
 const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const vueLoaderConfig = require('./vue-loader.conf.js')
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
@@ -43,6 +45,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: vueLoaderConfig
+      },
+      {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
@@ -77,6 +84,9 @@ module.exports = {
     new webpack.ContextReplacementPlugin(
       /moment[/\\]locale$/,
       /zh-cn/
-    )
+    ),
+    // 查阅文档发现 v15 版的 vue-loader 配置需要加个 VueLoaderPlugin
+    // 并且不设置 VueLoaderPlugin 的话打包会报错提示需要设置 VueLoaderPlugin 对象
+    new VueLoaderPlugin()
   ]
 }
