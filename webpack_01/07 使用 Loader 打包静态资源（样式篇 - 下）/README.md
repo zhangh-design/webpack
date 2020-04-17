@@ -21,18 +21,18 @@ webpack.config.js
       {
         loader: 'css-loader',
         options: {
-            importLoaders: 2
+          importLoaders: 2
         }
       }
-      "sass-loader",
-      "postcss-loader"
+      "postcss-loader",
+      "sass-loader"
     ]
 }
 ```
 
 取而代之我们写一个对象，对象里面有一个`loader`我们写上`css-loader`，然后我们去写`options`写一个对象，`options`里面呢我们去配置一个属性叫做`importLoaders:2`我们可以配置一个`2`，好在很多这个脚手架工具里啊大家都可以看到`importLoaders`这样的一个配置参数。
 
-##### importLoaders 是上面意思呢
+##### importLoaders 是什么意思呢
 
 我来给大家讲一下，假设啊我们写了一个`index.scss`这样的文件，在这里面呢我们又去引入了一个额外的scss文件，比如在这里我在`src`目录下在写一个`avatar.scss`文件，这里面呢我在去写一些类似的样式：
 
@@ -91,7 +91,10 @@ root.append(img);
 
 ### 注意
 
-但是我在实际试验后发现不配置`importLoaders`这个配置项在scss文件里引入其它的scss文件还是可以走一遍`webpack`正常的打包顺序，但是为了防止其它问题的出现我们还是按照官网的配置讲`importLoaders: 2`配置上去吧。
+loader 的顺序是要先解析 sass-loader 在解析 postcss-loader ，不然在使用 `@import` 语法的时候被引用的那个`scss`文件里面的 css3 语法属性将不能自动添加厂商前缀。
+
+"postcss-loader",
+"sass-loader"
 
 ---
 

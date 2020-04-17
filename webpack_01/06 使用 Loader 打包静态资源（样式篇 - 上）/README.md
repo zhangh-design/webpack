@@ -614,6 +614,16 @@ webpack.config.js
 }
 ```
 
+==========
+
+注意：
+
+postcss-loader 要放在 sass-loader 之前不然 @import 引入的 sass 文件厂商前缀将无法自动添加。
+
+详情看【07 使用 Loader 打包静态资源（样式篇 - 下）】
+
+==========
+
 在`webpack.config.js`里面我们配置了当我们发现`scss`文件的时候，我们会依次使用`postcss-loader`->`sass-loader`->`css-loader`->`style-loader`，然后`postcss-loader`它有一个配置文件当它被引用或者说打包的时候要使用`postcss`这个`loader`的时候它会去使用一个`autoprefixer`的插件。
 
 好，做好了`webpack`的配置之后，我们看`index.scss`文件里也有了`transform`这个东西，`index.js`里面也引入了`index.scss`这个文件，那我们重新进行依次打包：
