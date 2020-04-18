@@ -16,7 +16,8 @@ module.exports = {
       '/react/api': {
         target: 'http://www.xxx.com',
         secure: false, // 如果我们需要转发的网站是支持 https 的，那么需要增加secure=false，来防止转发失败
-        pathRewrite: {
+		changeOrigin: true, // 跨域和突破网站对爬虫的禁止，一般建议配置
+        pathRewrite: { // 路径重写
           'header.json': 'demo.json' // 访问 header.json 实际会去请求 demo.json
         }
       }
