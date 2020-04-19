@@ -1,4 +1,4 @@
-babel配置 "useBuiltIns": "usage"（没有配置 transform-runtime），axios请求时需要额外在模块文件里增加 import "core-jsmoduleses.promise"或者 window.Promise = Promise
+babel配置 "useBuiltIns": "usage"（没有配置 transform-runtime），axios请求时需要额外在模块文件里增加 import "core-js/modules/es.promise"或者 window.Promise = Promise
 
 **项目结构：**
 
