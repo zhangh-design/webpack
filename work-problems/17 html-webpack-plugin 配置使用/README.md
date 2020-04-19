@@ -2,7 +2,7 @@
 
 [->html-webpack-plugin](https://github.com/jantimon/html-webpack-plugin)
 
-`html-webpack-plugin`帮助我们输出一个html文件到`dist`目录。
+`html-webpack-plugin`帮助我们输出一个html文件到`dist`目录（webpackDevServer是输出到内存中）。
 
 这里的配置是单页模式，多页情况下请参考[16 多页面打包通用解决方案]
 
@@ -67,7 +67,7 @@ module.exports = {
 
 webpack.prod.js
 
-开发模式下的配置：
+生产模式下的配置：
 
 ```
 const path = require('path');
