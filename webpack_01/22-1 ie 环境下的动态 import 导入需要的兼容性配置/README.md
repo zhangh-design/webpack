@@ -55,12 +55,24 @@ getComponent().then(element => {
 
 webpack.common.js
 
+数组写法：
+
 ```
 entry: [
-    "core-js/modules/es.promise",
-    "core-js/modules/es.array.iterator",
-    "./src/index.js"
+  "core-js/modules/es.promise",
+  "core-js/modules/es.array.iterator",
+  "./src/index.js"
 ]
+```
+
+对象写法：
+
+```
+entry: {
+  iterator: "core-js/modules/es.array.iterator",
+  Promise: "core-js/modules/es.promise",
+  main: "./src/index.js"
+}
 ```
 
 这样我在最终的打包后在`Chrome`和`ie`下都能正确运行`index.html`了。
