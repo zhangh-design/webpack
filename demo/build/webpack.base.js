@@ -22,13 +22,13 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    libraryTarget: 'umd',
+    libraryTarget: 'umd', // 支持 script标签、AMD、commonJs 引入
     libraryExport: 'default',
     publicPath:
       process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
         : config.dev.assetsPublicPath,
-    hashDigestLength: 8 // 生成 bundle 文件 hash 取8位（对 url-loader 的hash无效）
+    hashDigestLength: 8 // 生成 bundle 文件 hash 取8位（对 url-loader和file-loader 的 hash 无效）
   },
   resolve: {
     // 自动解析确定的扩展
@@ -79,7 +79,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2 // 通过 @import 引入的 scss 文件在构建时在调用 postcss-loader 和 sass-loader 进行处理
+              // sass-loader 已经处理了 @import 的这种语法（@import的文件必须是 scss 文件）会再次调用 sass-loader 和 postcss-loader 处理@import 导入的 scss 文件
+              // 但是如果 scss 文件中 @import 导入的是 css 文件而不是 scss 文件那么还是要想要这个配置，所以这里还是要有这个 importLoaders: 2 的配置
+              importLoaders: 2
             }
           },
           'postcss-loader', // postcss-loader 要放在 sass-loader 之前不然 @import 引入的 sass 文件厂商前缀将无法自动添加
@@ -97,18 +99,16 @@ module.exports = {
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
-          limit: 10000,
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('media/[path][name]-[hash:8].[ext]')
         }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader',
+        loader: 'file-loader',
         options: {
-          limit: 10000,
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('fonts/[path][name]-[hash:8].[ext]')
         }

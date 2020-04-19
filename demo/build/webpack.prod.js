@@ -28,7 +28,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     axios: 'axios'
   },
   optimization: {
-    splitChunks: {
+	  // 兼容旧版 webpack 在源代码不变的情况下打包构建后对应 chunk 文件的 contenthash 值也会发生变化
+	  // 从 chunk 文件中抽离出 webpack 源代码或者说呢运行时它要用到的代码放到了名字叫做 `runtime` 的一个 chunk 里面
+	  // runtimeChunk: {
+    //     name: 'runtime'
+	  // },
+	  splitChunks: {
       chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
       minSize: 30000,
       minChunks: 1, // 模块引入的次数
@@ -37,14 +42,15 @@ const webpackConfig = merge(baseWebpackConfig, {
       automaticNameDelimiter: '~',
       name: true,
       cacheGroups: {
-        'split-lodash': {
+        /* 'split-lodash': {
           name: 'split-lodash', // 打包后 chunk 的名称
           test: module => {
             return /lodash/.test(module.context)
           },
           priority: 0,
           filename: utils.assetsPath('vendor/split-lodash.js')
-        },
+        }, */
+		    // 将 vue vuex vue-router 淡出分割出一个 split-vue.js 的文件
         'split-vue': {
           name: 'split-vue',
           test: module => {
@@ -53,13 +59,20 @@ const webpackConfig = merge(baseWebpackConfig, {
           priority: -10,
           filename: utils.assetsPath('vendor/split-vue.js')
         },
+		    // 分割出其它动态导入的第三方依赖库文件
         vendors: {
           name: 'split-vendors',
           test: /[\\/]node_modules[\\/]/,
-          priority: -20,
-          filename: utils.assetsPath('vendor/vendors.js')
+          priority: -30,
+          filename: utils.assetsPath('vendor/split-vendors.js')
         },
-        default: false
+		    // 分割第三方依赖库文件
+        default: {
+          priority: -20,
+          name: 'split-default',
+          reuseExistingChunk: true,
+          filename: utils.assetsPath('vendor/split-default.js')
+        }
       }
     }
   },

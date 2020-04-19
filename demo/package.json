@@ -2,11 +2,6 @@
   "name": "demo",
   "version": "1.0.0",
   "description": "",
-  "sideEffects": [
-    "*.css",
-    "*.scss",
-    "*.less"
-  ],
   "private": true,
   "scripts": {
     "dev-build": "webpack --config ./build/webpack.dev.js",
@@ -40,10 +35,8 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "jquery": "^3.5.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "normalize.css": "^8.0.1",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vuex": "^3.1.3"

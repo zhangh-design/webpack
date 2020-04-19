@@ -18,6 +18,7 @@
 15 | 使用 Babel 处理 ES6 语法（1）
 16 | 使用 Babel 处理 ES6 语法（2）
 17 | Tree Shaking 概念详解
+17-1 | Tree Shaking package.json 中设置 sideEffects 的作用和影响是什么
 18 | Development 和 Production 模式的区分打包
 19 | Webpack 和 Code Splitting（1）
 20 | Webpack 和 Code Splitting（2）
