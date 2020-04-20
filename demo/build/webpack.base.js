@@ -42,7 +42,8 @@ module.exports = {
       ),
       '@': resolve('./src'),
       '@server': resolve('./src/server'),
-      '@lib': resolve('./src/lib')
+      '@lib': resolve('./src/lib'),
+      '@assets': resolve('./src/assets')
     },
     // 告诉 webpack 解析第三方模块时应该搜索的目录
     modules: [path.resolve(__dirname, '../node_modules')],
@@ -52,6 +53,11 @@ module.exports = {
   module: {
     noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
+      {
+        test: /\.html$/,
+        // HTML 中使用<img>引入图片等静态资源的时候，需要添加 html-loader 配置，不然也不会处理静态资源的路径问题
+        use: ['html-loader']
+      },
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -120,9 +126,16 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
+        // 压缩图片
+        loader: 'image-webpack-loader',
+        // 通过enforce: 'pre'我们提高了 img-webpack-loader 的优先级，保证在url-loader、file-loader和svg-url-loader之前就完成了图片的优化。
+        enforce: 'pre'
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10000, // 字节
+          limit: 10 * 1024, // 10k
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('img/[path][name]-[hash:8].[ext]')
         }
@@ -142,6 +155,18 @@ module.exports = {
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('fonts/[path][name]-[hash:8].[ext]')
         }
+      },
+      {
+        test: /\.(csv|tsv)$/,
+        use: [
+          'csv-loader'
+        ]
+      },
+      {
+        test: /\.xml$/,
+        use: [
+          'xml-loader'
+        ]
       }
     ]
   },
