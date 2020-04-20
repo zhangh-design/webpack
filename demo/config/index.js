@@ -62,7 +62,11 @@ module.exports = {
       'X-UA-Compatible': 'IE=edge, chrome=1',
       Keywords: '',
       Description: ''
-    }
+    },
+    /**
+     * css-loader
+     */
+    localIdentName: '[local]'
   },
   build: {
     // Paths
@@ -92,6 +96,10 @@ module.exports = {
       'X-UA-Compatible': 'IE=edge, chrome=1',
       Keywords: '',
       Description: ''
-    }
+    },
+    /**
+     * css-loader
+     */
+    localIdentName: '[path][name]__[local]--[hash:base64:5]'
   }
 };

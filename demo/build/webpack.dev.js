@@ -7,6 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+// 在 scripts 指令指定
+// cross-env NODE_ENV=deveopment PORT=9099 webpack-dev-server --progress --config ./build/webpack.dev.js
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -38,7 +40,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // 导入自定义环境变量
     new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env')
+      'process.env': require('../config/dev.env.js')
     }),
     // 启用热更新，配合 hot和hotOnly 使用
     new webpack.HotModuleReplacementPlugin(),
