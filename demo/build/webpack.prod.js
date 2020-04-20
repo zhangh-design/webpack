@@ -1,15 +1,15 @@
 'use strict';
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const LodashWebpackPlugin = require('lodash-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const path = require('path')
-const utils = require('../build/utils.js')
-const config = require('../config/index.js')
-const merge = require('webpack-merge')
-const webpack = require('webpack')
-const env = require('../config/prod.env.js')
-const baseWebpackConfig = require('./webpack.base.js')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const LodashWebpackPlugin = require('lodash-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const utils = require('../build/utils.js');
+const config = require('../config/index.js');
+const merge = require('webpack-merge');
+const webpack = require('webpack');
+const env = require('../config/prod.env.js');
+const baseWebpackConfig = require('./webpack.base.js');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -28,12 +28,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     axios: 'axios'
   },
   optimization: {
-	  // 兼容旧版 webpack 在源代码不变的情况下打包构建后对应 chunk 文件的 contenthash 值也会发生变化
-	  // 从 chunk 文件中抽离出 webpack 源代码或者说呢运行时它要用到的代码放到了名字叫做 `runtime` 的一个 chunk 里面
-	  // runtimeChunk: {
+    // 兼容旧版 webpack 在源代码不变的情况下打包构建后对应 chunk 文件的 contenthash 值也会发生变化
+    // 从 chunk 文件中抽离出 webpack 源代码或者说呢运行时它要用到的代码放到了名字叫做 `runtime` 的一个 chunk 里面
+    // runtimeChunk: {
     //     name: 'runtime'
-	  // },
-	  splitChunks: {
+    // },
+    usedExports: true, // production 模式默认开启 Tree Shaking 摇摆优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇摆优化过滤规则）
+    splitChunks: {
       chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
       minSize: 30000,
       minChunks: 1, // 模块引入的次数
@@ -50,23 +51,23 @@ const webpackConfig = merge(baseWebpackConfig, {
           priority: 0,
           filename: utils.assetsPath('vendor/split-lodash.js')
         }, */
-		    // 将 vue vuex vue-router 淡出分割出一个 split-vue.js 的文件
+        // 将 vue vuex vue-router 淡出分割出一个 split-vue.js 的文件
         'split-vue': {
           name: 'split-vue',
           test: module => {
-            return /vue|vuex|vue-router/.test(module.context)
+            return /vue|vuex|vue-router/.test(module.context);
           },
           priority: -10,
           filename: utils.assetsPath('vendor/split-vue.js')
         },
-		    // 分割出其它动态导入的第三方依赖库文件
+        // 分割出其它动态导入的第三方依赖库文件
         vendors: {
           name: 'split-vendors',
           test: /[\\/]node_modules[\\/]/,
           priority: -30,
           filename: utils.assetsPath('vendor/split-vendors.js')
         },
-		    // 分割第三方依赖库文件
+        // 分割第三方依赖库文件
         default: {
           priority: -20,
           name: 'split-default',
