@@ -55,14 +55,6 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
     template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
     favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML
-    // 允许注入meta-tags （head中meta参数）
-    /* meta: {
-      viewport: 'width=device-width, initial-scale=1.0',
-      renderer: 'webkit',
-      'X-UA-Compatible': 'IE=edge, chrome=1',
-      Keywords: '',
-      Description: ''
-    }, */
     /**
      * css-loader
      */
@@ -89,14 +81,6 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
     template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
     favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML
-    // 允许注入meta-tags （head中meta参数）
-    /* meta: {
-      viewport: 'width=device-width, initial-scale=1.0',
-      renderer: 'webkit',
-      'X-UA-Compatible': 'IE=edge, chrome=1',
-      Keywords: '',
-      Description: ''
-    }, */
     /**
      * css-loader
      */
