@@ -25,7 +25,7 @@ webpack.config.js
         }
       }
       "sass-loader",
-      "postcss-loader"
+      "postcss-loader" // 新版 postcss-loader 要放在 sass-loader 之前
     ]
 }
 ```
@@ -92,6 +92,8 @@ root.append(img);
 ---
 
 ### postcss-import
+
+除了设置 css-loader 的importLoaders，如果使用 PostCSS 则可以使用它的插件：postcss-import 同样可以处理@import引入的 CSS 代码。
 
 我们在`index.scss`文件中如果在引入通过`@import`的语法引入一个其它的`avatar.scss`文件，那么引入的`avatar.scss`文件中如果又`css3`语法的代码，那么`autoprefixer`这个自动添加厂商前缀的插件讲不会生效，也就是在`avatar.scss`打包时不会自动添加厂商前缀，那这个问题怎么该怎么解决呢？
 
