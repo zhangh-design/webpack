@@ -70,7 +70,7 @@ module.exports = {
               importLoaders: 1, // 0 => 默认，没有 loader;1 => postcss-loader;
               modules: {
                 localIdentName: '[path][name]__[local]--[hash:base64:5]'
-              } // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; style.avatar）
+              } // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
             }
           },
           'postcss-loader'// 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
@@ -102,7 +102,7 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, sass-loader
+              importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, less-loader
               modules: {
                 localIdentName: '[path][name]__[local]--[hash:base64:5]'
               }
