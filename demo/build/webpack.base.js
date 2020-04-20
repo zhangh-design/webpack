@@ -54,9 +54,9 @@ module.exports = {
     noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
       {
-        test: /\.html$/,
-        // HTML 中使用<img>引入图片等静态资源的时候，需要添加 html-loader 配置，不然也不会处理静态资源的路径问题
-        use: ['html-loader']
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
       },
       {
         test: /\.vue$/,
@@ -75,13 +75,14 @@ module.exports = {
               // 也可以通过增加 postcss-loader 的插件 postcss-import 来达到同样效果
               importLoaders: 1, // 0 => 默认，没有 loader;1 => postcss-loader;
               modules: {
-                localIdentName: process.env.NODE_ENV === 'production'
-                  ? config.build.localIdentName
-                  : config.dev.localIdentName
+                localIdentName:
+                  process.env.NODE_ENV === 'production'
+                    ? config.build.localIdentName
+                    : config.dev.localIdentName
               } // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
             }
           },
-          'postcss-loader'// 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
+          'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
         ]
       },
       {
@@ -94,9 +95,10 @@ module.exports = {
             options: {
               importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, sass-loader
               modules: {
-                localIdentName: process.env.NODE_ENV === 'production'
-                  ? config.build.localIdentName
-                  : config.dev.localIdentName
+                localIdentName:
+                  process.env.NODE_ENV === 'production'
+                    ? config.build.localIdentName
+                    : config.dev.localIdentName
               }
             }
           },
@@ -114,9 +116,10 @@ module.exports = {
             options: {
               importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, less-loader
               modules: {
-                localIdentName: process.env.NODE_ENV === 'production'
-                  ? config.build.localIdentName
-                  : config.dev.localIdentName
+                localIdentName:
+                  process.env.NODE_ENV === 'production'
+                    ? config.build.localIdentName
+                    : config.dev.localIdentName
               }
             }
           },
@@ -158,15 +161,11 @@ module.exports = {
       },
       {
         test: /\.(csv|tsv)$/,
-        use: [
-          'csv-loader'
-        ]
+        use: ['csv-loader']
       },
       {
         test: /\.xml$/,
-        use: [
-          'xml-loader'
-        ]
+        use: ['xml-loader']
       }
     ]
   },
