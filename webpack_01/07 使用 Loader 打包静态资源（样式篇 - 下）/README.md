@@ -24,8 +24,8 @@ webpack.config.js
           importLoaders: 2
         }
       }
-      "postcss-loader",
-      "sass-loader"
+      "sass-loader",
+      "postcss-loader"
     ]
 }
 ```
@@ -87,33 +87,6 @@ var root = document.getElementById('root');
 root.append(img);
 
 
-```
-
-### 注意
-
-loader 的顺序是要先解析 sass-loader 在解析 postcss-loader ，不然在使用 `@import` 语法（这里并没有设置 css-loader 的 importLoaders 配置）的时候被引用的那个`scss`文件里面的 css3 语法属性将不能自动添加厂商前缀。
-
-"postcss-loader",
-"sass-loader"
-
-```
-{
-    test: /\.scss$/,
-    use: [
-      'style-loader',
-      // 'css-loader',
-      {
-        loader: 'css-loader',
-        options: {
-          // sass-loader 已经处理了 @import 的这种语法（@import的文件必须是 scss 文件）会再次调用 sass-loader 和 postcss-loader 处理@import 导入的 scss 文件
-          // 但是如果 scss 文件中 @import 导入的是 css 文件而不是 scss 文件那么还是要想要这个配置，所以这里还是要有这个 importLoaders: 2 的配置
-          importLoaders: 2
-        }
-      },
-      'postcss-loader', // postcss-loader 要放在 sass-loader 之前不然 @import 引入的 sass 文件厂商前缀将无法自动添加
-      'sass-loader'
-    ]
-}
 ```
 
 ---
