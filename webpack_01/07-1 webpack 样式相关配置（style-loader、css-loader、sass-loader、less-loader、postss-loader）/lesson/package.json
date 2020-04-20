@@ -1,0 +1,47 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev-build": "webpack --config ./build/webpack.dev.js",
+    "dev": "webpack-dev-server --progress --config ./build/webpack.dev.js",
+    "build": "webpack --config ./build/webpack.prod.js",
+    "bundle:clean": "npm run clean && npm run build",
+    "clean": "rimraf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^9.7.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "css-loader": "^3.5.2",
+    "file-loader": "^6.0.0",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less": "^3.11.1",
+    "less-loader": "^5.0.0",
+    "lodash-webpack-plugin": "^0.11.5",
+    "node-sass": "^4.13.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "rimraf": "^3.0.2",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.1.4",
+    "url-loader": "^4.1.0",
+    "vue-loader": "^15.9.1",
+    "webpack": "^4.25.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "moment": "^2.24.0",
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.6",
+    "vuex": "^3.1.3"
+  }
+}

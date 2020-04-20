@@ -1,0 +1,13 @@
+@import "./b.scss";
+@import "./c.css";
+body {
+  .avatar {
+    width: 150px;
+    height: 150px;
+    column-count: 3;
+    transform: translate(100px, 100px);
+    display: flex;
+    border-radius: 25px;
+    text-shadow: 5px 5px 5px #ff0000;
+  }
+}
