@@ -29,11 +29,12 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   optimization: {
     // 兼容旧版 webpack 在源代码不变的情况下打包构建后对应 chunk 文件的 contenthash 值也会发生变化
-    // 从 chunk 文件中抽离出 webpack 源代码或者说呢运行时它要用到的代码放到了名字叫做 `runtime` 的一个 chunk 里面
+    // 从 chunk 文件中抽离出 webpack 源代码或者说呢运行时它要用到的代码放到了名字叫做 `runtime` 的一个 chunk 里面，可以在通过 html-webpack-inline-source-plugin 内联 Runtime 代码到 HTML 页面中
+    // 注意：在 Webpack 4.29.6 版本已经修改了模板输出的 Template，即使 entry 修改，实际 Runtime 部分的内容也不会有变化，所以上面分离 Runtime 的方案适应于低版本的 Webpack。
     // runtimeChunk: {
     //     name: 'runtime'
     // },
-    usedExports: true, // production 模式默认开启 Tree Shaking 摇摆优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇摆优化过滤规则）
+    usedExports: true, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
     splitChunks: {
       chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
       minSize: 30000,

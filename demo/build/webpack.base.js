@@ -32,7 +32,8 @@ module.exports = {
   },
   resolve: {
     // 自动解析确定的扩展
-    extensions: ['.js', '.json', '.vue', '.jsx', '.css', '.less', '.scss'],
+    // 要确保同一个目录下面没有重名的 css 或者 js 文件，如果存在的话，还是要写全路径
+    extensions: ['.js', '.json', '.vue', '.css'],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     alias: {
       // 设置 vue 的别名为精确匹配，文件中就可以这样使用 import Vue from 'vue'（from 后面的 'vue' 就代表这里的配置）
@@ -57,6 +58,19 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+        /* options: {
+          presets: [['@babel/preset-env', {
+            useBuiltIns: 'usage',
+            // Babel在 7.4.0 版本后 babel/polyfill 需要配合安装 core-js@3 版本是3
+            corejs: {
+              version: 3
+            },
+            targets: {
+              ie: '11',
+              chrome: '67'
+            }
+          }]]
+        } */
       },
       {
         test: /\.vue$/,
