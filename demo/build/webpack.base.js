@@ -53,7 +53,7 @@ module.exports = {
     mainFields: ['main', 'module']
   },
   module: {
-    noParse: '/jquery|lodash/', // 构建时不去解析三方库
+    // noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
       {
         test: /\.js$/,
