@@ -46,8 +46,9 @@ module.exports = {
       '@lib': resolve('./src/lib'),
       '@assets': resolve('./src/assets')
     },
-    // 告诉 webpack 解析第三方模块时应该搜索的目录
-    modules: [path.resolve(__dirname, '../node_modules')],
+    // 告诉 webpack 解析第三方模块时应该搜索的目录，默认 node_modules
+    // modules: [path.resolve(__dirname, '../node_modules')], ie 11 下因为这个报错
+    modules: ['node_modules'],
     // 对应第三方包 package.json 中的 main 属性字段，意思是通过 main 属性指定的文件来导入模块
     mainFields: ['main', 'module']
   },
