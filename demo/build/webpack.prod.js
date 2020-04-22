@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashWebpackPlugin = require('lodash-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const fastConfig = require('../fast.config.js');
 const utils = require('../build/utils.js');
 const config = require('../config/index.js');
 const merge = require('webpack-merge');
@@ -10,15 +11,18 @@ const webpack = require('webpack');
 const env = require('../config/prod.env.js');
 const baseWebpackConfig = require('./webpack.base.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'production',
+  // mode: 'development',
   // devtool: config.build.productionSourceMap ? config.build.devtool : false,
   devtool: false,
   output: {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // 动态import引入的模块
+    chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // splitChunks 分割出模块
     path: config.build.assetsRoot
   },
   // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入
@@ -35,18 +39,46 @@ const webpackConfig = merge(baseWebpackConfig, {
     // runtimeChunk: {
     //     name: 'runtime'
     // },
-    usedExports: true, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
+    usedExports: false, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
     splitChunks: {
-      chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
-      minSize: 30000,
+      chunks: 'all', // initial（同步）async（异步）all（同步和异步），推荐 all
+      minSize: 30000, // 模块最小尺寸，30K
+      maxSize: 0, // 模块最大尺寸，0为不限制
       minChunks: 1, // 默认1，被提取的一个模块至少需要在几个 chunk 中被引用，这个值越大，抽取出来的文件就越小
       maxAsyncRequests: 5, // 异步的按需加载模块最大的并行请求数，通过import()或者require.ensure()方式引入的模块，分离出来的包是异步加载的（一般不用改）
       maxInitialRequests: 3, // 初始加载网页的最大并行数（一般不用改）
       automaticNameDelimiter: '~', // 打包文件名分隔符
       name: true, // 拆分出来文件的名字，默认为 true，表示自动生成文件名，如果设置为固定的字符串那么所有的 chunk 都会被合并成一个
+      // 同步导入进入的分割规则，异步动态import使用 魔法注释
       cacheGroups: {
-        vendors: false,
-        default: false
+        /* lodash: {
+          name: 'lodash',
+          test: /[\\/]node_modules[\\/]_lodash@4.17.15@lodash[\\/]/,
+          priority: 0
+        }, */
+        // 将 vue、vuex和vue-router单独分割成一个文件
+        'vue-base': {
+          name: 'vue-base',
+          test: /[\\/]node_modules[\\/]_vue@2.6.11@vue|_vuex@3.2.0@vuex|_vue-router@3.1.6@vue-router[\\/]/,
+          priority: 0,
+          filename: utils.assetsPath('js/vendor/vue-base.[chunkhash].js')
+        },
+        'core-js-base': {
+          name: 'core-js-base',
+          test: /[\\/]node_modules[\\/]_core-js@2.6.11@core-js|_core-js@3.6.5@core-js[\\/]/,
+          priority: -10,
+          filename: utils.assetsPath('js/vendor/core-js-base.[chunkhash].js')
+        },
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        },
+        ...fastConfig.splitChunksCacheGroups
       }
     }
   },
@@ -96,5 +128,12 @@ const webpackConfig = merge(baseWebpackConfig, {
     ])
   ]
 });
+
+if (fastConfig.isBundleAnalyzer) {
+  webpackConfig.plugins.push(
+    // 查看 webpack 打包情况
+    new BundleAnalyzerPlugin()
+  );
+}
 
 module.exports = webpackConfig;

@@ -13,7 +13,7 @@ const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
 const devWebpackConfig = merge(baseWebpackConfig, {
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
   devtool: config.dev.devtool,
   devServer: {
     // contentBase: path.resolve(__dirname, '../dev-assets'),

@@ -9,6 +9,7 @@ exports.assetsPath = function (_path) {
 
   return path.posix.join(assetsSubDirectory, _path)
 }
+
 // 多页面打包
 exports.setMpa = function () {
 

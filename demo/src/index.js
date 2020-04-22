@@ -1,3 +1,11 @@
+import { add, minus } from './a.js'
+// import _ from 'lodash'
+import Vue from 'vue'
+import VueX from 'vuex'
+import VueRouter from 'vue-router'
+
+console.log(add, minus, Vue, VueX, VueRouter)
+
 // import "core-js/modules/es.promise";
 // import "core-js/modules/es.array.iterator";
 
