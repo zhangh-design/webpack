@@ -54,7 +54,7 @@ dist
 
 ```
 function getComponent() {
-  // 魔法注释是 : 
+  // 魔法注释是 :
   return import(/* webpackChunkName:"lodash" */ "lodash").then(({default : _}) => {
       var element = document.createElement('div');
       element.innerHTML = _.join(['hello','world'],'-');
@@ -107,6 +107,22 @@ Entrypoint main = main.js
 [-> @babel/plugin-syntax-dynamic-import](https://babeljs.io/docs/en/babel-plugin-syntax-dynamic-import/)
 
 `cnpm install --save-dev @babel/plugin-syntax-dynamic-import`
+
+===========
+
+注意：
+
+output.chunkFilename 会影响到动态import导入魔法注释，splitChunks分割之后 bundle 的名称，如果想按照 魔法注释中的名字生成 bundle 那么不设置 chunkFilename或者设置占位符 [name]。
+
+```
+output: {
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'),
+    path: config.build.assetsRoot
+}
+```
+
+============
 
 我们呢来使用官方提供的这个插件，然后在`.babelrc`里面我们去使用这个官方的插件：
 
@@ -372,7 +388,7 @@ cacheGroups: {
 ```
 splitChunks: {
     chunks: "async"
-}  
+}
 ```
 
 好我们来从`chunks`这个参数开始讲解，`chunks`里面这里配置了一个`async`它指的是在我做代码分割的时候只对异步代码生效，那如果我们把`chunks`配置成`async`那看一下打包会有一个什么样的效果。
