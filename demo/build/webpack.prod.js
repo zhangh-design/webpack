@@ -14,10 +14,11 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
   mode: 'production',
-  devtool: config.build.productionSourceMap ? config.build.devtool : false,
+  // devtool: config.build.productionSourceMap ? config.build.devtool : false,
+  devtool: false,
   output: {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // 动态import引入的模块
     path: config.build.assetsRoot
   },
   // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入
@@ -38,43 +39,14 @@ const webpackConfig = merge(baseWebpackConfig, {
     splitChunks: {
       chunks: 'all', // initial（同步） async（异步） all（同步和异步），推荐 all
       minSize: 30000,
-      minChunks: 1, // 模块引入的次数
+      minChunks: 1, // 默认1，被提取的一个模块至少需要在几个 chunk 中被引用，这个值越大，抽取出来的文件就越小
       maxAsyncRequests: 5, // 异步的按需加载模块最大的并行请求数，通过import()或者require.ensure()方式引入的模块，分离出来的包是异步加载的（一般不用改）
       maxInitialRequests: 3, // 初始加载网页的最大并行数（一般不用改）
-      automaticNameDelimiter: '~',
-      name: true,
+      automaticNameDelimiter: '~', // 打包文件名分隔符
+      name: true, // 拆分出来文件的名字，默认为 true，表示自动生成文件名，如果设置为固定的字符串那么所有的 chunk 都会被合并成一个
       cacheGroups: {
-        /* 'split-lodash': {
-          name: 'split-lodash', // 打包后 chunk 的名称
-          test: module => {
-            return /lodash/.test(module.context)
-          },
-          priority: 0,
-          filename: utils.assetsPath('vendor/split-lodash.js')
-        }, */
-        // 将 vue vuex vue-router 淡出分割出一个 split-vue.js 的文件
-        'split-vue': {
-          name: 'split-vue',
-          test: module => {
-            return /vue|vuex|vue-router/.test(module.context);
-          },
-          priority: -10,
-          filename: utils.assetsPath('vendor/split-vue.js')
-        },
-        // 分割出其它动态导入的第三方依赖库文件
-        vendors: {
-          name: 'split-vendors',
-          test: /[\\/]node_modules[\\/]/,
-          priority: -30,
-          filename: utils.assetsPath('vendor/split-vendors.js')
-        },
-        // 分割第三方依赖库文件
-        default: {
-          priority: -20,
-          name: 'split-default',
-          reuseExistingChunk: true,
-          filename: utils.assetsPath('vendor/split-default.js')
-        }
+        vendors: false,
+        default: false
       }
     }
   },

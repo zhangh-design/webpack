@@ -1,4 +1,5 @@
 'use strict';
+const fastConfig = require('../fast.config.js')
 
 // eslint-disable-next-line no-unused-vars
 const path = require('path');
@@ -51,7 +52,7 @@ module.exports = {
     /**
      * html-webpack-plugin
      */
-    title: 'Hello Webpack Dev',
+    title: fastConfig.title,
     index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
     template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
     favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML
@@ -77,7 +78,7 @@ module.exports = {
     /**
      * html-webpack-plugin
      */
-    title: 'Hello Webpack Prod',
+    title: fastConfig.title,
     index: path.resolve(__dirname, '../dist/index.html'), // 构建后最终输出的文件地址和名称
     template: path.resolve(__dirname, '../public/index.html'), // 模板文件html
     favicon: path.resolve(__dirname, '../public/favicon.ico'), // 将给定的图标图标路径添加到输出HTML

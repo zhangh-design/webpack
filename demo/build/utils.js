@@ -9,3 +9,15 @@ exports.assetsPath = function (_path) {
 
   return path.posix.join(assetsSubDirectory, _path)
 }
+// 多页面打包
+exports.setMpa = function () {
+
+}
+
+// 动态import导入模块针对 ie 浏览器不支持的 babel 兼容配置
+exports.getIEDynamicImportModule = function () {
+  return {
+    iterator: 'core-js/modules/es.array.iterator',
+    Promise: 'core-js/modules/es.promise'
+  }
+}

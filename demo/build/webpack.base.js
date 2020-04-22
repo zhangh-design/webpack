@@ -1,5 +1,6 @@
 'use strict';
 const config = require('../config/index.js');
+const fastConfig = require('../fast.config.js')
 const utils = require('../build/utils.js');
 const path = require('path');
 const webpack = require('webpack');
@@ -10,11 +11,16 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir);
 }
 
+const ieDynamicImportModule = function () {
+  return fastConfig.ieDynamicImport ? utils.getIEDynamicImportModule() : {}
+}
+
 module.exports = {
   // 默认将 entry 的入口起点指向根目录
   context: path.resolve(__dirname, '../'),
   // 配置了 context 所以路径写成 ./src 当前目录下即可
   entry: {
+    ...ieDynamicImportModule(),
     app: './src/index.js'
     // 如果是 webpack < 4 的版本，可以在 entry 里配置 vendor 来分离第三方类库，需要结合 CommonsChunkPlugin 一起配置使用
     // vendor: ['lodash', 'moment', 'vue']
