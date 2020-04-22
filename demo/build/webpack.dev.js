@@ -26,6 +26,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     compress: config.dev.compress,
     open: config.dev.open,
     overlay: config.dev.overlay ? { warnings: false, errors: true } : false,
+    headers: { 'Access-Control-Allow-Origin': '*' }, // 跨域，比如本地的时候 127.0.0.1 和 localhost 不设置 * 也会认为是不同域
     quiet: config.dev.quiet,
     proxy: config.dev.proxy,
     publicPath: config.dev.assetsPublicPath,
