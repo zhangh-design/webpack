@@ -62,7 +62,7 @@ module.exports = {
     // noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/, // x? 表示同时使用 babel-loader 解析 js 和 jsx 文件
         exclude: /node_modules/,
         loader: 'babel-loader'
         /* options: {
