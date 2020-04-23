@@ -24,13 +24,6 @@ const webpackConfig = merge(baseWebpackConfig, {
     chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // splitChunks 分割出模块
     path: config.build.assetsRoot
   },
-  // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入
-  externals: {
-    // lodash: '_',
-    jquery: 'jQuery',
-    echarts: 'echarts',
-    axios: 'axios'
-  },
   optimization: {
     // 兼容旧版 webpack 在源代码不变的情况下打包构建后对应 chunk 文件的 contenthash 值也会发生变化
     // 从 chunk 文件中抽离出 webpack 源代码或者说呢运行时它要用到的代码放到了名字叫做 `runtime` 的一个 chunk 里面，可以在通过 html-webpack-inline-source-plugin 内联 Runtime 代码到 HTML 页面中
@@ -40,8 +33,8 @@ const webpackConfig = merge(baseWebpackConfig, {
     // },
     usedExports: true, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
     splitChunks: {
-      chunks: 'all', // initial（同步）async（异步）all（同步和异步），推荐 all
-      minSize: 30000, // 模块最小尺寸，30K
+      chunks: 'all', // initial（有共用的情况即发生拆分）async（异步 动态引入的模块不受影响，它是无论如何都会被拆分出去的）all（同步和异步），推荐 all
+      minSize: 30000, // 模块最小尺寸，30K，越大那么单个文件越大，chunk 数就会变少（针对于提取公共 chunk 的时候，不管再大也不会把动态加载的模块合并到初始化模块中）当这个值很大的时候就不会做公共部分的抽取了
       maxSize: 0, // 模块最大尺寸，0为不限制
       minChunks: 1, // 默认1，被提取的一个模块至少需要在几个 chunk 中被引用，这个值越大，抽取出来的文件就越小
       maxAsyncRequests: 5, // 异步的按需加载模块最大的并行请求数，通过import()或者require.ensure()方式引入的模块，分离出来的包是异步加载的（一般不用改）
@@ -75,7 +68,7 @@ const webpackConfig = merge(baseWebpackConfig, {
         default: {
           minChunks: 2,
           priority: -20,
-          reuseExistingChunk: true
+          reuseExistingChunk: true // 是否使用已有的 chunk，如果为 true 则表示如果当前的 chunk 包含的模块已经被抽取出去了，那么将不会重新生成新的。
         },
         ...fastConfig.splitChunksCacheGroups
       }
@@ -115,7 +108,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       // 多页面中一般会提取公共部分的chunk，这个时候一个html页面会引入多个chunk，而这些chunk之间是有依赖关系的，即必须按照顺序用script标签引入，chunksSortMode是用来指定这种顺序的排序规则，dependency是指按照依赖关系排序。
       // 旧版配置为 'dependency' 可能会出现 `Cyclic dependency   错误：循环依赖` 的问题，可以升级插件到最新
       // `Cyclic dependency`网上的解决办法设置为`none`但这样页面加载顺序就不能保证了，可能会出现样式被覆盖的现象
-      chunksSortMode: 'auto'
+      chunksSortMode: 'auto',
+      hash: fastConfig.isHtmlHash // 清除缓存
     }),
     // 拷贝静态资源到当前的工作目录（output.path）
     new CopyWebpackPlugin([

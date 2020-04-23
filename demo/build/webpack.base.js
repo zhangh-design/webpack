@@ -58,6 +58,13 @@ module.exports = {
     // 对应第三方包 package.json 中的 main 属性字段，意思是通过 main 属性指定的文件来导入模块
     mainFields: ['main', 'module']
   },
+  // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入
+  externals: fastConfig.externals || {
+    // lodash: '_',
+    jquery: 'jQuery',
+    echarts: 'echarts',
+    axios: 'axios'
+  },
   module: {
     // noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
@@ -65,19 +72,6 @@ module.exports = {
         test: /\.jsx?$/, // x? 表示同时使用 babel-loader 解析 js 和 jsx 文件
         exclude: /node_modules/,
         loader: 'babel-loader'
-        /* options: {
-          presets: [['@babel/preset-env', {
-            useBuiltIns: 'usage',
-            // Babel在 7.4.0 版本后 babel/polyfill 需要配合安装 core-js@3 版本是3
-            corejs: {
-              version: 3
-            },
-            targets: {
-              ie: '11',
-              chrome: '67'
-            }
-          }]]
-        } */
       },
       {
         test: /\.vue$/,
@@ -87,7 +81,13 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          'style-loader', // 把 css 样式内容内联到 style 标签内
+          // 'style-loader', // 把 css 样式内容内联到 style 标签内
+          {
+            loader: 'style-loader',
+            options: {
+              singleton: true // 处理为单个style标签
+            }
+          },
           // 'css-loader', // 处理 .css 文件
           {
             loader: 'css-loader',
@@ -104,7 +104,9 @@ module.exports = {
             }
           },
           'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
-        ]
+        ],
+        include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -125,7 +127,9 @@ module.exports = {
           },
           'postcss-loader', // 新版 postcss-loader 要放在 sass-loader 之前
           'sass-loader'
-        ]
+        ],
+        include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/
       },
       {
         test: /\.less$/,
@@ -146,7 +150,9 @@ module.exports = {
           },
           'postcss-loader', // 新版 postcss-loader 要放在 less-loader 之前
           'less-loader'
-        ]
+        ],
+        include: path.resolve(__dirname, '../src'),
+        exclude: /node_modules/
       },
       {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,

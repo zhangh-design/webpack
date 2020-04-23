@@ -3,6 +3,7 @@ import { add, minus } from './a.js'
 import Vue from 'vue'
 import VueX from 'vuex'
 import VueRouter from 'vue-router'
+import "./a.scss"
 
 console.log(add, minus, Vue, VueX, VueRouter)
 

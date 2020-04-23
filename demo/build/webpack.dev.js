@@ -1,5 +1,6 @@
 const path = require('path');
 const config = require('../config')
+const fastConfig = require('../fast.config.js')
 const merge = require('webpack-merge')
 const webpack = require('webpack')
 const baseWebpackConfig = require('./webpack.base.js')
@@ -51,6 +52,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: config.dev.index,
       template: config.dev.template,
       favicon: config.dev.favicon,
+      hash: fastConfig.isHtmlHash, // 清除缓存
       inject: true // 默认 true，将脚本注入到body元素的底部
     }),
     // new webpack.NoEmitOnErrorsPlugin() // （optimization.noEmitOnErrors: true）在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段，这样可以确保输出资源不会包含错误。
