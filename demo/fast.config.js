@@ -11,6 +11,7 @@ module.exports = {
   isProdConsoleLog: true, // prod 模式下是否输出 console 日志
   ieDynamicImport: true, // 针对 ie 浏览器是否需要支持 动态import 导入模块的功能（对 chrome Firefox Edge 无影响），如果在 .babelrc 中 browsers 不需要支持 ie 环境那么这里配置 false 即不用考虑任何 ie 浏览器，如果你的业务代码里没有动态import那么也设置 false 即可
   isBundleAnalyzer: false, // 是否使用 webpack-bundle-analyzer 进行打包分析
+  isProdCssInline: false, // prod 模式下最终的 css 是否要内联到 style 标签内，默认 false 使用 link 引入
   externals: {
     jquery: 'jQuery',
     echarts: 'echarts',

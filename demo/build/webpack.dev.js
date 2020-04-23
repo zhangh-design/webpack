@@ -42,7 +42,10 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // 导入自定义环境变量
     new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env.js')
+      'process.env': {
+        ...require('../config/dev.env.js'),
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+      }
     }),
     // 启用热更新，配合 hot和hotOnly 使用
     new webpack.HotModuleReplacementPlugin(),

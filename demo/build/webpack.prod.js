@@ -77,7 +77,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   plugins: [
     // 导入自定义环境变量
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': env,
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }),
     // 优化 lodash 减小构建包体积
     new LodashWebpackPlugin(),
