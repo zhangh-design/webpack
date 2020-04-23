@@ -18,8 +18,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
   mode: process.env.NODE_ENV || 'production',
   // mode: 'development',
-  // devtool: config.build.productionSourceMap ? config.build.devtool : false,
-  devtool: false,
+  devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     filename: utils.assetsPath('js/[name].[chunkhash].js'),
     chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // splitChunks 分割出模块
@@ -39,7 +38,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // runtimeChunk: {
     //     name: 'runtime'
     // },
-    usedExports: false, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
+    usedExports: true, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
     splitChunks: {
       chunks: 'all', // initial（同步）async（异步）all（同步和异步），推荐 all
       minSize: 30000, // 模块最小尺寸，30K
@@ -63,12 +62,12 @@ const webpackConfig = merge(baseWebpackConfig, {
           priority: 0,
           filename: utils.assetsPath('js/vendor/vue-base.[chunkhash].js')
         },
-        'core-js-base': {
+        /* 'core-js-base': {
           name: 'core-js-base',
           test: /[\\/]node_modules[\\/]_core-js@2.6.11@core-js|_core-js@3.6.5@core-js[\\/]/,
           priority: -10,
           filename: utils.assetsPath('js/vendor/core-js-base.[chunkhash].js')
-        },
+        }, */
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           priority: -10
@@ -128,12 +127,19 @@ const webpackConfig = merge(baseWebpackConfig, {
     ])
   ]
 });
-
+// 查看 webpack 打包情况
 if (fastConfig.isBundleAnalyzer) {
   webpackConfig.plugins.push(
-    // 查看 webpack 打包情况
     new BundleAnalyzerPlugin()
   );
 }
-
+// ie 环境下 动态import 分割的 babel 模块统一到名叫 core-js-base 文件
+if (fastConfig.ieDynamicImport) {
+  webpackConfig.optimization.splitChunks.cacheGroups['core-js-base'] = {
+    name: 'core-js-base',
+    test: /[\\/]node_modules[\\/]_core-js@2.6.11@core-js|_core-js@3.6.5@core-js[\\/]/,
+    priority: -10,
+    filename: utils.assetsPath('js/vendor/core-js-base.[chunkhash].js')
+  }
+}
 module.exports = webpackConfig;

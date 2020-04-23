@@ -15,5 +15,33 @@ module.exports = {
     axios: 'https://cdn.bootcss.com/axios/0.18.0/axios.min.js'
   },
   // 增加 splitChunks 代码分割规则
-  splitChunksCacheGroups: {}
+  splitChunksCacheGroups: {},
+  // 全局提供帮助类库和工具函数（暴露全局变量）
+  providePlugin: {
+    _assign: ['lodash', 'assign'],
+    _join: ['lodash', 'join'],
+    _pick: ['lodash', 'pick'],
+    _isPlainObject: ['lodash', 'isPlainObject'],
+    _isNil: ['lodash', 'isNil'],
+    _has: ['lodash', 'has'],
+    _replace: ['lodash', 'replace'],
+    _isString: ['lodash', 'isString'],
+    _get: ['lodash', 'get'],
+    _eq: ['lodash', 'eq'],
+    _set: ['lodash', 'set'],
+    _keys: ['lodash', 'keys'],
+    _isObject: ['lodash', 'isObject'],
+    _cloneDeep: ['lodash', 'cloneDeep'],
+    _includes: ['lodash', 'includes'],
+    _concat: ['lodash', 'concat'],
+    _isEmpty: ['lodash', 'isEmpty'],
+    _isUndefined: ['lodash', 'isUndefined'],
+    _isFunction: ['lodash', 'isFunction'],
+    _toUpper: ['lodash', 'toUpper'],
+    _isArray: ['lodash', 'isArray'],
+    _find: ['lodash', 'find'],
+    _every: ['lodash', 'every'],
+    _map: ['lodash', 'map'],
+    _forEach: ['lodash', 'forEach']
+  }
 }

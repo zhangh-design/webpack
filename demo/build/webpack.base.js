@@ -196,6 +196,8 @@ module.exports = {
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     // 查阅文档发现 v15 版的 vue-loader 配置需要加个 VueLoaderPlugin
     // 并且不设置 VueLoaderPlugin 的话打包会报错提示需要设置 VueLoaderPlugin 对象
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    // 全局提供帮助类库和工具函数（暴露全局变量）
+    new webpack.ProvidePlugin(fastConfig.providePlugin)
   ]
 };
