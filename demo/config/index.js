@@ -8,7 +8,8 @@ module.exports = {
   dev: {
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/', // 外网发布打包chunk配置的cdn或者远程服务器地址，本地一般情况无需修改
+    assetsPublicPath: '/', // （js文件）外网发布打包chunk配置的cdn或者远程服务器地址，本地一般情况无需修改
+    urlLoaderPublicPath: '/', // （图片等资源文件）url-loader中单独配置cdn，做到js访问线上路径，静态资源使用cdn，两者互不影响
     // Webpack-dev-server （https://webpack.docschina.org/configuration/dev-server/）
     // 热更新需要 hot、hotOnly和 webpack.HotModuleReplacementPlugin 一起使用才有效
     clientLogLevel: 'warning', // 控制台(console)显示消息的级别（none、error、warning、info）
@@ -65,7 +66,8 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static', // 静态文件目录
-    // 外网发布打包chunk配置的cdn或者远程服务器地址
+    urlLoaderPublicPath: '/', // （图片等资源文件）url-loader中单独配置cdn，做到js访问线上路径，静态资源使用cdn，两者互不影响
+    // 外网发布打包chunk配置的cdn或者远程服务器地址（js文件）
     // 我们最终打包出的 chunk 可能会放到一台 cdn 服务器上，所以我们在 index.html（index.html和chunks文件不放在一起） 访问这些 chunk 时需要带上统一的远程地址（比如：http://cdn.com.cn/）
     // assetsPublicPath: 'http://cdn.com.cn/'
     assetsPublicPath: '/',

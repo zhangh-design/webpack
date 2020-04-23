@@ -165,9 +165,12 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10 * 1024, // 10k
+          limit: 1024, // 10k
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('img/[path][name]-[hash:8].[ext]')
+          name: utils.assetsPath('img/[path][name]-[hash:8].[ext]'),
+          publicPath: process.env.NODE_ENV === 'production'
+            ? config.build.urlLoaderPublicPath
+            : config.dev.urlLoaderPublicPath // http://www.baidu.com/
         }
       },
       {
@@ -175,7 +178,10 @@ module.exports = {
         loader: 'file-loader',
         options: {
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('media/[path][name]-[hash:8].[ext]')
+          name: utils.assetsPath('media/[path][name]-[hash:8].[ext]'),
+          publicPath: process.env.NODE_ENV === 'production'
+            ? config.build.urlLoaderPublicPath
+            : config.dev.urlLoaderPublicPath // http://www.baidu.com/
         }
       },
       {
@@ -183,7 +189,10 @@ module.exports = {
         loader: 'file-loader',
         options: {
           context: path.resolve(__dirname, '../src'),
-          name: utils.assetsPath('fonts/[path][name]-[hash:8].[ext]')
+          name: utils.assetsPath('fonts/[path][name]-[hash:8].[ext]'),
+          publicPath: process.env.NODE_ENV === 'production'
+            ? config.build.urlLoaderPublicPath
+            : config.dev.urlLoaderPublicPath // http://www.baidu.com/
         }
       },
       {
@@ -202,8 +211,8 @@ module.exports = {
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     // 查阅文档发现 v15 版的 vue-loader 配置需要加个 VueLoaderPlugin
     // 并且不设置 VueLoaderPlugin 的话打包会报错提示需要设置 VueLoaderPlugin 对象
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin()
     // 全局提供帮助类库和工具函数（暴露全局变量）
-    new webpack.ProvidePlugin(fastConfig.providePlugin)
+    // new webpack.ProvidePlugin(fastConfig.providePlugin)
   ]
 };

@@ -52,7 +52,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       filename: config.dev.index,
       template: config.dev.template,
       favicon: config.dev.favicon,
-      hash: fastConfig.isHtmlHash, // 清除缓存
+      hash: fastConfig.isAppHash, // 清除缓存
       inject: true // 默认 true，将脚本注入到body元素的底部
     }),
     // new webpack.NoEmitOnErrorsPlugin() // （optimization.noEmitOnErrors: true）在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段，这样可以确保输出资源不会包含错误。
