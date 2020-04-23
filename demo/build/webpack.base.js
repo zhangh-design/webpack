@@ -37,7 +37,7 @@ module.exports = {
     hashDigestLength: 8 // 生成 bundle 文件 hash 取8位（对 url-loader和file-loader 的 hash 无效）
   },
   resolve: {
-    // 自动解析确定的扩展（逻辑性文件，资源文件还是建议显示引入）
+    // 自动解析确定的扩展（逻辑性文件，资源文件还是建议显示引入）配置太多对性能有损耗
     // 要确保同一个目录下面没有重名的文件，如果存在的话，还是要写全路径
     extensions: ['.js', '.json', '.vue', '.jsx'],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
@@ -55,6 +55,8 @@ module.exports = {
     // 告诉 webpack 解析第三方模块时应该搜索的目录，默认 node_modules
     // modules: [path.resolve(__dirname, '../node_modules')], ie 11 下因为这个报错
     modules: ['node_modules'],
+    // 解析目录时要使用的文件名（这个配置项不常用，因为也是对性能有损耗）
+    // mainFiles: ['index', 'test'],
     // 对应第三方包 package.json 中的 main 属性字段，意思是通过 main 属性指定的文件来导入模块
     mainFields: ['main', 'module']
   },
