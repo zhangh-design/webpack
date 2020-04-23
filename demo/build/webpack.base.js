@@ -37,9 +37,9 @@ module.exports = {
     hashDigestLength: 8 // 生成 bundle 文件 hash 取8位（对 url-loader和file-loader 的 hash 无效）
   },
   resolve: {
-    // 自动解析确定的扩展
-    // 要确保同一个目录下面没有重名的 css 或者 js 文件，如果存在的话，还是要写全路径
-    extensions: ['.js', '.json', '.vue', '.css'],
+    // 自动解析确定的扩展（逻辑性文件，资源文件还是建议显示引入）
+    // 要确保同一个目录下面没有重名的文件，如果存在的话，还是要写全路径
+    extensions: ['.js', '.json', '.vue', '.jsx'],
     // 创建 import 或 require 的别名，来确保模块引入变得更简单
     alias: {
       // 设置 vue 的别名为精确匹配，文件中就可以这样使用 import Vue from 'vue'（from 后面的 'vue' 就代表这里的配置）
