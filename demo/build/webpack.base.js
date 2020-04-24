@@ -68,6 +68,7 @@ module.exports = {
       {
         test: /\.jsx?$/, // x? 表示同时使用 babel-loader 解析 js 和 jsx 文件
         exclude: /node_modules/,
+        include: path.resolve(__dirname, '../src'),
         loader: 'babel-loader'
       },
       {
