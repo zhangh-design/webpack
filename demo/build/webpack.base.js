@@ -211,6 +211,5 @@ module.exports = {
     new VueLoaderPlugin(),
     // 全局提供帮助类库和工具函数（暴露全局变量）
     new webpack.ProvidePlugin(fastConfig.providePlugin)
-
   ]
 };
