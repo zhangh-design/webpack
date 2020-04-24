@@ -13,6 +13,7 @@ const baseWebpackConfig = require('./webpack.base.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -135,6 +136,25 @@ if (fastConfig.ieDynamicImport) {
     test: /[\\/]node_modules[\\/]_core-js@2.6.11@core-js|_core-js@3.6.5@core-js[\\/]/,
     priority: -10,
     filename: utils.assetsPath('js/vendor/core-js-base.[chunkhash].js')
+  }
+}
+// 组装 html-webpack-externals-plugin
+if (fastConfig.cdnJsArray.length > 0) {
+  const cdnModulelist = []
+  const externals = {}
+  for (const elem of fastConfig.cdnJsArray.values()) {
+    cdnModulelist.push(elem)
+    if (Reflect.has(elem, 'alias')) {
+      externals[elem.alias] = elem.global
+      Reflect.deleteProperty(elem, 'alias')
+    }
+  }
+  if (cdnModulelist.length > 0) {
+    webpackConfig.plugins.splice(webpackConfig.plugins.length - 1, 0, new HtmlWebpackExternalsPlugin({
+      externals: cdnModulelist
+    }));
+    // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入，建议需要和 fast.config.js 中的 cdnJsArray 一起使用
+    webpackConfig.externals = externals
   }
 }
 module.exports = webpackConfig;

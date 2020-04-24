@@ -61,12 +61,7 @@ module.exports = {
     mainFields: ['main', 'module']
   },
   // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入
-  externals: fastConfig.externals || {
-    // lodash: '_',
-    jquery: 'jQuery',
-    echarts: 'echarts',
-    axios: 'axios'
-  },
+  // externals: fastConfig.externals,
   module: {
     // noParse: '/jquery|lodash/', // 构建时不去解析三方库
     rules: [
@@ -213,8 +208,9 @@ module.exports = {
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     // 查阅文档发现 v15 版的 vue-loader 配置需要加个 VueLoaderPlugin
     // 并且不设置 VueLoaderPlugin 的话打包会报错提示需要设置 VueLoaderPlugin 对象
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
     // 全局提供帮助类库和工具函数（暴露全局变量）
-    // new webpack.ProvidePlugin(fastConfig.providePlugin)
+    new webpack.ProvidePlugin(fastConfig.providePlugin)
+
   ]
 };

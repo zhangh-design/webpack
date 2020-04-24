@@ -7,6 +7,7 @@ const baseWebpackConfig = require('./webpack.base.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 
 // 在 scripts 指令指定
 // cross-env NODE_ENV=deveopment PORT=9099 webpack-dev-server --progress --config ./build/webpack.dev.js
@@ -58,6 +59,20 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       hash: fastConfig.isAppHash, // 清除缓存
       inject: true // 默认 true，将脚本注入到body元素的底部
     }),
+    /* new HtmlWebpackExternalsPlugin({
+      externals: [
+        {
+          module: 'jquery',
+          entry: 'https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js',
+          global: 'jQuery'
+        },
+        {
+          module: 'axios',
+          entry: 'https://cdn.bootcss.com/axios/0.18.0/axios.min.js',
+          global: 'axios'
+        }
+      ]
+    }), */
     // new webpack.NoEmitOnErrorsPlugin() // （optimization.noEmitOnErrors: true）在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段，这样可以确保输出资源不会包含错误。
     // new webpack.NamedModulesPlugin() // webpack 4 之后在开发模式下默认开启 optimization.namedModules: true
     // 拷贝静态资源到当前的工作目录（output.path），contentBase设置为 false 会使用当前工作目录
@@ -74,11 +89,32 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   }
 })
 // 编译通知，需要把 devServer 中的 quite设置为 true 把编译通知权转交给 friendly-errors-webpack-plugin
-devWebpackConfig.plugins.push(
-  new FriendlyErrorsPlugin({
-    compilationSuccessInfo: {
-      messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${devWebpackConfig.devServer.port}`]
+if (fastConfig.isDevFriendlyErrors) {
+  devWebpackConfig.plugins.push(
+    new FriendlyErrorsPlugin({
+      compilationSuccessInfo: {
+        messages: [`Your application is running here: http://${devWebpackConfig.devServer.host}:${devWebpackConfig.devServer.port}`]
+      }
+    })
+  )
+}
+// 组装 html-webpack-externals-plugin
+if (fastConfig.cdnJsArray.length > 0) {
+  const cdnModulelist = []
+  const externals = {}
+  for (const elem of fastConfig.cdnJsArray.values()) {
+    cdnModulelist.push(elem)
+    if (Reflect.has(elem, 'alias')) {
+      externals[elem.alias] = elem.global
+      Reflect.deleteProperty(elem, 'alias')
     }
-  })
-)
+  }
+  if (cdnModulelist.length > 0) {
+    devWebpackConfig.plugins.splice(devWebpackConfig.plugins.length - 1, 0, new HtmlWebpackExternalsPlugin({
+      externals: cdnModulelist
+    }));
+    // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入，建议需要和 fast.config.js 中的 cdnJsArray 一起使用
+    devWebpackConfig.externals = externals
+  }
+}
 module.exports = devWebpackConfig
