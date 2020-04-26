@@ -104,17 +104,21 @@ const webpackConfig = merge(baseWebpackConfig, {
         test: /\.css$/,
         use: [
           {
+            // webpack 4 的版本 生产环境 不在需要使用 'vue-style-loader'
+            // [webpack 3 版本的配置请看下面链接](https://vue-loader.vuejs.org/zh/guide/extract-css.html#webpack-4)
             loader: MiniCssExtractPlugin.loader,
             options: {
               esModule: true
             }
           },
           {
-            loader: 'css-loader',
-            options: {
+            loader: 'css-loader'
+            /* options: {
               importLoaders: 1,
-              modules: false // 先不使用 modules: true
-            }
+              modules: {
+                localIdentName: config.build.localIdentName
+              }
+            } */
           },
           'postcss-loader'
         ]

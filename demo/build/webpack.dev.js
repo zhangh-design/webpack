@@ -45,25 +45,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       {
         test: /\.css$/,
         use: [
-          {
+          'vue-style-loader', // https://vue-loader.vuejs.org/zh/guide/extract-css.html#webpack-4
+          /* {
             loader: 'style-loader', // 把 css 样式内容内联到 style 标签内
             options: {
               // 是否合并 style 标签，处理为单个style标签
               injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
             }
-          },
+          }, */
           // 'css-loader', // 处理 .css 文件
           {
-            loader: 'css-loader',
-            options: {
+            loader: 'css-loader'
+            // import 导入的 css 模块不适用 cssModule 功能（.vue 模块中开启了 cssModule）
+            /* options: {
               // importLoaders，这个参数用于配置 css-loader 作用于 @import 的资源之前有多少个 loader
               // 也可以通过增加 postcss-loader 的插件 postcss-import 来达到同样效果
               importLoaders: 1, // 0 => 默认，没有 loader;1 => postcss-loader;
-              modules: false
-              /* modules: {
+              modules: {
                 localIdentName: config.dev.localIdentName
-              } */ // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
-            }
+              } // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
+            } */
           },
           'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
         ]
@@ -75,21 +76,22 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       {
         test: /\.(sa|sc)ss$/,
         use: [
-          {
-            loader: 'style-loader',
+          'vue-style-loader',
+          /* {
+            loader: 'style-loader', // 把 css 样式内容内联到 style 标签内
             options: {
+              // 是否合并 style 标签，处理为单个style标签
               injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
             }
-          },
+          }, */
           {
-            loader: 'css-loader',
-            options: {
+            loader: 'css-loader'
+            /* options: {
               importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, sass-loader
-              modules: false
-              /* modules: {
+              modules: {
                 localIdentName: config.dev.localIdentName
-              } */
-            }
+              }
+            } */
           },
           'postcss-loader', // 新版 postcss-loader 要放在 sass-loader 之前
           'sass-loader'
@@ -98,21 +100,22 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       {
         test: /\.less$/,
         use: [
-          {
-            loader: 'style-loader',
+          'vue-style-loader',
+          /* {
+            loader: 'style-loader', // 把 css 样式内容内联到 style 标签内
             options: {
+              // 是否合并 style 标签，处理为单个style标签
               injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
             }
-          },
+          }, */
           {
-            loader: 'css-loader',
-            options: {
+            loader: 'css-loader'
+            /* options: {
               importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, less-loader
-              modules: false
-              /* modules: {
+              modules: {
                 localIdentName: config.dev.localIdentName
-              } */
-            }
+              }
+            } */
           },
           'postcss-loader', // 新版 postcss-loader 要放在 less-loader 之前
           'less-loader'

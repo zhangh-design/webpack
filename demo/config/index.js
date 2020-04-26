@@ -60,7 +60,7 @@ module.exports = {
     /**
      * css-loader
      */
-    localIdentName: '[local]'
+    localIdentName: '[path]-[name]--[hash:base64:5]'
   },
   build: {
     // Paths
@@ -87,6 +87,6 @@ module.exports = {
     /**
      * css-loader
      */
-    localIdentName: '[local]' // '[path][name]__[local]--[hash:base64:5]'
+    localIdentName: '[name]--[hash:base64:5]'
   }
 };

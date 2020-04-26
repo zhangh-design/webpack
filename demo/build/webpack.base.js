@@ -5,7 +5,7 @@ const utils = require('../build/utils.js');
 const path = require('path');
 const webpack = require('webpack');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const vueLoaderConfig = require('./vue-loader.conf.js');
+const createVueLoaderConfig = require('./vue-loader.conf.js');
 
 function resolve (dir) {
   return path.join(__dirname, '..', dir);
@@ -13,7 +13,9 @@ function resolve (dir) {
 
 const ieDynamicImportModule = function () {
   return fastConfig.ieDynamicImport ? utils.getIEDynamicImportModule() : {};
-};
+}
+
+const isDev = process.env.NODE_ENV === 'development'; // 开发环境
 
 module.exports = {
   // 默认将 entry 的入口起点指向根目录
@@ -75,7 +77,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        options: vueLoaderConfig
+        options: createVueLoaderConfig(isDev)
       },
       {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
@@ -137,6 +139,7 @@ module.exports = {
     new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /zh-cn/),
     // 查阅文档发现 v15 版的 vue-loader 配置需要加个 VueLoaderPlugin
     // 并且不设置 VueLoaderPlugin 的话打包会报错提示需要设置 VueLoaderPlugin 对象
+    // https://vue-loader.vuejs.org/zh/guide/#%E6%89%8B%E5%8A%A8%E8%AE%BE%E7%BD%AE
     new VueLoaderPlugin(),
     // 全局提供帮助类库和工具函数（暴露全局变量）
     new webpack.ProvidePlugin(fastConfig.providePlugin)
