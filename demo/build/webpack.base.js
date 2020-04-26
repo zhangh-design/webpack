@@ -79,11 +79,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          // 'style-loader', // 把 css 样式内容内联到 style 标签内
           {
-            loader: 'style-loader',
+            loader: 'style-loader', // 把 css 样式内容内联到 style 标签内
             options: {
-              singleton: true // 处理为单个style标签
+              injectType: 'singletonStyleTag'
             }
           },
           // 'css-loader', // 处理 .css 文件
@@ -109,7 +108,12 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          'style-loader',
+          {
+            loader: 'style-loader',
+            options: {
+              injectType: 'singletonStyleTag' // 处理为单个style标签
+            }
+          },
           // 'css-loader',
           {
             loader: 'css-loader',
@@ -132,7 +136,12 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          'style-loader',
+          {
+            loader: 'style-loader',
+            options: {
+              injectType: 'singletonStyleTag' // 处理为单个style标签
+            }
+          },
           // 'css-loader',
           {
             loader: 'css-loader',
