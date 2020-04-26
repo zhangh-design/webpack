@@ -22,5 +22,5 @@ module.exports = {
 
 我在 url-loader 里面加了一个 publicPath 的参数，这样我打包出来的图片资源文件（不包括 小于 limit 而被转换成 base64 内联到页面的资源）地址上就会自动带上 publicPath 的地址，这样我们就很方便的能去访问远程的图片资源了，更加不用手动的去修改图片地址。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*Uscw6rQNg3iW9*3IOz1a9CLf5La2dzAWq7poM5QlydnECfY3wlaHZGAZOuWQjPp.g!!/b&bo=IwJkAAAAAAARB3U!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/23d1e37c6f4a9c2f.jpg)
 

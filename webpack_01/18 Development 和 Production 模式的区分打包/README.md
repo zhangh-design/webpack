@@ -109,7 +109,7 @@ Entrypoint main = main.js
 
 好，它会告诉我们，我们在这个`http://localhost:8080/`上启动了一个服务器，我们在浏览器上打开这个地址，然后点开浏览器的控制台大家可以看到输出展示的就是`3`：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa0hLKN0l2PINSSOBJcG0y.VNo21xKg2PQSZSyCq4Nl3Fqb6X97wFETR7ajcJij7Z.Y9yAutY1hMew554WhfYajk!/b&bo=EAFqAAAAAAARB0s!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/3d5985af274f3691.jpg)
 
 好为什么输出是`3`呢因为我的业务代码里写的就是`add(1, 2)`：
 
@@ -225,7 +225,7 @@ main.js
 
 假设这个`dist`目录我们要上线，我们呢现在其实很简单的模拟一下，直接啊在浏览器上运行这个打包生成的`index.html`文件，大家可以看到它直接在控制台输出了`3`，说明什么打包生成的这个文件确实是直接就可用的文件那你把它放到服务器上它当然可以正确的运行了。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa0hLKN0l2PINSSOBJcG0y.VNo21xKg2PQSZSyCq4Nl3Fqb6X97wFETR7ajcJij7Z.Y9yAutY1hMew554WhfYajk!/b&bo=EAFqAAAAAAARB0s!&rf=viewer_4&t=5)
+![image](./1.jpg)
 
 #### 总结
 

@@ -241,7 +241,7 @@ console.log( this );
 
 运行`npm run dev`后会自动在浏览器上打开`index.html`，我们打开控制台大家可以看到`this`指向的是一个对象，这个对象里面呢会有一些方法：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*TrkT3UpBWVlMPQ2QB3H5ic7MT8pz5Het0gz*Q*26vVDzaE6nsc532nauJuvX4DUYw!!/b&bo=0gEWAQAAAAARB*Q!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/25160019bdba1a59.jpg)
 
 实际上这个this指向的是这个模块它自身，但是有的时候我希望在写代码的时候这个`this`指向的是`window`，那我们来看看它到底等不等于`window`：
 

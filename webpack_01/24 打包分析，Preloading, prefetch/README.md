@@ -144,11 +144,11 @@ http://webpack.github.com/analyse
 
 好翻墙之后呢我们可以打开这个网站，点击`JSON file`把我们刚才生成的这个`stats.json`传上去：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*dO*qp8l3wTjRPgrJaY6H9i6.o4QIkL9noCcL0MgdI6PncAcY6p.cd5eLVkH9ZTTJA!!/b&bo=cwIIAQAAAAARB0g!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/76d1a2af94e20e16.jpg)
 
 上传上去之后大家可以看到它呢会帮助我们进行我们打包的内容的分析：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*e6d*2*2CMGGHxFpvx1Mw45kW2rzAfX3vRdSFYH4RrdM1CDLueZsb*gYLlhAHQetbA!!/b&bo=bAIPAQAAAAARB1A!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/afc7ae0f2831f54b.jpg)
 
 它会告诉我们整个打包使用的是`Webpack 4.25.1`的这个版本进行的打包，耗时呢
 `16.94`秒，这次打包过程对于的`hash`值是这个值，里面有四个`modules`模块，两个`chunks`也就是两个文件，三个静态文件也就是打包生成的静态文件有三个，`no warnings/errors`打包过程没有警告也没有异常。
@@ -162,13 +162,13 @@ http://webpack.github.com/analyse
 
 -`webpack-chart`这样的工具，我们点击看一下这是通过一个图标的形式帮助我们进行`Webpack`打包代码的分析：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*QZGJCDgOqpMD1agIwakL1S4UphzdFVtIMqnH7VQFF4VrhQxmRYDvC7KZtlkk2DyUQ!!/b&bo=9AHwAAAAAAARBzU!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/b0d549bd33a4a8e4.jpg)
 
 -`webpack-visualizer`包括`webpack-bundle-analyzer`这些东西都是通过可视化的一些工具帮助我们分析`Webpack`打包过程的一些工具。
 
 那看一下我用的比较多的是`webpack-bundle-analyzer`这个东西，那它呢是一个
 插件需要我们安装，所以这里呢我就不再演示了，大家呢如果感兴趣你可以打开它的[->官方网站](https://github.com/webpack-contrib/webpack-bundle-analyzer)然后呢照着它下面的说明进行一些安装然后呢它会在打包的过程中会生成这样的图标：
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*TPSdtjYnNmlxdpbC.Qb1dxNjCxrDCsKQ5XKV3qQ4apZGNnkObhbP5F8bolJbBFzGw!!/b&bo=9AErAQAAAAARB.8!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/865342846d499d16.jpg)
 
 告诉你打包文件里面的一些依赖关系，这个图它表示的内容是比较全的所以我一般比较喜欢使用它。
 
@@ -265,18 +265,18 @@ dist
 
 首先在这里我们点开控制台，然后在控制台里面我们输入`Ctrl+Shift+p`这个命令，好在这里面我们去输入`cove`这个关键词：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*UV6ml9RUFwcvDGcvm*zmbZ.aYf6vsi8PdAMr5889iPfQkYa0SEWGtgePZ*F8t5mQA!!/b&bo=LALAAAAAAAARB94!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/f2274298e6b1eac3.jpg)
 
 我们可以看到有一个功能叫做`Show Coverage`点击一下，点击完了之后：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*YCvVYiGitw5Hc0L2ia2lGbuh9SIYJhym7x82wbQ7C28x*FRqwD3ehan4rxZsbPi*Q!!/b&bo=KgI3AQAAAAARBy4!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/4db17d735421f3e8.jpg)
 
 在`Coverage`中间会出现一个刷新的按钮（比较旧的Chrome的`Coverage`可能是在`Coverage`面板的左上角有一个录制的按钮）我们点一下按钮变红之后我们刷新页面：
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*R7*n.qpXP5zbGEFTqydeTlx8biVawGbjBTeLhQnYsi*7zWy9xZXkuI1w7CN9HCZ3Q!!/b&bo=xAI*AQAAAAARB8g!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/f9eedbffe3060632.jpg)
 
 这个时候大家看啊，它会告诉我们这个页面加载了一个`js`文件叫`main.js`，`main.js`它的利用率只有百分之`43.2%`，那为什么`main.js`它的利用率只有`43.2%`呢，我们来看一下，我们打开`main.js`（在`Coverage`面板上的`main.js`双击）之后呢左侧它会告诉我们哪些代码是`main.js`里面在这个页面上被用到的部分哪些是`main.js`在这个页面上没有用到的部分，我们往下去翻大家可以看到：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*YCOvSb0F5.KOn7BVGLhjszRNjZP0XOgKhNVBNB*ufvcOjEnhTja3v6RIWdGTGzvkA!!/b&bo=wwIGAgAAAAARB*U!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/e14092252cbcd5d9.jpg)
 
 ```
 , function(t, n) {
@@ -292,7 +292,7 @@ dist
 
 我们呢往`dom`上挂载了一个`click`事件，但是`click`事件里面的代码现在有没有任何的用处啊，完全没有用到因为你这个页面加载的时候，你只有点击了这个页面的时候，大家看啊点击完了之后这段代码它变绿了：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*b3*j7FEhfF5DgJLtEtrrFUbj6P.sZkZjfpOw8MUC48TbjGJl*nmGa*ha8WibDLphg!!/b&bo=5QEuAQAAAAARB*s!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/e14092252cbcd5d9.jpg)
 
 
 也就是说你点击之后这里面的这段代码才有执行的意义，而一开始刚加载的时候你这里面的代码压根就不会执行，不会执行的代码你让页面一加载的时候就下载下来实际上就会浪费页面执行的性能。
@@ -371,12 +371,12 @@ dist
 
 没有任何问题打包成功了，这个时候我们在去浏览器上运行我们的`index.html`，点开浏览器的控制台我们在去找到`Coverage`面板（输入Ctrl+Shift+p这个命令，好在这里面我们去输入cove这个关键词），录制下屏幕，大家可以看到这个时候之前我们的代码利用率只有`43.2%`，现在我们的代码利用率变成了`44.2%`：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*dZveZuPK6cnLsFeJ9BPzZSENcqWN2a4mO3QrL3yjk0cm2QQdz.pVX0RxHhvAulf.g!!/b&bo=OQKIAAAAAAARB4M!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/4f99dfe7e1578464.jpg)
 
 那为什么代码的利用率变高了呢？
 
 是因为大家还是在`Coverage`面板内双击`main.js`这个`URL`在打开的`main.js`源代码页面大家往下翻：
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*SKbw4l4B*lRmKYRtq378A*XWJRI4i1.bL.3SJsEAbcVZW9JDi3NDvM*QVQ63Ol6aA!!/b&bo=RAK2AQAAAAARB8E!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/3fcac03732908bd3.jpg)
 
 ```
 document.addEventListener("click", (function() {
@@ -392,7 +392,7 @@ document.addEventListener("click", (function() {
 
 什么时候去加载的呢？
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*be52q.ZW*huGuofzGqJHUh9trDnjoIBk*vfMONVt7j4Hxa1l5WaWMWbofCd5JWwgA!!/b&bo=fQIDAQAAAAARB00!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/75f5d1905d0c475d.jpg)
 
 1.js
 
@@ -410,7 +410,7 @@ document.addEventListener("click", (function() {
 
 我们呢可以去看看别的一个网站的代码使用率，比如说找到[->慕课网](https://www.imooc.com/)然后呢我们点击控制台输入`Ctrl+Shift+P`然后输入`cove`这个关键词我们选择`Show Coverage`打开`Coverage`面板，开始录制：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*dFJ8FDTJ1LIdJgweR3pTx8inaicGaEMvX0lsFawK.C6z.EqGQKfj.45Inkq5KzK0Q!!/b&bo=OgTVAQAAAAARB9o!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/aa79b942f86aeb71.jpg)
 
 大家可以看到慕课网的官网上它有很多这样的js文件，每个js文件的利用率呢在右侧的`Unused Bytes`中都可以看到，整体的js文件的利用率是`70%`其实做的已经不错了，但是你看到一共这个页面加载了`779KB`的js文件，但实际上在页面渲染的时候真正有用的js文件只有`238KB`，所以还有`541KB`的内容是可以优化掉的，如果能把这些代码变成异步加载的代码那么我们看到的网页的首屏的时间就会变的更短，网页访问的速度就会更快。
 
@@ -504,7 +504,7 @@ Entrypoint main = main.js main.js.map (prefetch: 1.js 1.js.map)
 因为你之前已经加载过一次`1.js`了所以你在你的本地已经有缓存了，你会发现你在加载`1.js`的时候就不是`7ms`而是变成了短短的`2ms`，因为它可以充分的利用
 你浏览器上的缓存。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*QBEvJ3vs05VPnJd.JPTcBFvdkXOgUN0XVlepVzdCXmA2cWZrR.XbtL90Z1VdfmPSg!!/b&bo=DQKKAAAAAAARB7U!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/5996a1de8f569151.jpg)
 
 所以`Preloading`或者说`Prefetching`它就是这样的一个功能，但是呢`Preloading`或者`Prefetching`它有一个区别，我们可以简单的来看一下文档上是怎么说的：
 

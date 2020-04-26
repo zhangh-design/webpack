@@ -226,7 +226,7 @@ C:\Users\nickname\Desktop\lesson_2>npm run bundle
 
 接着我们在浏览器上打开`dist`目录下的`index.html`来看一下，大家可以看到页面上有两张图片，并且这两个图片的样式都是一样的。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa2FaUT8*WuUG0vAc3MtoV3DvQ2EeVhy1gAYeEsLdhMQFuFNbcw0SdR1rQOrKtDC8iNx6RkSTP8vG3L1Y5IMLV5o!/b&bo=VQW2AgAAAAARB9Q!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/04f4b90066a0b86c.jpg)
 
 
 ```
@@ -306,7 +306,7 @@ C:\Users\nickname\Desktop\lesson_2>npm run bundle
 
 然后在浏览器上打开`dist`目录中的`index.html`，大家仔细来看啊有一个图片是不是它的样式已经变了呀，大家可以看到：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMay96U*XhNowLkjS*SS2E.f98coVGKNtLYcnxOkw6V3rRXHipmdS0lTZD7JMexHcCmukjLCUmrsXAl*XQffg*y6w!/b&bo=VgWPAgAAAAARB.4!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/81f23ec116d36b75.jpg)
 
 ```
 body ._17cnVz87yzSOO5TpFdnLsk {
@@ -353,7 +353,7 @@ export default createAvatar
 C:\Users\nickname\Desktop\lesson_2>npm run bundle
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMawpYNjOwr0zaiPBk8Dn6Lz40sGpft0J*pbSuMP8AWNwueAs0Jqr1maF5TT9QFELsfmlnrJd8CchCfk8ZsGU.dTQ!/b&bo=CgQBAgAAAAARBz0!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/14e9b05f02c47343.jpg)
 
 到页面上我们在看看`index.html`，大家可以看到这个时候两个js文件里的`img`标签又同时有了样式，这就是`css modules`的概念，那当我们配置了`css-loader`的`modules: true`的这个属性之后，那么我们在代码里面就可以写这种语法了：
 
@@ -531,7 +531,7 @@ Entrypoint main = bundle.js
 
 这个时候呢打包已经成功了，我们回到页面上来看一下啊，我们打开`dist`目录下的`index.html`文件，大家可以看到我们在页面上写的这个字体对应的字体内容是不是就展示出来了呀。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMayQSe4n3KnH98Oqk3F1zAsF8KHnZuAtovGx0LOhFAhMTzuCHJu8A8jPnS7zqGTy4dnmNIiqn3v7ZEqrPruQc4Z4!/b&bo=SQJ4AAAAAAARBwM!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/86da42bd847c7c3f.jpg)
 
 
 ---

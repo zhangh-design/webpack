@@ -152,7 +152,7 @@ Uncaught ReferenceError: consle is not defined                    index.js:2
 
 `consle`你拼错了，这个`consle`你没有定义，好，但是我呢想知道到底是哪一个地方出了错，我就会点击右侧的这个`index.js:2`提示看一下我的代码哪里写错了，点击大家可以看到：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMaxBso*EKVwXRcTJGoC*Pmo6iWMAMEWCzuEWpTf3TzJ.DIbosJhHZteeKLPZenVI.QrxWfAhKSReO0ZwNO60d4VU!/b&bo=KgJ3AQAAAAARB24!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/0a374f2867105c70.jpg)
 
 ```
 /***/ "./src/index.js":
@@ -218,7 +218,7 @@ index.js
 consle.log('hello world');
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa7NAe5rEsiU6V5L1J4ayO95lJt71yyX*K.lT9H0KV4PoVSxpsYnGk7kwsQp5cj.C7BofLhR7e7HUlBxyTOXqj4w!/b&bo=KgK4AAAAAAARB6A!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/5d45cb2fe707aa4d.jpg)
 
 
 这就是`SourceMap`它的一个意义，我们说我们想看代码错误，不是看打包过后代码哪里错了，而是源代码哪里错了，那么这个时候就会用到`SourceMap`。
@@ -348,7 +348,7 @@ dist
  |--main.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMayA3KULdlcIHIfJtSOd5dS1gD6rMQfhMqxLgSktgiS3eThRO8vqh77d1YFPwHFy7pWIlohQgBBykwbFDXJqUOug!/b&bo=eAGCAAAAAAARB8s!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/f964606a72814cd0.jpg)
 
 在打开`main.js`大家可以看啊，`dist`目录下没有任何的`.map`结尾的文件，同时呢底下也没有那个`base64`的内容了，但是大家可以看到有一个这样的代码在`main.js`里面：
 

@@ -50,7 +50,7 @@ package.json
 C:\Users\nickname\Desktop\lesson4>npm run dev-build
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*cTSPQEMu9XAMCFcij0j0D*IVxW91K8UXSoL9cFCo7mEi6LdT71Z69q3.E6xC1JAOA!!/b&bo=swBRAQAAAAARB9M!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/b48a31e93ac18b51.jpg)
 
 OK，我们来看一下啊打包正常了，然后我们看一下我们的项目大家会发现这个时候有一点问题，问题在哪呢？
 
@@ -141,7 +141,7 @@ Entrypoint main = main.js
 
 代码正确打包然后我们打开`dist`目录，在浏览器上去运行下`index.html`点开浏览器控制台输出了`a,b,c`。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*YLif.gqjZo4.jeRUtf7QdGrKZTk7ahLZtfPobtkmJSPhbo9bHqVIFLkPdCY2yduUg!!/b&bo=1wBsAAAAAAARB4s!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/59f3f4facddb552d.jpg)
 
 那接下来我们来看啊现在我们打包生成的`dist`目录下有一个`main.js`，也就是我们打包的过程中呢`lodash`这个工具库以及下面我们写的`_.join(['a','b','c'])`业务代码都被打包到了一个文件中。
 
@@ -264,7 +264,7 @@ Entrypoint main = main.js
 ```
 
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*ZP*zhYy3zlowtbxAA6gkJiTijQ0ypV7dcuwCOcLNLkA2iYaatsYgvCpNTGQc5pfyQ!!/b&bo=0QC9AAAAAAARB1w!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/79fef08320b794a9.jpg)
 
 好回来看`dist`目录，大家可以看到打包会生成两个文件：
 
@@ -294,7 +294,7 @@ Entrypoint main = main.js
 
 在浏览器上打开`dist`目录中的`index.html`
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*VLHV25Brr0ILJGw3WBCbGuWLWT82FjJCqPkr76BNzQSVvXSrQs39l2mLklovbG2Kg!!/b&bo=4wBzAAAAAAARB6A!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/9d761579938aea92.jpg)
 
 大家可以看到`a***d***c`和`a***c***c`对应我们`index.js`源码里面的内容是都能输出出来的，没有任何的问题这样的我们就换了一种打包方式，之前打包方式我们来看`main.js`一共有多大一共有`2MB`就意味着用户需要加载完`2MB`的东西才能展示页面，但是现在我们把一个`main.js`拆分成了两个js文件分别是`lodash.js`和`main.js`，那这种方式我们去想：
 

@@ -73,7 +73,7 @@ dist
 
 这样其实就是没有做代码分割。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*bo9T.MPYu5jTmQKrOueimoFZM0L3KPCnV73NT27juXb3406fU6wTgBnr0TYQ21QOg!!/b&bo=iABLAAAAAAARB*M!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/fd95932b101be3ac.jpg)
 
 ---
 
@@ -155,7 +155,7 @@ dist
  |-vendors~main.js // 说明是从 main.js 这个chunk中打包分离出来的，vendors是因为`lodash`这个库满足`cacheGroups.vendors`这个组的分割代码要求，所以前面的名字是`vendors`。
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*cMXqULzljr81rtd6R0R0efnx3x6xAZfP3vJJHdyQ4qMW1JXtDSf*yTSo4mqxV7mvg!!/b&bo=mQBcAAAAAAARB*U!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/06a5685dbe779946.jpg)
 
 设置`filename: "vendors.js"`的打包输出`dist`目录：
 
@@ -168,7 +168,7 @@ dist
  |-vendors.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*VAJhSTsnqPj7fofKrRmMCK.gYwCH0LfEQSOZ1tg8YVGlHf4QG0m1KIPKiZTIPpspA!!/b&bo=lwBaAAAAAAARB*0!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/8d672a6c15294ce9.jpg)
 
 总结：
 
@@ -276,7 +276,7 @@ dist
  |-vendors~main.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*U6oF3OzfMcwDv0H7HEW81Jz6FAHbp.8rlXRoF9KsDvpQJDYAYNCp0tgBpGdyw.3oQ!!/b&bo=swCDAAAAAAARBwA!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/16d4e3e3e4750794.jpg)
 
 `vendors~main.js`
 
@@ -422,7 +422,7 @@ dist
  |-main.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*RThXVVs4D23SYldNKXW93uA.vWTNJlQGTZsjt6OCxNeqDCBRi9KrnY2onvSriI8Tg!!/b&bo=dgBiAAAAAAARByQ!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/0fed0dee710801d3.jpg)
 
 `0.js`
 
@@ -570,7 +570,7 @@ dist
 |-vendors~main.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*eP5p0.fhop8v2lekJ13XYJlXozq0i.KDmMCqKuVaGYOzs5UJX98phHk8.MjlBq8Zw!!/b&bo=pABuAAAAAAARB*o!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/f2ad02010eebbe21.jpg)
 
 `0.js`
 
@@ -786,7 +786,7 @@ dist
  |-main.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*RmnBAA3JRsd5ggypt75NWrB4ikhADGek2RmhveGWGJHgLO1l*UrCu38IY2LtY738w!!/mnull&bo=hABdAAAAAAARB.k!&rf=photolist&t=5)
+![image](http://i2.tiimg.com/717460/c68aedfad1fbba01.jpg)
 
 `lodash.js`
 
@@ -889,7 +889,7 @@ vendors~lodash.js   1.35 MiB  vendors~lodash  [emitted]  vendors~lodash
 Entrypoint main = vendors~main.js main.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*STrjU9YRiYyrzjaX4wqik0IRJhJ4C59FkiIIAzoUsW2APFq8FCBPVSYx2iujA9XSQ!!/mnull&bo=pwB4AAAAAAARB.8!&rf=photolist&t=5)
+![image](http://i2.tiimg.com/717460/c4e9cb86cb9576ef.jpg)
 
 dist
 
@@ -927,7 +927,7 @@ dist
  |-lodash.js
 ```
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*cb*NYFEVkzFYMYvLphKsLSaVzcBRFdTWU205pOkzrXDGjqZR6QwwqcCn56fPUhyWw!!/b&bo=uwByAAAAAAARB*k!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/72f89f47ce2c45f1.jpg)
 
 vendors~lodash.js的代码分割名字是叫lodash.js了。
 

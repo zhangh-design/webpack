@@ -27,7 +27,7 @@ module.exports = {
 
 我们看下设置 hash: true 之后 index.html 运行的截图
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa6k3y0MHUaOflbm2oZ8D8rDur9rKrlUnGzgGkUK6bm5c1pJk5yGcLXkRn00EeKYvOsdQmK*NEK0dcaOiNfBHMVg!/b&bo=BwI0AQAAAAARFxA!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/17c7dfa38dc55280.jpg)
 
 设置 hash: true 之后每一个打包出的 chunk 后面都跟上了一个随机数，那这个随机数就是由 html-webpack-plugin 加上去的，而且在我们每次修改代码也就是文件内容发生改变之后再构建的话这个随机数就会发生变化，这样用户上一次再本地缓存的文件资源也就都会失效了。
 

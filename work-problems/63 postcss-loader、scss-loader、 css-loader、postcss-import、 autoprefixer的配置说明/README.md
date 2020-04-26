@@ -196,6 +196,6 @@ module.exports = {
 
 效果截图：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/j5BRZUlgKbUG5yYXn162*Xy7Ru6R48DmsFt*D2390FbqQiYOTbNo56430UoP8c3*0fDQD2QSqKpBxoCYhHsD3Q!!/b&bo=ZgH9AQAAAAARB6s!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/68f1222e4fe13bc0.jpg)
 
 

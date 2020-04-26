@@ -345,7 +345,7 @@ OK那把项目整理成这个样子大家来看，那如果你之前写过`Vue`�
 
 我们现在可以这样做把`index.html`放到`dist`目录里，然后我直接在浏览器上打开`dist`目录里的`index.html`，它会输出:
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa.44ximLVFwxbH1M16EvRMPV52tITb26VIo5NfkodDQ1A8gY1IB.AYs9TDjNbdnXJTwmOBu0S8C2W6YY2Qhuhrc!/b&bo=ZgKfAAAAAAARB8s!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/9ecd9c326571ac10.jpg)
 
 
 大家可以看到`js`文件可以正常的执行，`header`、`sidebar`、`content`依次输出，那项目的这个目录结构和之前我们写`Vue`或者`React`的目录结构极其相似同时呢它又是用`webpack`做的打包。

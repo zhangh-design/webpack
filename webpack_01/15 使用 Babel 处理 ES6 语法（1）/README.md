@@ -97,7 +97,7 @@ F:\github-vue\workspaces\lesson>npm run start
 
 我们起一下我们的服务器，在浏览器的控制台里面我们来看啊：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa8dECI*u5GVzvskXYOnrjrgUPdN5GXk*JTeAB6mCU*2w3Pl*HkIWOUW2CiOL0bVvGl3PyJfleOi.pvppXDpGrdU!/b&bo=KwIOAQAAAAARBxY!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/8ba7d92d43eddd1e.jpg)
 
 它可以打印出这个`Promise`对象好像是没什么问题的，这又是什么原因呢？这是因为`Chrome`浏览器它呢非常与时俱进我们`ES6`规范里的很多东西它都做了实现，所以我们在里面直接写`ES6`的代码`Chrome`浏览器都能够正常的运行，但假如我们在`IE`浏览器里面去打开`http://localhost:8080/`这个地址，尤其是低版本的一些`IE`浏览器（包括：国产的一些浏览器）你会发现执行就会报错了，为什么呢？
 
@@ -115,7 +115,7 @@ F:\github-vue\workspaces\lesson>npm run start
 
 我们打开官方网站最顶部的[->设置](https://www.babeljs.cn/setup)选项：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa3wU*7xidTVgHLx*81nmfOMdT9r5vTUOMUEdIxtHFFLi6h2g5tsyNgEJPMd6iHf1QbUJ1ZsBQHn0Nmn*oFX9En0!/b&bo=NAQ.AQAAAAARBz8!&rf=viewer_4&t=5)
+![image](http://i1.fuimg.com/717460/d635cbd94ea5f443.jpg)
 
 第一步我们要选中我们使用`Babel`的场景`Choose your tool (try CLI)`，在里面看有一个`Webpack`，意思就是我要在`Webpack`里面使用`Babel`，那我点击一下`Webpack`这个选项。
 

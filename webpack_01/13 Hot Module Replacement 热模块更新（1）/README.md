@@ -71,7 +71,7 @@ btn.onclick = function(){
 
 这段代码它实现了一个什么功能呢，我们到页面上来看：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa6rqRHXfCy0XSaj2rJzpsRqSPQlDAZxceUDnMZKeF5IPnoyGcXDEQMlCJzEskG1AliRV2JhwSzRnfMmRl422UMo!/b&bo=MQGqAAAAAAARB6o!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/0e8f5a5e6b168a71.jpg)
 
 有一个叫`新增`的按钮，点击一次就会增加一个`item`，就是这样一个简单的功能
 。
@@ -106,7 +106,7 @@ div:nth-of-type(odd){
 
 我们在浏览器页面上查看下效果，偶数的`item`它的背景色都是黄色：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa8hN1vGidKJpIVxln8V3gJALphtIQ6MWN9bH0GhK2PM10BZQ3hl.s2BF1siDWFCpcdl8ljpEFji2vZ*QzCggmCo!/b&bo=JwHqAAAAAAARB*w!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/0d42693bad9549f8.jpg)
 
 现在呢我把`style.css`样式文件修改下，我改成`blue`蓝色，保存然后`webpack-dev-server`的服务器会自动帮我们进行打包。
 
@@ -120,7 +120,7 @@ div:nth-of-type(odd){
 大家看啊这个时候`webpack-dev-server`会干一件事情，它发现你代码改变了之后
 呢就会重新帮你打包，重新帮你刷新浏览器，那重新刷新浏览器就会导致我页面上这些`item`项都没有了，我把样式修改为蓝色之后我想在测试就需要重新点击这个`新增`按钮，在来看确实现在蓝色了：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa6Tv.35JaurJiFKq7trf1KJ*oGD7E7znsGranYfxvU.aypJVUjJ8eAHOYqapwK.vVHgVNHCLiVx1J089bC2QygU!/b&bo=IQHMAAAAAAARB9w!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/d5e52f971b08a77a.jpg)
 
 然后这个时候我又改了，改成了`purple`紫色。
 
@@ -204,7 +204,7 @@ C:\Users\nickname\Desktop\lesson_3>npm run start
 
 好我们现在在页面上点击`新增`，现在的`item`的背景色是蓝色的：
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMa6Tv.35JaurJiFKq7trf1KJ*oGD7E7znsGranYfxvU.aypJVUjJ8eAHOYqapwK.vVHgVNHCLiVx1J089bC2QygU!/b&bo=IQHMAAAAAAARB9w!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/d5e52f971b08a77a.jpg)
 
 当然现在我们已经开启了`HMR`这样的功能，然后我在把`style.css`改成`yellow`：
 
@@ -219,7 +219,7 @@ div:nth-of-type(odd){
 
 保存，我们再到页面上看一下，大家可以看到`css`文件做了修改，但是它呢不会去影响之前我们`js`对页面上变更，也就是什么，之前我操作创建的这些`item`它依然存在你改了css文件那么我只会去替换页面的`css`内容，我不会改你之前`js`渲染出的内容，这样的话我再做样式调试的时候就方便多了。
 
-![image](http://m.qpic.cn/psc?/V12UXEll2JjLTU/S1G4*2hi*D5aPIJug2nMaxDD1yRZonNaMeLL06UJfQkbbo9IVJ1TMjGbsZGSDCFYMLNtNMlERe72po7KooYFZ*D00hlq021xnYnuuS4JVfw!/b&bo=.ADNAAAAAAARBwU!&rf=viewer_4&t=5)
+![image](http://i2.tiimg.com/717460/24ab62522851d272.jpg)
 
 
 这样的话大家知道当我们使用`HMR`这个功能的时候，它的好处是什么呢？

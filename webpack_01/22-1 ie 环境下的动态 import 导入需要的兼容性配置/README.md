@@ -6,7 +6,7 @@
 
 `Unhandled promise rejection TypeError: Target is not iterable`
 
-![image](https://img.mukewang.com/szimg/5e6ca44e084e638f06610093.jpg)
+![image](http://i1.fuimg.com/717460/d74e638f2af110dd.jpg)
 
 这个问题报错的时候我就想到肯定是`babel`没有配置好，在`ie`下的兼容性问题（万恶的ie）。
 
