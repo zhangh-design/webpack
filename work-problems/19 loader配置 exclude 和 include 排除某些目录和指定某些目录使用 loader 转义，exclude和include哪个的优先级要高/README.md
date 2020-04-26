@@ -1,5 +1,7 @@
 19 loader配置 exclude 和 include 排除某些目录和指定某些目录使用 loader 转义，exclude和include哪个的优先级要高
 
+如果exclude 和include同时存在，则exclude权限比较高
+
 ```
 module.exports = {
   module: {
