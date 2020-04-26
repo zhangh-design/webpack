@@ -16,7 +16,7 @@
 
 我们可以使用 style-loader 中的 `injectType`属性。
 
-默认情况下，style-loader 每一次处理引入的样式文件都会在 DOM 上创建一个 <style> 标签
+默认情况下（injectType: 'styleTag'），style-loader 每一次处理引入的样式文件都会在 DOM 上创建一个 <style> 标签
 
 注意：
 
