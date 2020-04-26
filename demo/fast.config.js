@@ -11,6 +11,7 @@ module.exports = {
   isProdConsoleLog: true, // prod 模式下是否输出 console 日志
   ieDynamicImport: false, // 针对 ie 浏览器是否需要支持 动态import 导入模块的功能（对 chrome Firefox Edge 无影响），如果在 .babelrc 中 browsers 不需要支持 ie 环境那么这里配置 false 即不用考虑任何 ie 浏览器，如果你的业务代码里没有动态import那么也设置 false 即可
   isBundleAnalyzer: false, // 是否使用 webpack-bundle-analyzer 进行打包分析
+  isDevCssOneStyle: true, // dev 模式下最终的 css 是否要合并到一个 <style></style> 标签内，默认 false 每一次处理引入的样式文件都会在 DOM 上创建一个 <style> 标签
   isProdCssInline: false, // prod 模式下最终的 css 是否要内联到 style 标签内，默认 false 使用 link 引入
   isDevFriendlyErrors: true, // dev 模式下 webpack-dev-server 的打包输出的信息是否由 friendly-errors-webpack-plugin 提供（没有打包信息），false 的话可以输出构建时的打包信息
   // 配置通过 html-webpack-externals-plugin 加载远程 CDN 资源上的js文件，打包构建时 webpack 会通过分析 html-webpack-externals-plugin 中的模块将这些模块不打包到最终的 bundle 里面减小体积

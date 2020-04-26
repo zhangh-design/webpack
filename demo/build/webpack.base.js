@@ -53,8 +53,8 @@ module.exports = {
       '@assets': resolve('./src/assets')
     },
     // 告诉 webpack 解析第三方模块时应该搜索的目录，默认 node_modules
-    // modules: [path.resolve(__dirname, '../node_modules')], ie 11 下因为这个报错
-    modules: ['node_modules'],
+    // modules: [path.resolve(__dirname, '../node_modules')], ie 11 环境中因为这样配置找不到 iterator.js 和 Promise.js 的babel支持文件
+    modules: [resolve('src'), 'node_modules'],
     // 解析目录时要使用的文件名（这个配置项不常用，因为也是对性能有损耗）
     // mainFiles: ['index', 'test'],
     // 对应第三方包 package.json 中的 main 属性字段，意思是通过 main 属性指定的文件来导入模块
@@ -68,7 +68,7 @@ module.exports = {
       {
         test: /\.jsx?$/, // x? 表示同时使用 babel-loader 解析 js 和 jsx 文件
         exclude: /node_modules/,
-        include: path.resolve(__dirname, '../src'),
+        include: [resolve('src'), resolve('test')],
         loader: 'babel-loader'
       },
       {
@@ -82,7 +82,8 @@ module.exports = {
           {
             loader: 'style-loader', // 把 css 样式内容内联到 style 标签内
             options: {
-              injectType: 'singletonStyleTag'
+              // 是否合并 style 标签，处理为单个style标签
+              injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
             }
           },
           // 'css-loader', // 处理 .css 文件
@@ -101,9 +102,11 @@ module.exports = {
             }
           },
           'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
-        ],
-        include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/
+        ]
+        // 例如 element-ui 样式库会有主题 css文件存在于 node_modules 中，所以 css 文件的 loader 不应该加入 include 和 exclude
+        // import 'element-ui/lib/theme-chalk/index.css' 这个主题样式是在 node_modules 中的
+        // include: [resolve('src'), resolve('test')]
+        // exclude: /node_modules/
       },
       {
         test: /\.scss$/,
@@ -111,7 +114,7 @@ module.exports = {
           {
             loader: 'style-loader',
             options: {
-              injectType: 'singletonStyleTag' // 处理为单个style标签
+              injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
             }
           },
           // 'css-loader',
@@ -129,9 +132,7 @@ module.exports = {
           },
           'postcss-loader', // 新版 postcss-loader 要放在 sass-loader 之前
           'sass-loader'
-        ],
-        include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/
+        ]
       },
       {
         test: /\.less$/,
@@ -139,7 +140,7 @@ module.exports = {
           {
             loader: 'style-loader',
             options: {
-              injectType: 'singletonStyleTag' // 处理为单个style标签
+              injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
             }
           },
           // 'css-loader',
@@ -157,9 +158,7 @@ module.exports = {
           },
           'postcss-loader', // 新版 postcss-loader 要放在 less-loader 之前
           'less-loader'
-        ],
-        include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
