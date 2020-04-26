@@ -43,8 +43,10 @@ module.exports = {
           },
           'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
         ],
-        include: path.resolve(__dirname, '../src'),
-        exclude: /node_modules/
+        // 例如 element-ui 样式库会有主题 css文件存在于 node_modules 中，所以 css 文件的 loader 不应该加入 include 和 exclude
+        // import 'element-ui/lib/theme-chalk/index.css' 这个主题样式是在 node_modules 中的
+        // include: [resolve('src'), resolve('test')]
+        // exclude: /node_modules/
       },
     ]
   }
