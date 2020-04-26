@@ -13,10 +13,11 @@ const baseWebpackConfig = require('./webpack.base.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
+const TerserPlugin = require('terser-webpack-plugin');
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -35,8 +36,17 @@ const webpackConfig = merge(baseWebpackConfig, {
     // runtimeChunk: {
     //     name: 'runtime'
     // },
+    // 压缩
+    minimize: true,
     // 压缩 css
     minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          compress: {
+            drop_console: fastConfig.isProdConsoleLog || false
+          }
+        }
+      }),
       new OptimizeCSSAssetsPlugin({})
     ],
     usedExports: true, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
@@ -124,7 +134,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       verbose: true, // 在命令窗口中打印`clean-webpack-plugin`日志
       cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist')] // 清除的文件/文件夹
     }),
-    // 对我们引入的 css 文件进行代码分割
+    // 从 bundle 中提取文本（CSS）到单独的文件
     new MiniCssExtractPlugin({
       filename: utils.assetsPath('[name].[contenthash:8].css'),
       chunkFilename: utils.assetsPath('/styles/[name].[contenthash:8].chunk.css')
