@@ -16,6 +16,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -196,5 +197,9 @@ if (fastConfig.cdnJsArray.length > 0) {
     // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入，建议需要和 fast.config.js 中的 cdnJsArray 一起使用
     webpackConfig.externals = externals
   }
+}
+// css 是否要内联到 <style></style> 标签内
+if (fastConfig.isProdCssInline) {
+  webpackConfig.plugins.push(new HTMLInlineCSSWebpackPlugin())
 }
 module.exports = webpackConfig;
