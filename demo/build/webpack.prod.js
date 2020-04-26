@@ -14,6 +14,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -21,8 +23,8 @@ const webpackConfig = merge(baseWebpackConfig, {
   // mode: 'development',
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // splitChunks 分割出模块
+    filename: utils.assetsPath('js/[name].[chunkhash].js'), // 入口文件打包生成js文件走 filename 配置项
+    chunkFilename: utils.assetsPath('js/vendor/[name].[chunkhash].js'), // splitChunks 分割出模块，动态import 引入的模块
     path: config.build.assetsRoot
   },
   optimization: {
@@ -32,6 +34,10 @@ const webpackConfig = merge(baseWebpackConfig, {
     // runtimeChunk: {
     //     name: 'runtime'
     // },
+    // 压缩 css
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({})
+    ],
     usedExports: true, // production 模式默认开启 Tree Shaking 摇树优化（可以通过在 package.json 中设置 sideEffects 属性来调整摇树优化过滤规则）
     splitChunks: {
       chunks: 'all', // initial（有共用的情况即发生拆分）async（异步 动态引入的模块不受影响，它是无论如何都会被拆分出去的）all（同步和异步），推荐 all
@@ -66,6 +72,12 @@ const webpackConfig = merge(baseWebpackConfig, {
           test: /[\\/]node_modules[\\/]/,
           priority: -10
         },
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true // 忽略默认的参数（比如：minSize）只要是 .css 文件就做代码的拆分
+        },
         default: {
           minChunks: 2,
           priority: -20,
@@ -74,6 +86,29 @@ const webpackConfig = merge(baseWebpackConfig, {
         ...fastConfig.splitChunksCacheGroups
       }
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: false // 先不使用 modules: true
+            }
+          },
+          'postcss-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     // 导入自定义环境变量
@@ -88,6 +123,11 @@ const webpackConfig = merge(baseWebpackConfig, {
       verbose: true, // 在命令窗口中打印`clean-webpack-plugin`日志
       cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist')] // 清除的文件/文件夹
     }),
+    // 对我们引入的 css 文件进行代码分割
+    new MiniCssExtractPlugin({
+      filename: utils.assetsPath('[name].[contenthash:8].css'),
+      chunkFilename: utils.assetsPath('/styles/[name].[contenthash:8].chunk.css')
+    }),
     // 以 template 摸板生成指定的html文件
     new HtmlWebpackPlugin({
       title: config.build.title,
@@ -101,8 +141,8 @@ const webpackConfig = merge(baseWebpackConfig, {
       inject: true, // 默认 true，将脚本注入到body元素的底部
       // 美化 html 文件，去除空格、注释等（ production 时使用）
       minify: {
-        removeComments: true,
-        collapseWhitespace: true,
+        removeComments: true, // 去除HTML注释
+        collapseWhitespace: true, // 去掉空格
         removeAttributeQuotes: true
       },
       // 4.2.0 版本已经移除 'dependency'

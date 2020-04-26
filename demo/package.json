@@ -6,6 +6,7 @@
   "scripts": {
     "dev-build": "cross-env NODE_ENV=development webpack --config ./build/webpack.dev.js",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --progress --config ./build/webpack.dev.js",
+    "serve": "npm run dev",
     "build": "cross-env NODE_ENV=production webpack --config ./build/webpack.prod.js",
     "bundle:clean": "npm run clean && npm run build",
     "clean": "rimraf dist"
@@ -34,7 +35,9 @@
     "less": "^3.11.1",
     "less-loader": "^5.0.0",
     "lodash-webpack-plugin": "^0.11.5",
+    "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
     "raw-loader": "^0.5.1",

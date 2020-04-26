@@ -64,6 +64,7 @@ module.exports = {
   // externals: fastConfig.externals,
   module: {
     // noParse: '/jquery|lodash/', // 构建时不去解析三方库
+    // noParse: /node_modules\/(element-ui\.js)/,
     rules: [
       {
         test: /\.jsx?$/, // x? 表示同时使用 babel-loader 解析 js 和 jsx 文件
@@ -77,90 +78,6 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
-        test: /\.css$/,
-        use: [
-          {
-            loader: 'style-loader', // 把 css 样式内容内联到 style 标签内
-            options: {
-              // 是否合并 style 标签，处理为单个style标签
-              injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
-            }
-          },
-          // 'css-loader', // 处理 .css 文件
-          {
-            loader: 'css-loader',
-            options: {
-              // importLoaders，这个参数用于配置 css-loader 作用于 @import 的资源之前有多少个 loader
-              // 也可以通过增加 postcss-loader 的插件 postcss-import 来达到同样效果
-              importLoaders: 1, // 0 => 默认，没有 loader;1 => postcss-loader;
-              modules: {
-                localIdentName:
-                  process.env.NODE_ENV === 'production'
-                    ? config.build.localIdentName
-                    : config.dev.localIdentName
-              } // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
-            }
-          },
-          'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
-        ]
-        // 例如 element-ui 样式库会有主题 css文件存在于 node_modules 中，所以 css 文件的 loader 不应该加入 include 和 exclude
-        // import 'element-ui/lib/theme-chalk/index.css' 这个主题样式是在 node_modules 中的
-        // include: [resolve('src'), resolve('test')]
-        // exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {
-              injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
-            }
-          },
-          // 'css-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, sass-loader
-              modules: {
-                localIdentName:
-                  process.env.NODE_ENV === 'production'
-                    ? config.build.localIdentName
-                    : config.dev.localIdentName
-              }
-            }
-          },
-          'postcss-loader', // 新版 postcss-loader 要放在 sass-loader 之前
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.less$/,
-        use: [
-          {
-            loader: 'style-loader',
-            options: {
-              injectType: fastConfig.isDevCssOneStyle ? 'singletonStyleTag' : 'styleTag'
-            }
-          },
-          // 'css-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, less-loader
-              modules: {
-                localIdentName:
-                  process.env.NODE_ENV === 'production'
-                    ? config.build.localIdentName
-                    : config.dev.localIdentName
-              }
-            }
-          },
-          'postcss-loader', // 新版 postcss-loader 要放在 less-loader 之前
-          'less-loader'
-        ]
-      },
-      {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         // 压缩图片
         loader: 'image-webpack-loader',
@@ -171,7 +88,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 10 * 1024, // 10k
+          limit: 1024, // 8kb
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('img/[path][name]-[hash:8].[ext]'),
           publicPath: process.env.NODE_ENV === 'production'

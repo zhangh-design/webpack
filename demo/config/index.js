@@ -87,6 +87,6 @@ module.exports = {
     /**
      * css-loader
      */
-    localIdentName: '[path][name]__[local]--[hash:base64:5]'
+    localIdentName: '[local]' // '[path][name]__[local]--[hash:base64:5]'
   }
 };
