@@ -88,7 +88,7 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg|blob)(\?.*)?$/,
         loader: 'url-loader',
         options: {
-          limit: 1024, // 8kb
+          limit: 8 * 1024, // 8kb
           context: path.resolve(__dirname, '../src'),
           name: utils.assetsPath('img/[path][name]-[hash:8].[ext]'),
           publicPath:
