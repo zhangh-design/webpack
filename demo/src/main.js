@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
-console.info(Vue   );
-let b= ""
+console.info(  Vue   );
+let b= "";
