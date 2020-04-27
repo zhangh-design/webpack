@@ -69,6 +69,12 @@ module.exports = {
     // noParse: /node_modules\/(element-ui\.js)/,
     rules: [
       {
+        test: /\.(vue|js|jsx)$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+        enforce: 'pre' // 在使用 babel-loader 和 vue-loader 之前先使用 eslint-loader
+      },
+      {
         test: /\.jsx?$/, // x? 表示同时使用 babel-loader 解析 js 和 jsx 文件
         exclude: /node_modules/,
         include: [resolve('src'), resolve('test')],
