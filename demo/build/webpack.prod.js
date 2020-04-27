@@ -1,23 +1,23 @@
-'use strict';
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const LodashWebpackPlugin = require('lodash-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
-const fastConfig = require('../fast.config.js');
-const utils = require('../build/utils.js');
-const config = require('../config/index.js');
-const merge = require('webpack-merge');
-const webpack = require('webpack');
-const env = require('../config/prod.env.js');
-const baseWebpackConfig = require('./webpack.base.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+'use strict'
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const LodashWebpackPlugin = require('lodash-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path')
+const fastConfig = require('../fast.config.js')
+const utils = require('../build/utils.js')
+const config = require('../config/index.js')
+const merge = require('webpack-merge')
+const webpack = require('webpack')
+const env = require('../config/prod.env.js')
+const baseWebpackConfig = require('./webpack.base.js')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
-const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default;
-const TerserPlugin = require('terser-webpack-plugin');
+  .BundleAnalyzerPlugin
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin').default
+const TerserPlugin = require('terser-webpack-plugin')
 
 const webpackConfig = merge(baseWebpackConfig, {
   // 不设置 mode 默认 production
@@ -177,12 +177,12 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     ])
   ]
-});
+})
 // 查看 webpack 打包情况
 if (fastConfig.isBundleAnalyzer) {
   webpackConfig.plugins.push(
     new BundleAnalyzerPlugin()
-  );
+  )
 }
 // ie 环境下 动态import 分割的 babel 模块统一到名叫 core-js-base 文件
 if (fastConfig.ieDynamicImport) {
@@ -207,7 +207,7 @@ if (fastConfig.cdnJsArray.length > 0) {
   if (cdnModulelist.length > 0) {
     webpackConfig.plugins.splice(webpackConfig.plugins.length - 1, 0, new HtmlWebpackExternalsPlugin({
       externals: cdnModulelist
-    }));
+    }))
     // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入，建议需要和 fast.config.js 中的 cdnJsArray 一起使用
     webpackConfig.externals = externals
   }
@@ -216,4 +216,4 @@ if (fastConfig.cdnJsArray.length > 0) {
 if (fastConfig.isProdCssInline) {
   webpackConfig.plugins.push(new HTMLInlineCSSWebpackPlugin())
 }
-module.exports = webpackConfig;
+module.exports = webpackConfig

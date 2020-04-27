@@ -1,21 +1,21 @@
-'use strict';
-const config = require('../config/index.js');
-const fastConfig = require('../fast.config.js');
-const utils = require('../build/utils.js');
-const path = require('path');
-const webpack = require('webpack');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const createVueLoaderConfig = require('./vue-loader.conf.js');
+'use strict'
+const config = require('../config/index.js')
+const fastConfig = require('../fast.config.js')
+const utils = require('../build/utils.js')
+const path = require('path')
+const webpack = require('webpack')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const createVueLoaderConfig = require('./vue-loader.conf.js')
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir);
+  return path.join(__dirname, '..', dir)
 }
 
 const ieDynamicImportModule = function () {
-  return fastConfig.ieDynamicImport ? utils.getIEDynamicImportModule() : {};
+  return fastConfig.ieDynamicImport ? utils.getIEDynamicImportModule() : {}
 }
 
-const isDev = process.env.NODE_ENV === 'development'; // 开发环境
+const isDev = process.env.NODE_ENV === 'development' // 开发环境
 
 module.exports = {
   // 默认将 entry 的入口起点指向根目录
@@ -144,4 +144,4 @@ module.exports = {
     // 全局提供帮助类库和工具函数（暴露全局变量）
     new webpack.ProvidePlugin(fastConfig.providePlugin)
   ]
-};
+}

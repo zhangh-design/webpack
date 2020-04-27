@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 const config = require('../config')
 const fastConfig = require('../fast.config.js')
 const merge = require('webpack-merge')
@@ -195,7 +195,7 @@ if (fastConfig.cdnJsArray.length > 0) {
   if (cdnModulelist.length > 0) {
     devWebpackConfig.plugins.splice(devWebpackConfig.plugins.length - 1, 0, new HtmlWebpackExternalsPlugin({
       externals: cdnModulelist
-    }));
+    }))
     // 抽离库不打包到构建文件中减小构建包体积，但要通过 script 标签在外部引入，建议需要和 fast.config.js 中的 cdnJsArray 一起使用
     devWebpackConfig.externals = externals
   }

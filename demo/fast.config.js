@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 /**
  * webpack 打包自定义配置文件

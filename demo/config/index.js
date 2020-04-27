@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 const fastConfig = require('../fast.config.js')
 
 // eslint-disable-next-line no-unused-vars
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   dev: {
@@ -89,4 +89,4 @@ module.exports = {
      */
     localIdentName: '[name]--[hash:base64:5]'
   }
-};
+}
