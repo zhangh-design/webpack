@@ -55,16 +55,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           }, */
           // 'css-loader', // 处理 .css 文件
           {
-            loader: 'css-loader'
+            loader: 'css-loader',
             // import 导入的 css 模块不适用 cssModule 功能（.vue 模块中开启了 cssModule）
-            /* options: {
+            options: {
               // importLoaders，这个参数用于配置 css-loader 作用于 @import 的资源之前有多少个 loader
               // 也可以通过增加 postcss-loader 的插件 postcss-import 来达到同样效果
-              importLoaders: 1, // 0 => 默认，没有 loader;1 => postcss-loader;
-              modules: {
+              importLoaders: 1 // 0 => 默认，没有 loader;1 => postcss-loader;
+              /* modules: {
                 localIdentName: config.dev.localIdentName
-              } // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
-            } */
+              } */ // 模块化，指的是这个 css 只在这个模块里有效 （import style from './a.scss'; 取某个class属性 style.avatar）
+            }
           },
           'postcss-loader' // 构建时调用 autoprefixer 自动添加浏览器厂商前缀 （webkit、moz、ms）
         ]
@@ -85,13 +85,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             }
           }, */
           {
-            loader: 'css-loader'
-            /* options: {
-              importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, sass-loader
-              modules: {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2 // 0 => 默认，没有 loader;2 => postcss-loader, sass-loader
+              /* modules: {
                 localIdentName: config.dev.localIdentName
-              }
-            } */
+              } */
+            }
           },
           'postcss-loader', // 新版 postcss-loader 要放在 sass-loader 之前
           'sass-loader'
@@ -109,13 +109,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
             }
           }, */
           {
-            loader: 'css-loader'
-            /* options: {
-              importLoaders: 2, // 0 => 默认，没有 loader;2 => postcss-loader, less-loader
-              modules: {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2 // 0 => 默认，没有 loader;2 => postcss-loader, less-loader
+              /* modules: {
                 localIdentName: config.dev.localIdentName
-              }
-            } */
+              } */
+            }
           },
           'postcss-loader', // 新版 postcss-loader 要放在 less-loader 之前
           'less-loader'
