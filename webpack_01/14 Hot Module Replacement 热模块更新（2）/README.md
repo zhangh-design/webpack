@@ -64,7 +64,7 @@ C:\Users\nickname\Desktop\lesson_3>npm run start
 
 现在页面就展示出了`1`这个文字，我点击变成每次都加`+1`的操作：
 
-![image](http://i2.tiimg.com/717460/52f7a26636c47dff.jpg)
+![image](./2.jpg)
 
 
 好，没问题接着呢我再去写一个`js`文件，这个`js`文件呢就是`number.js`吧。
@@ -110,15 +110,15 @@ number()
 
 我们再来看啊，现在页面上有 1 和 1000 ，当我点击上面的 1 的时候会每次都增加`+1`的操作。
 
-![image](http://i2.tiimg.com/717460/285a83ae35df5db1.jpg)
+![image](./3.jpg)
 
 假如我上面的数字变成了`17`，我把`number.js`里面的`1000`改成`2000`，保存然后`webpack-dev-server`会自动帮我们打包（注意这时候我们是把`HMR`的功能给关闭掉了的），你会发现页面刷新了，上面的`17`呢变成`1`了，下面的数字变成了`2000`。
 
-![image](http://i2.tiimg.com/717460/a24d540274d380e0.jpg)
+![image](./4.jpg)
 
 修改成2000之后的效果：
 
-![image](http://i2.tiimg.com/717460/4f46b6068cb1617b.jpg)
+![image](./5.jpg)
 
 因为如果我们把`HMR`的功能给关闭了的话，那么每次修改都会导致浏览器的刷新每次都会重新请求js文件和css文件。
 
@@ -136,13 +136,13 @@ C:\Users\nickname\Desktop\lesson_3>npm run start
 
 现在`HMR`已经生效了，然后我在浏览器页面上把它点成随便一个数字：
 
-![image](http://i2.tiimg.com/717460/a24d540274d380e0.jpg)
+![image](./4.jpg)
 
 好，这个时候我来改我的`number.js`里的代码，`counter.js`里的代码我根本就不变，把这个`1000`改成`3000`在保存（这个时候`webpack-dev-server`会自动帮我们打包）。
 
 大家来看当你开启了`HMR`之后啊，你这个`number.js`里的代码改成了`2000`但是页面是不刷新了，但是这个`1000`有没有变成`3000`啊？
 
-![image](http://i2.tiimg.com/717460/a24d540274d380e0.jpg)
+![image](./4.jpg)
 
 是不是我们看到效果并没有改变啊，如果你要让它变成`3000`你额外要写一点代码。
 
@@ -170,12 +170,12 @@ if(module.hot){
 
 保存，然后我们到页面上来看现在的效果，刷新页面，现在是`1`和`1000`，
 
-![image](http://i2.tiimg.com/717460/285a83ae35df5db1.jpg)
+![image](./3.jpg)
 
 
 我呢把`1`点成随便的一个数字比如：`22`，下面我去改变`numnber.js`中的值改成`2000`，保存，我们在页面上看下效果（注意：这时候不要刷新浏览器）：
 
-![image](http://i2.tiimg.com/717460/bdb21aeb7b067758.jpg)
+![image](./6.jpg)
 
 
 页面上的`1000`是之前的效果，又多出一个`2000`，为什么又多出一个`2000`了，是因为只要你`number.js`发生了变化，我又重新执行一次`number()`，重新执行`number()`的时候它会重新生成一个`div`，内容是`2000`并挂载到页面上。

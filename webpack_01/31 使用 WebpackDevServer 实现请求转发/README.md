@@ -240,7 +240,7 @@ setTimeout(() => {
 
 这样的话呢，当页面展示出来后，定时器过了1秒钟后，我就会去执行`getData`函数然后`axios.get`就会去请求远程接口上的数据，拿到数据后我会把结果打印出来，保存代码后我们到我们刚才的页面上来看一下啊，浏览器打开到`index.html`这个页面上然后打开控制台，大家可以看到这个时候啊它已经把接口请求的结果返回回来了：
 
-![image](http://i1.fuimg.com/717460/b9e627845afe51da.jpg)
+![image](./1.jpg)
 
 聪明点的同学呢肯定会有这样的疑问，我是在`http://localhost/`这个域名下去请求一个另外一个域名的接口，正常应该跨域啊为什么现在不跨域不报错呢，这是因为在我的这台远程服务器上对跨域做了一些配置我允许你跨域发送请求，好所以你能正常的拿到结果。
 
@@ -266,7 +266,7 @@ setTimeout(() => {
 
 保存刷新浏览器，我们看
 
-![image](http://i1.fuimg.com/717460/dd4dd285dcb3c175.jpg)
+![image](./2.jpg)
 
 它肯定会报`http://localhost:8080/react/api/header.json` localhost这个域名的8080端口下根本就没有这个接口，那怎么办？
 
@@ -310,7 +310,7 @@ index.js
   });
 ```
 
-![image](http://i1.fuimg.com/717460/dd4dd285dcb3c175.jpg)
+![image](./2.jpg)
 
 我请求的是`/react/api`下面的`header.json`，但是呢实际上你现在请求的是哪里呢，你请求的是`localhost`下面的`/react/api`下面的`header.json`，但是我想法是什么呢，我的想法是如果在开发环境下我请求的是这个接口你能不能帮我做一次代理去请求`www.dell-lee.com`这个接口把数据拿回来返回给我，我们通过`proxy`这样的配置就可以完全做到这一点。
 
@@ -352,11 +352,11 @@ Time: 3023ms
 
 好打开`index.html`刷新浏览器，打开控制台大家来看，我点击`Network`面板刷新一次页面：
 
-![image](http://i1.fuimg.com/717460/320ba207c236b5f4.jpg)
+![image](./3.jpg)
 
 大家可以看到现在我请求的还是`http://localhost:8080/react/api/header.json`正常的话我的`localhost:8080`端口下这个接口肯定是不存在的，但是我们查看一下数据：
 
-![image](http://i1.fuimg.com/717460/99cc4e3475422176.jpg)
+![image](./4.jpg)
 
 它已经返回了我`http://www.dell-lee.com`这个接口下的所有内容了，那为什么会返回这个内容呢，就是因为我们配置了一个`proxy`这样的配置项，有了这个配置项当我们在代码里面去请求已`/react/api`开头的这样的接口的时候，`proxy`
 就知道它要走：
@@ -466,7 +466,7 @@ i ｢wdm｣: Hash: 7df27883d84148e77162
 
 然后我们来看一下我们的这个请求，大家看我现在 还是请求的是`header.json`，但是拿到的返回结果就一个`success: true`，它的结果实际上是`demo.json`的结果，这样的话就实现了我们想要的一个结果，
 
-![image](http://i1.fuimg.com/717460/82e273e06e9ebb6b.jpg)
+![image](./5.jpg)
 
 我们呢源代码里没有做任何的变更，通过这个`webpack.config.js`里面的`devServer.proxy`做了一个转发，做了一个`pathRewrite`这样的话就可以拿到`demo.json`里面的内容了这样做最大的好处就是拿一旦后端说行了现在我的这个`header.json`的接口已经写好了，那么你不需要修改你的代码你只需要在`pathRewrite`注释掉。
 

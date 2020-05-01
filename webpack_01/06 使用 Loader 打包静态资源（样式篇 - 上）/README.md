@@ -178,7 +178,7 @@ Entrypoint main = bundle.js
 
 这个时候打包可以看到打包就成功了，然后我们再到`index.html`页面上看一下：
 
-![image](http://i1.fuimg.com/717460/292017a0e0b6879b.jpg)
+![image](./1.jpg)
 
 图片确实变小了，然后我们打开浏览器的控制台看一下宽高确实是`150*150`没有任何的问题。
 
@@ -533,7 +533,7 @@ index.html
 ```
 
 
-![image](http://i1.fuimg.com/717460/f8d5942054cdcd45.jpg)
+![image](./2.jpg)
 
 
 可是呢我们发现`transform`前面并没有厂商前缀，我们一般写这种`css3`的新的特性的时候一般要加`webkit`或者`moz`或者`ms`啊对`IE`浏览器的一些支持都会加这个厂商前缀，但是现在我们这样写`css`就没法写这个厂商前缀了或者说我们在css里面去写这个厂商前缀：
@@ -649,7 +649,7 @@ body .avatar {
 ```
 
 
-![image](http://i1.fuimg.com/717460/b1e154acad4c7144.jpg)
+![image](./3.jpg)
 
 ### 总结：
 

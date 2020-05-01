@@ -224,7 +224,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony default export */ 
 ......
 ```
 
-![image](http://i1.fuimg.com/717460/da73f8f7cc7c20e1.jpg)
+![image](./1.jpg)
 
 我们在浏览器的控制台里可以看到这张图片并不是引入一个外部的地址而是一个`base64`的一个内容，这是怎么回事啊，我来给大家讲解一下:
 
