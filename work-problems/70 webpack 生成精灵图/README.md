@@ -4,25 +4,25 @@
 
 小图标
 
-![image](http://i1.fuimg.com/717460/8bd35f0f89cf99c9.png)
+![image](./1.png)
 
-![image](http://i1.fuimg.com/717460/93b979f54fead92d.png)
+![image](./2.png)
 
-![image](http://i1.fuimg.com/717460/b35d81ab8a591504.png)
+![image](./3.png)
 
-![image](http://i1.fuimg.com/717460/893580c01ea085f3.png)
+![image](./4.png)
 
-![image](http://i1.fuimg.com/717460/dddf034bdba096bd.png)
+![image](./5.png)
 
-![image](http://i1.fuimg.com/717460/621140f8f95172a2.png)
+![image](./6.png)
 
-![image](http://i1.fuimg.com/717460/f44dd7c2abefb690.png)
+![image](./7.png)
 
-![image](http://i1.fuimg.com/717460/a6461edecebed1fa.png)
+![image](./8.png)
 
 雪碧图
 
-![image](http://i1.fuimg.com/717460/0195bac9774d663e.png)
+![image](./css_sprites.png)
 
 如果我们不将这些图标合成一张雪碧图的话，那么 index.html 页面上就会有很多的请求去加载这些小图标，当然也许你会说你可以使用 url-loader 把这些小图标都变成 base64 的形式内联到你的 js 中，但是这样真的好吗？
 

@@ -196,6 +196,6 @@ module.exports = {
 
 效果截图：
 
-![image](http://i1.fuimg.com/717460/68f1222e4fe13bc0.jpg)
+![image](./11.jpg)
 
 

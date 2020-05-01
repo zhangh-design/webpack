@@ -4,7 +4,7 @@
 
 发现在 login.vue 中写的 img 在 webpack 打包后变成了一个 "[object Module]" 的对象，该怎么解决这个问题呢？
 
-![image](http://i1.fuimg.com/717460/63692c23abb67bee.jpg)
+![image](./1.jpg)
 
 #### 解决办法：
 

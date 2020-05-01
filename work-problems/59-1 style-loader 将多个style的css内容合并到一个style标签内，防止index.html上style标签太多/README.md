@@ -57,9 +57,9 @@ module.exports = {
 
 没有 配置 injectType: 'singletonStyleTag'：
 
-![image](http://i2.tiimg.com/717460/bcacf15ed6eda9ab.jpg)
+![image](./21.jpg)
 
 
 配置了 injectType: 'singletonStyleTag'：
 
-![image](http://i2.tiimg.com/717460/de94e3c07f3e6848.jpg)
+![image](./20.jpg)
