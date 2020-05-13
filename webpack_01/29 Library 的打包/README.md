@@ -245,7 +245,7 @@ library: 'library'
 配置了一个`library: 'library'`名字就叫`library`，那我说了它的意思是什么啊，它的意思是
 会在全局变量里面增加一个`library`这样的一个变量，那我们去打开这个`index.html`页面，然后我们点开控制台啊，在这里我们输入`library`回车大家可以看到：
 
-![image](http://i1.fuimg.com/717460/e9daa9078b46d517.jpg)
+![image](./1.jpg)
 
 这是不是就是我们这个库里的内容啊有`math`有`string`，都帮助我们导出出来了。
 
@@ -263,7 +263,7 @@ output: {
 
 我们在浏览器上在输入`library`这个变量就会提示不存在：
 
-![image](http://i1.fuimg.com/717460/06066fffdd9531e4.jpg)
+![image](./2.jpg)
 
 ##### libraryTarget: "this"
 
@@ -298,7 +298,7 @@ Entrypoint main = library.js
 
 在去刷新我们的页面，我们在控制台里输入`this.library`回车大家可以看到就可以获取到我这个库下面的函数：
 
-![image](http://i1.fuimg.com/717460/21feddaaa47cfc78.jpg)
+![image](./3.jpg)
 
 好，当然因为我们现在是在这个页面的最外层直接去引入这个`library`所以呢你这个`library`如果挂在`this`上面其实也就相当于你挂载到直接就挂载到页面上，所以`library`上是有东西的。
 

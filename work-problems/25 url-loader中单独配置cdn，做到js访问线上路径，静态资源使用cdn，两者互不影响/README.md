@@ -24,8 +24,8 @@ module.exports = {
 
 .vue或者html文件中的 img
 
-![image](http://i2.tiimg.com/717460/23d1e37c6f4a9c2f.jpg)
+![image](./13.jpg)
 
 css 中的 background-image
 
-![image](http://i1.fuimg.com/717460/f04575fd1b9b3922.jpg)
+![image](./14.jpg)

@@ -73,7 +73,7 @@ dist
 
 这样其实就是没有做代码分割。
 
-![image](http://i2.tiimg.com/717460/fd95932b101be3ac.jpg)
+![image](./10-1.jpg)
 
 ---
 
@@ -155,7 +155,7 @@ dist
  |-vendors~main.js // 说明是从 main.js 这个chunk中打包分离出来的，vendors是因为`lodash`这个库满足`cacheGroups.vendors`这个组的分割代码要求，所以前面的名字是`vendors`。
 ```
 
-![image](http://i2.tiimg.com/717460/06a5685dbe779946.jpg)
+![image](./10-2.jpg)
 
 设置`filename: "vendors.js"`的打包输出`dist`目录：
 
@@ -168,7 +168,7 @@ dist
  |-vendors.js
 ```
 
-![image](http://i2.tiimg.com/717460/8d672a6c15294ce9.jpg)
+![image](./10-2.jpg)
 
 总结：
 
@@ -276,7 +276,7 @@ dist
  |-vendors~main.js
 ```
 
-![image](http://i2.tiimg.com/717460/16d4e3e3e4750794.jpg)
+![image](./10-4.jpg)
 
 `vendors~main.js`
 
@@ -422,7 +422,7 @@ dist
  |-main.js
 ```
 
-![image](http://i2.tiimg.com/717460/0fed0dee710801d3.jpg)
+![image](./10-5.jpg)
 
 `0.js`
 
@@ -570,7 +570,7 @@ dist
 |-vendors~main.js
 ```
 
-![image](http://i2.tiimg.com/717460/f2ad02010eebbe21.jpg)
+![image](./10-6.jpg)
 
 `0.js`
 
@@ -786,7 +786,7 @@ dist
  |-main.js
 ```
 
-![image](http://i2.tiimg.com/717460/c68aedfad1fbba01.jpg)
+![image](./10-7.jpg)
 
 `lodash.js`
 
@@ -889,7 +889,7 @@ vendors~lodash.js   1.35 MiB  vendors~lodash  [emitted]  vendors~lodash
 Entrypoint main = vendors~main.js main.js
 ```
 
-![image](http://i2.tiimg.com/717460/c4e9cb86cb9576ef.jpg)
+![image](./10-8.jpg)
 
 dist
 
@@ -927,7 +927,7 @@ dist
  |-lodash.js
 ```
 
-![image](http://i2.tiimg.com/717460/72f89f47ce2c45f1.jpg)
+![image](./10-9.jpg)
 
 vendors~lodash.js的代码分割名字是叫lodash.js了。
 

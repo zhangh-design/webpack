@@ -2,7 +2,7 @@
 
 #### 问题如下图：
 
-![image](http://i2.tiimg.com/717460/fa470f280f93e4a7.jpg)
+![image](./1.jpg)
 
 #### 解决方法
 

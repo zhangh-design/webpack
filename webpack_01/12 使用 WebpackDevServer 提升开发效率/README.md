@@ -181,7 +181,7 @@ i ｢wdm｣: Compiled successfully.
 
 大家可以看到这个时候啊，它会告诉我们现在已经帮助我们起了一个服务器在`http://localhost:8080/`上，我们呢可以直接在浏览器上去访问这个地址：
 
-![image](http://i2.tiimg.com/717460/2ac230f6ad420a66.jpg)
+![image](./3-1.jpg)
 
 这个时候页面在浏览器上正常打开，我们打开控制台显示的是`hello world!apple`。
 
@@ -298,7 +298,7 @@ devServer: {
 ](https://www.webpackjs.com/api/cli/)大家可以看到点开之后有很多的内容然后呢你可以点一点看一下。
 
 
-![image](http://i2.tiimg.com/717460/795b0fad0526ddce.jpg)
+![image](./1.jpg)
 
 其实它的意思是在命令行里面你可以怎么去写一些`webpack`的执行语法，比如说你可以在命令行里写：
 
@@ -363,7 +363,7 @@ webpack({
 ```
 
 
-![image](http://i2.tiimg.com/717460/f5ae233b6bab9ad5.jpg)
+![image](./2.jpg)
 
 
 ### 作业

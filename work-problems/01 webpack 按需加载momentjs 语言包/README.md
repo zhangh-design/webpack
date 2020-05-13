@@ -2,7 +2,7 @@
 
 momentjs是一个很好用的日期处理插件。但是webpack打包时我们会发现这个插件体积比较大(如下图)：
 
-![image](http://i1.fuimg.com/717460/6bd3f3b951a3a363.jpg)
+![image](./1.jpg)
 
 
 如图可以看出`locale`是大的主要原因。
@@ -23,4 +23,4 @@ plugins: [
 
 配置只打包zh-cn语言包后文件体积明显减少。
 
-![image](http://i1.fuimg.com/717460/26a1fb603cb610a6.jpg)
+![image](./2.jpg)

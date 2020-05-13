@@ -132,7 +132,7 @@ C:\Users\nickname\Desktop\lesson_3>npx webpack
 
 好打包完成，我们找到`dist`目录下的`index.html`我们在浏览器里打开它，然后打开浏览器控制台看到输出了`3`这样的内容，好说明代码已经正确的运行了。
 
-![image](http://i1.fuimg.com/717460/d675b987870741e0.jpg)
+![image](./1-1.jpg)
 
 
 然后我们来看，实际上在`index.js`里面我们引入了`math.js`里面的`add`方法，但是我并没有引入`minus`这个方法这个时候我们刚才去做`Webpack`的打包生成了对应的打包文件，我们去看一下`main.js`的内容：
