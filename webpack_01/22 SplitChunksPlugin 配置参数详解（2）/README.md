@@ -144,7 +144,20 @@ splitChunks: {
     },
     // default: false
     default: {
+      // 为什么要注释 minChunks: 2 ？
+      /**
+       这里需要你理解 chunk 是什么，这里的 2 并不是你 import 的次数超过 2，import 的是 module
+
+      chunk 包含着 module，可能是一对多也可能是一对一，一般一个 chunk对应一个bundle
+
+      所以如果我们是单页面（一个chunk一个bundke），那么其实 default 如果设置的是 2 这个缓存组也就不会进行代码的分割
+      **/
       // minChunks: 2,
+      /*
+        这两个配置可以在单页面（一个chunk一个bundke）中将 import 引入的 src 目录下的 module 不论大小都分割到 default 这个组里，一般不建议这么做
+        minChunks: 1,
+        minSize: 0,
+      */
       priority: -20,
       reuseExistingChunk: true
     }
