@@ -65,5 +65,4 @@ module.exports = {
 }
 ```
 
-![image](./4.jpg)
-
+[->![image](./4.jpg)](https://vue-loader.vuejs.org/zh/migrating.html#postcss)
