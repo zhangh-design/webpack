@@ -1,0 +1,15 @@
+// 自定义处理 css-loader
+    config.module.rule('css').oneOf('vue-modules').use('css-loader')
+      .tap(options => {
+        console.info('1111111111111111111111111', merge(options, createCssLoaderConfig(isDev)))
+        return merge(options, createCssLoaderConfig(isDev))
+      })
+    config.module.rule('scss').oneOf('vue-modules').use('css-loader')
+      .tap(options => {
+        console.info('222222222222222222222', merge(options, createCssLoaderConfig(isDev)))
+        return merge(options, createCssLoaderConfig(isDev))
+      })
+    config.module.rule('less').oneOf('vue-modules').use('css-loader').tap(options => {
+      console.info('3333333333333333333', merge(options, createCssLoaderConfig(isDev)))
+      return merge(options, createCssLoaderConfig(isDev))
+    })
